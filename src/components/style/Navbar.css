@@ -1,0 +1,13 @@
+.img {
+  height: 100px;
+  width: 250px;
+  background-size: contain;
+}
+.navCont{
+    padding: 10px;
+}
+
+.navItems {
+    margin-inline: 15px;
+    text-transform: uppercase;
+}
