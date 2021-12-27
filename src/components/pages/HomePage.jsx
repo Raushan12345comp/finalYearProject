@@ -1,29 +1,21 @@
-import React from "react";
-import { theme } from "../assets/utils/theme";
-import Navbar from "../navbar/Navbar";
+import React, { Suspense, lazy } from "react";
 
-const HomePage = () => {
+const Jumbo = lazy(() => import("../Home_Compo/Jumbo"));
+const About = lazy(() => import("../Home_Compo/About"))
+
+
+export default function HomePage() {
   return (
-    <div>
-      <Navbar />
-      <h1
-        style={{
-          fontSize: theme.fontSizes.h1,
-        }}
-      >
-        HomePage
-      </h1>
-      <div>
-        <h2>
-          Here we give two options to users i.e. <br />
-          1. STUDENT <br />
-          2. FACULTY <br />
-          then we redirect the the user to the faculty login page or student
-          login page
-        </h2>
-      </div>
-    </div>
-  );
-};
+    <Suspense
+      fallback={
+        <div>
+          <div uk-spinner></div>
+        </div>
+      }
+    >
 
-export default HomePage;
+      <Jumbo />
+      <About />
+    </Suspense>
+  );
+}
