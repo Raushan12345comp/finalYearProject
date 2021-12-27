@@ -64,6 +64,16 @@ box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0p
 .footer_Links{
     margin: 8px 0;
 }
+.footer_Links{
+    text-decoration: none;
+    color:  #aab7b8 ;
+}
+.footer_Links:hover{
+    text-decoration: none;
+    color:  #aab7b8 ;
+    cursor: pointer;
+}
+
 @media screen and (max-width:880px) {
     .footer_wrapper{
         width: 80%;

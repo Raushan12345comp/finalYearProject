@@ -23,12 +23,12 @@ export default function footer() {
           <div className="Links_f">
             <h3 style={{color:'#fff'}}>Links</h3>
             <ul class="uk-list">
-            <Link smooth={true} duration={1300} to="about">  <li className="footer_Links"> <span uk-icon="icon:  arrow-right"></span> About</li></Link>
-            <Link smooth={true} duration={1300} to="services"><li className="footer_Links"> <span uk-icon="icon:  arrow-right"></span> Services</li></Link>
-            <Link smooth={true} duration={1300} to="Qualifications"><li className="footer_Links"> <span uk-icon="icon:  arrow-right"></span> Education</li></Link>
-            <Link smooth={true} duration={1300} to="Experiesces">  <li className="footer_Links"> <span uk-icon="icon:  arrow-right"></span> Experiesces</li></Link>
-            <Link smooth={true} duration={1300} to="project"><li className="footer_Links"> <span uk-icon="icon:  arrow-right"></span> Projects</li></Link>
-            <Link smooth={true} duration={1300} to="Contact"> <li className="footer_Links"> <span uk-icon="icon:  arrow-right"></span> Contact</li></Link>
+            <Link to="/about">  <li className="footer_Links"> <span uk-icon="icon:  arrow-right"></span> About</li></Link>
+            <Link to="/services"><li className="footer_Links"> <span uk-icon="icon:  arrow-right"></span> Courses</li></Link>
+            <Link to="/Qualifications"><li className="footer_Links"> <span uk-icon="icon:  arrow-right"></span> Team</li></Link>
+            <Link to="/Experiesces">  <li className="footer_Links"> <span uk-icon="icon:  arrow-right"></span> Digital Library</li></Link>
+            <Link to="/project"><li className="footer_Links"> <span uk-icon="icon:  arrow-right"></span> Contact</li></Link>
+            <Link to="/Contact"> <li className="footer_Links"> <span uk-icon="icon:  arrow-right"></span> Login</li></Link>
 
             </ul>
           </div>
