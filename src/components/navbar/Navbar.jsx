@@ -10,9 +10,9 @@ export default function NavBar() {
       <div className="sidebar_main">
 
 	  <div className="menu_logo_mobile">
-        <Link to="/">
+        <Link to="/" style={{textDecoration: 'none'}}>
         <h3 style={{fontWeight: 'bold'}}>ADUCATOR</h3>
-        <p>Online Education & Learning</p>
+        <p style={{color:'#218FF2'}}>Online Education & Learning</p>
         </Link>
         </div>
        
@@ -56,9 +56,9 @@ export default function NavBar() {
 
       <div className="pc_view">
         <div className="menu_logo">
-        <Link to="/">
+        <Link to="/" style={{textDecoration: 'none'}}>
         <h3 style={{fontWeight: 'bold'}}>ADUCATOR</h3>
-        <p>Online Education & Learning</p>
+        <p style={{color:'#218FF2'}}>Online Education & Learning</p>
         </Link>
         </div>
         
