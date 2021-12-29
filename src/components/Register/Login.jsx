@@ -12,6 +12,10 @@ export default function Login() {
         history.push('/Signup')
     }
 
+    const ForgotPassword = () => {
+      history.push('/ForgotPassword')
+    }
+
   return (
     <div>
       <div className="Signup_main">
@@ -58,6 +62,11 @@ export default function Login() {
               <button class="uk-button uk-button-primary sin_btn" style={{background:'#8e44ad '}}>
                Login<span uk-icon="icon:  arrow-right"></span>
               </button>
+              </div>
+
+              <div className="Forgot_password">
+              <hr class="uk-divider-icon" />
+              <h5 onClick={ForgotPassword}>Forgot Password</h5>
               </div>
             </div>
           </div>

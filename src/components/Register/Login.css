@@ -6,10 +6,12 @@
 .Signup_wrapper{
     display: flex;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: 70%;
+    margin: 0 auto;
 }
 
 .Signup_left{
-    flex: 1.5;
+    flex: 1;
     background:  #ebf5fb  ;
     clip-path: polygon(0 0, 100% 0%, 90% 100%, 0% 100%);
 }
@@ -57,7 +59,10 @@
     margin: 15px auto;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
-
+.Forgot_password{
+    text-align: center;
+    cursor: pointer;
+}
 
 @media screen and (max-width:880px) {
     .Signup_main{
@@ -68,7 +73,9 @@
         display: flex;
         flex-direction: column;
         height: 80vh;
+        width: 100%;
     }
+    
     .form_main{
         margin: 15px auto;
         width: 70%;
