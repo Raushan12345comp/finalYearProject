@@ -1,8 +1,7 @@
 import React, { Suspense, lazy } from "react";
 
-const Jumbo = lazy(() => import("../Home_Compo/Jumbo"));
-const About = lazy(() => import("../Home_Compo/About"))
-
+const Jumbo = lazy(() => import("../components/Home_Compo/Jumbo"));
+const About = lazy(() => import("../components/Home_Compo/About"));
 
 export default function HomePage() {
   return (
@@ -13,7 +12,6 @@ export default function HomePage() {
         </div>
       }
     >
-
       <Jumbo />
       <About />
     </Suspense>

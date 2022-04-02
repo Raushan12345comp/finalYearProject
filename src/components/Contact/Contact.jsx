@@ -5,11 +5,13 @@ import "./Contact.css";
 
 const Contact = () => {
 
+  const KEY = process.env.REACT_APP_GOOGLE_AUTH_KEY
+
     const { ref, map, google } = useGoogleMaps(
-        "AIzaSyAYrd7duFeX5SdHs_rWQZIZ1ON5OAAAGAU",
+      KEY,
         {
           center: { lat: 18.596024, lng: 73.924698 },
-          zoom: 15
+          zoom: 18
         }
       );
 
@@ -20,7 +22,7 @@ const Contact = () => {
         <div className="Contact_wrapper">
 
         <div className="Contact_left">
-          <div ref={ref} style={{ width: "100%", height: "100%" , display:'block' }} />
+          <div ref={ref} style={{ width: "100%", height: "100%" }} />
           </div>
          
 

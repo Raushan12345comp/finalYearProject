@@ -69,7 +69,7 @@
   margin: 10px 0;
 }
 
-@media screen and (max-width: 880px) {
+@media screen and (max-width: 800px) {
   .Contact_main {
     width: 100%;
     margin: 10px auto;
@@ -97,7 +97,6 @@
     flex-direction: column;
   }
   .Contact_left {
-    flex: 1;
     display: none;
   }
   .C_loc{
