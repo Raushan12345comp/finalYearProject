@@ -13,10 +13,11 @@ export default function ForgotPassword() {
 
           <div className="forgot_pass_right">
             <div className="forgot_password_heading">
-              <h2>Reset Your Password Easily</h2>
+              <h2 className=' py-3 font-semibold text-xl'>Reset Your Password Easily</h2>
             </div>
 
-            <div className="Name_form_FP">
+          <div className=' w-[90%] mx-auto '>
+          <div className="Name_form_FP">
               <span className="FOrm_icon" uk-icon="icon: mail"></span>
               <input
                 className="uk-input input_field_signup"
@@ -31,9 +32,10 @@ export default function ForgotPassword() {
                 className="uk-button uk-button-primary sin_btn"
                 style={{ background: "#FB3D1C " }}
               >
-                Submit<span uk-icon="icon:  arrow-right"></span>
+                Submit
               </button>
             </div>
+          </div>
           </div>
         </div>
       </div>

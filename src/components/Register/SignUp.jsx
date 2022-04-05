@@ -3,7 +3,10 @@ import "./Login.css";
 import SignUpimg from "../assets/images/Login-rafiki.svg";
 import { useHistory } from "react-router-dom";
 import { useFormik } from "formik";
+import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
+
+import { registerUserAction } from "../../redux/slices/users/userSlice";
 
 const formSchema = Yup.object({
   firstName: Yup.string().required("This Field is Required"),
@@ -12,8 +15,10 @@ const formSchema = Yup.object({
   password: Yup.string().required("This Field is Required"),
 });
 
-export default function SIgnUp() {
+export default function SignUp() {
   const history = useHistory();
+
+  const dispatch = useDispatch();
 
   const LooginPage = () => {
     history.push("/Login");
@@ -27,11 +32,20 @@ export default function SIgnUp() {
       password: "",
     },
     onSubmit: (value) => {
-      console.log(value);
+      //dispatch users
+      dispatch(registerUserAction(value));
     },
     validationSchema: formSchema,
   });
 
+  //select state with useSelector hook
+  const storeData = useSelector(store => store?.user );
+  const {loading , appErr, serverErr , registered} = storeData;
+
+  if(registered){
+    history.push("/Login");
+  }
+    
   return (
     <div>
       <div className="Signup_main">
@@ -41,16 +55,15 @@ export default function SIgnUp() {
           </div>
 
           <div className="Signup_right">
-            <div className="Form_heading">
-              <h2>Start Your Awesome Journry Right Now</h2>
+            <div className=" mx-auto py-1 text-center">
+              <h2 className=" text-primeBlue font-semibold text-xl">Start Your Awesome Journry Right Now</h2>
               <p
                 onClick={LooginPage}
-                style={{ margin: "8px 0", color: " #218FF2 " }}
+                className=" py-3 cursor-pointer text-gray-600"
               >
                 Already have an Account
               </p>
             </div>
-
             <div className="form_main">
               <form onSubmit={formik.handleSubmit}>
                 <div className=" flex justify-between items-center">
@@ -147,15 +160,30 @@ export default function SIgnUp() {
                   </div>
                 </div> */}
 
+
                 <div className=" flex justify-between items-center">
+                {
+                  loading ?
                   <button
-                    type="submit"
-                    className=" text-center bg-primeBlue text-white py-3 px-4 mt-5 mx-auto rounded-full"
-                  >
-                    Register Now
-                  </button>
+                  disabled
+                  className=" text-center bg-orange-500 text-white py-3 px-4 mt-5 mx-auto rounded-full"
+                >
+                  loading...
+                </button> :
+                  <button
+                  type="submit"
+                  className=" text-center bg-primeBlue text-white py-3 px-4 mt-5 mx-auto rounded-full"
+                >
+                  Register Now
+                </button>
+                }
                 </div>
               </form>
+
+              <div className=" mx-auto text-center pt-6">
+                  { appErr || serverErr ? <p className=" text-red-600 font-semibold"> {appErr} {serverErr} </p> : null}
+                </div>
+
             </div>
           </div>
         </div>

@@ -13,7 +13,6 @@
 .forgot_pass_left{
     flex: 1;
     background:  #ebf5fb  ;
-    clip-path: polygon(0 0, 100% 0%, 90% 100%, 0% 100%);
 }
 
 .forgot_pass_right{
@@ -62,6 +61,9 @@
         align-items: center;
         margin-top: 40px;
         margin-left: 0px;
+    }
+    .forgot_pass_left{
+        display: none;
     }
     
     

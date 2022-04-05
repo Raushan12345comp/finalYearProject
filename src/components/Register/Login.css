@@ -13,7 +13,6 @@
 .Signup_left {
   flex: 1;
   background: #ebf5fb;
-  clip-path: polygon(0 0, 100% 0%, 90% 100%, 0% 100%);
 }
 
 .Signup_right {
@@ -22,7 +21,7 @@
 
 .form_main {
   width: 70%;
-  margin: 15px 20px;
+  margin: 0 auto;
 }
 
 .Name_form {

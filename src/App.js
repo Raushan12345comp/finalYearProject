@@ -1,4 +1,4 @@
-import { Route, Switch, BrowserRouter } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import AboutPage from "./pages/AboutPage";
 import HomePage from "./pages/HomePage";
 import Navbar from "./components/navbar/Navbar";
@@ -13,7 +13,6 @@ function App() {
   return (
     <div>
       <Navbar />
-      <BrowserRouter>
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/about" component={AboutPage} />
@@ -25,7 +24,6 @@ function App() {
           <Route exact path="/Contact" component={Contact} />
           <Route component={Page404} />
         </Switch>
-      </BrowserRouter>
 
       <Footer />
     </div>
