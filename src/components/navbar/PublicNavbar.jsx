@@ -3,7 +3,7 @@ import "../style/Navbar.css";
 // import Logo from '../img/Logo.png'
 import { Link } from "react-router-dom";
 
-export default function NavBar() {
+export default function PublicNavbar() {
   return (
     <>
       <div className="SideMenu flex justify-between items-center w-full">

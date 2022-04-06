@@ -2,8 +2,19 @@ import React from "react";
 import "../style/Navbar.css";
 // import Logo from '../img/Logo.png'
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logoutAction } from "../../redux/slices/users/userSlice";
+import {useHistory} from 'react-router-dom'
 
-export default function NavBar() {
+export default function PrivateNavbar() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const logout = () => {
+    dispatch(logoutAction());
+    history.push('/login')
+  };
+
   return (
     <>
       <div className="SideMenu flex justify-between items-center w-full">
@@ -50,9 +61,9 @@ export default function NavBar() {
                   <Link style={{ textDecoration: "none" }} to="/Contact">
                     <li className="Links_nav_mobile">Contact </li>
                   </Link>
-                  <Link style={{ textDecoration: "none" }} to="/Login">
-                  <li>Logout</li>
-                  </Link>
+                  
+                    <li onClick={logout}>Logout</li>
+                  
                 </ul>
               </div>
             </div>
@@ -85,9 +96,9 @@ export default function NavBar() {
             <Link className="Nav_Link_PC" to="/Contact">
               <li>Contact</li>
             </Link>
-            <Link className="Nav_Link_PC" to="/Login">
-              <li>Logout</li>
-            </Link>
+          
+              <li onClick={logout}>Logout</li>
+           
           </ul>
         </div>
       </div>

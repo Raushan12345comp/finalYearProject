@@ -1,7 +1,7 @@
 import { Route, Switch } from "react-router-dom";
 import AboutPage from "./pages/AboutPage";
 import HomePage from "./pages/HomePage";
-import PublicNavbar from "./components/navbar/PublicNavbar";
+import NavMain from "./components/navbar/NavMain";
 import Footer from "./components/Footer/footer";
 import Login from "./components/Register/Login";
 import Signup from "./components/Register/SignUp";
@@ -12,7 +12,7 @@ import Contact from "./components/Contact/Contact.jsx";
 function App() {
   return (
     <div>
-      <PublicNavbar />
+      <NavMain />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/about" component={AboutPage} />
