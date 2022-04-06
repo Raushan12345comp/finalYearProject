@@ -36,7 +36,7 @@ export default function Login() {
   });
 
 //redirect
-const store =  useSelector(state => state?.user?.userAuth)   
+const store =  useSelector(state => state?.user)   
 const { userAuth, loading, serverErr, appErr } = store;
 
 if(userAuth){

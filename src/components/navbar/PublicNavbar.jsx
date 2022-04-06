@@ -31,29 +31,40 @@ export default function NavBar() {
 
                 <hr className="uk-divider-icon" />
 
-                <ul className="uk-list" style={{ textDecoration: "none" }}>
-                  <Link style={{ textDecoration: "none" }} to="/about">
-                    <li className="Links_nav_mobile">About</li>
-                  </Link>
-                  <Link style={{ textDecoration: "none" }} to="/Courses">
-                    <li className="Links_nav_mobile">Courses</li>
-                  </Link>
-                  <Link style={{ textDecoration: "none" }} to="/Team">
-                    <li className="Links_nav_mobile">Team</li>
-                  </Link>
-                  <Link
-                    style={{ textDecoration: "none" }}
-                    to="/Digital_Library"
-                  >
-                    <li className="Links_nav_mobile">Digital Library</li>
-                  </Link>
-                  <Link style={{ textDecoration: "none" }} to="/Contact">
-                    <li className="Links_nav_mobile">Contact </li>
-                  </Link>
-                  <Link style={{ textDecoration: "none" }} to="/Login">
-                    <li className="Links_nav_mobile">Login</li>
-                  </Link>
-                </ul>
+                <div className=" flex flex-col justify-between w-full h-[80vh] ">
+                  <div>
+                    <ul className="uk-list" style={{ textDecoration: "none" }}>
+                      <Link style={{ textDecoration: "none" }} to="/about">
+                        <li className="Links_nav_mobile">About</li>
+                      </Link>
+                      <Link style={{ textDecoration: "none" }} to="/Courses">
+                        <li className="Links_nav_mobile">Courses</li>
+                      </Link>
+                      <Link style={{ textDecoration: "none" }} to="/Team">
+                        <li className="Links_nav_mobile">Team</li>
+                      </Link>
+                      <Link
+                        style={{ textDecoration: "none" }}
+                        to="/Digital_Library"
+                      >
+                        <li className="Links_nav_mobile">Digital Library</li>
+                      </Link>
+                      <Link style={{ textDecoration: "none" }} to="/Contact">
+                        <li className="Links_nav_mobile">Contact </li>
+                      </Link>
+                    </ul>
+                  </div>
+                  <div>
+                    <Link style={{ textDecoration: "none" }} to="/Login">
+                
+                       <div className=' flex justify-between w-full bottom-1  border-white'>
+                       <p className=' text-lg font-semibold'>Login</p>
+                       <span uk-icon="icon: sign-in; ratio: 1.5"></span>
+                       </div>
+                     
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
