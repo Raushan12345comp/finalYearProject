@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import { useHistory } from "react-router-dom";
 import { loginUserAction } from "../../redux/slices/users/userSlice";
+import LoadingSpinner from "../loading/loadingSpinner";
 
 const formSchema = Yup.object({
   email: Yup.string().required("Email is required"),
@@ -64,7 +65,7 @@ if(userAuth){
             </div>
 
             <div className=" mx-auto text-center py-3">
-                  { appErr || serverErr ? <p className=" text-red-600 font-semibold">  {serverErr} - {appErr} </p> : null}
+                  { appErr || serverErr ? <p className=" text-red-600 font-semibold">  {appErr} </p> : null}
                 </div>
 
             <div className="form_main">
@@ -108,15 +109,10 @@ if(userAuth){
                     </p>
                   </div>
                 </div>
-                <div className=" flex justify-between items-center">
+                <div className=" flex justify-center items-center w-full">
                 {
                   loading ?
-                  <button
-                  disabled
-                  className=" text-center bg-orange-500 text-white py-3 px-4 mt-5 mx-auto rounded-full"
-                >
-                  loading
-                </button> :
+                  <LoadingSpinner /> :
                   <button
                   type="submit"
                   className=" text-center bg-primeVoilet text-white py-3 px-4 mt-5 mx-auto rounded-full"

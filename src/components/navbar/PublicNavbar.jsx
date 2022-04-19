@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export default function PublicNavbar() {
   return (
     <>
-      <div className="SideMenu flex justify-between items-center w-full">
+      <div className="SideMenu flex justify-between items-center w-full ">
         <div className=" flex justify-between items-center w-full py-2 px-2">
           <div className=" ">
             <Link to="/" style={{ textDecoration: "none" }}>
@@ -23,9 +23,9 @@ export default function PublicNavbar() {
             ></span>
 
             <div id="offcanvas-slide" uk-offcanvas="overlay: true">
-              <div className="uk-offcanvas-bar sidebar">
-                <div className="side_bar_header">
-                  <h3>Menu</h3>
+              <div className="uk-offcanvas-bar sidebar rounded-r-lg">
+                <div className="">
+                  <h3 className=' text-lg'>Menu</h3>
                   <span className="uk-offcanvas-close" uk-icon="icon: close" />
                 </div>
 

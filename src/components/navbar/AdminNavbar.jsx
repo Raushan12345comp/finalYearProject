@@ -4,11 +4,9 @@ import "../style/Navbar.css";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logoutAction } from "../../redux/slices/users/userSlice";
-import {useHistory} from 'react-router-dom'
 
 export default function AdminNavbar() {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const logout = () => {
     dispatch(logoutAction());
