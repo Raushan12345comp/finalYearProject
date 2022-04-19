@@ -1,21 +1,14 @@
 .NavBurger {
   border: none;
 }
-.sidebar_main{
+.sidebar_main {
   display: none;
- 
 }
 
-.sidebar{
-  background:   #283747  ;
+.sidebar {
+  background: #283747;
 }
 
-.side_bar_header{
- display: flex !important;
- margin: 0 auto;
- text-align: justify;
- align-items: center;
-}
 .close_menu {
   cursor: pointer;
 }
@@ -24,25 +17,25 @@
   color: red;
 }
 
-.pc_view{
+.pc_view {
   display: flex;
   align-items: center;
   margin: 10px auto;
   width: 90%;
 }
-.menu_logo{
+.menu_logo {
   flex: 1;
   padding-left: 70px;
 }
-.menu_Links{
+.menu_Links {
   flex: 1.5;
   padding-right: 40px;
-  background: #218FF2;
+  background: #218ff2;
   padding: 15px 0;
   clip-path: polygon(2% 0, 100% 0%, 100% 100%, 0% 100%);
 }
 
-.Pc_links{
+.Pc_links {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -51,49 +44,47 @@
   list-style: none;
   transition: 1s all ease-in-out;
 }
-.Pc_links li{
+.Pc_links li {
   color: #fff;
 }
-.Pc_links li:hover{
-  color:  hsl(0, 0%, 100%) ;
+.Pc_links li:hover {
+  color: hsl(0, 0%, 100%);
   cursor: pointer;
 }
-.Logo{
+.Logo {
   width: 70px;
   height: 70px;
   object-fit: cover;
 }
-.Links_nav_mobile{
+.Links_nav_mobile {
   padding-bottom: 37px;
 }
-.Nav_Link_PC:hover{
+.Nav_Link_PC:hover {
   text-decoration: none !important;
 }
-
+.SideMenu {
+  display: none;
+}
 
 @media screen and (max-width: 880px) {
-  .sidebar_main{
+  .SideMenu {
     display: block;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    margin: 10px auto;
   }
-  .s_m_left{
+  .s_m_left {
     flex: 1;
     text-align: right;
-    padding-right:0px;
+    padding-right: 0px;
   }
 
-  .menu_logo_mobile{
+  .menu_logo_mobile {
     flex: 1.5;
     text-align: left;
     padding-left: 10px;
   }
-  .uk-list{
+  .uk-list {
     text-align: justify;
   }
-  .pc_view{
+  .pc_view {
     display: none;
   }
 }

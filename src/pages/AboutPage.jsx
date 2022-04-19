@@ -1,9 +1,10 @@
 import React from "react";
+import About from '../components/About/About'
 
 const AboutPage = () => {
   return (
-    <div>
-      <h1>AboutPage</h1>
+    <div className=" w-[85%] mx-auto text-center">
+      <About />
     </div>
   );
 };
