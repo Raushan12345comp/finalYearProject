@@ -49,7 +49,10 @@ export default function PrivateNavbar() {
                   <Link style={{ textDecoration: "none" }} to="/Team">
                     <li className="Links_nav_mobile">Authors</li>
                   </Link>
-                  <Link
+                  <Link style={{ textDecoration: "none" }} to="/Team">
+                    <li className="Links_nav_mobile">Profile</li>
+                  </Link>
+                  {/* <Link
                     style={{ textDecoration: "none" }}
                     to="/addNewCategory"
                   >
@@ -57,7 +60,7 @@ export default function PrivateNavbar() {
                   </Link>
                   <Link style={{ textDecoration: "none" }} to="/addNewCategory">
                     <li className="Links_nav_mobile">Category List</li>
-                  </Link>
+                  </Link> */}
                                     
                 </ul>
               </div>
@@ -91,14 +94,14 @@ export default function PrivateNavbar() {
               <li>Posts</li>
             </Link>
             <Link className="Nav_Link_PC" to="/Team">
-              <li>Authors</li>
+              <li>Profile</li>
             </Link>
-            <Link className="Nav_Link_PC" to="/addNewCategory">
+            {/* <Link className="Nav_Link_PC" to="/addNewCategory">
               <li>Add Category</li>
             </Link>
             <Link className="Nav_Link_PC" to="/Contact">
               <li>Category List</li>
-            </Link>
+            </Link> */}
           
               <li onClick={logout}>Logout</li>
            

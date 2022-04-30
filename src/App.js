@@ -9,6 +9,8 @@ import ForgotPassword from "./components/Register/ForgotPassword";
 import Page404 from "./components/404_page/Page404.jsx";
 import Contact from "./components/Contact/Contact.jsx";
 import AddNewCategory from "./components/Categories/AddNewCategory";
+import CategoryList from "./components/Categories/CategoryList";
+import UpdateCategory from "./components/Categories/UpdateCateg"
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route exact path="/ForgotPassword" component={ForgotPassword} />
           <Route exact path="/Contact" component={Contact} />
           <Route exact path="/addNewCategory" component={AddNewCategory} />
+          <Route exact path="/update-Category/:id" component={UpdateCategory} />
+          <Route exact path="/category-list" component={CategoryList} />
           <Route component={Page404} />
         </Switch>
 

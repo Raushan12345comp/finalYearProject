@@ -36,13 +36,13 @@ export default function Jumbo() {
 
             <div className="social_input">
               <div className="social_jumbo">
-                <span uk-icon="icon: instagram"></span>
-                <span uk-icon="icon: github"></span>
-                <span uk-icon="icon: twitter"></span>
-                <span uk-icon="icon: facebook"></span>
+                <span className="social-icons" uk-icon="icon: instagram"></span>
+                <span className="social-icons" uk-icon="icon: github"></span>
+                <span className="social-icons" uk-icon="icon: twitter"></span>
+                <span className="social-icons" uk-icon="icon: facebook"></span>
               </div>
 
-              <div className="Jumbo_search">
+              {/* <div className="Jumbo_search">
                 <section className="input">
                   <input
                     className="uk-search-input"
@@ -58,7 +58,7 @@ export default function Jumbo() {
                     className="Jumbo_Search_icon"
                   ></span>
                 </section>
-              </div>
+              </div> */}
             </div>
           </div>
 
