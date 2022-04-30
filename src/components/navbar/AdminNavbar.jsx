@@ -41,22 +41,22 @@ export default function AdminNavbar() {
 
                 <ul className="uk-list" style={{ textDecoration: "none" }}>
                   <Link style={{ textDecoration: "none" }} to="/about">
-                    <li className="Links_nav_mobile">About</li>
+                    <li className="Links_nav_mobile">All Users</li>
                   </Link>
                   <Link style={{ textDecoration: "none" }} to="/Courses">
-                    <li className="Links_nav_mobile">Courses</li>
+                    <li className="Links_nav_mobile">All Courses</li>
                   </Link>
                   <Link style={{ textDecoration: "none" }} to="/Team">
-                    <li className="Links_nav_mobile">Team</li>
+                    <li className="Links_nav_mobile">All Post</li>
                   </Link>
                   <Link
                     style={{ textDecoration: "none" }}
-                    to="/Digital_Library"
+                    to="/addNewCategory"
                   >
-                    <li className="Links_nav_mobile">Digital Library</li>
+                    <li className="Links_nav_mobile">Add Category</li>
                   </Link>
-                  <Link style={{ textDecoration: "none" }} to="/Contact">
-                    <li className="Links_nav_mobile">Contact </li>
+                  <Link style={{ textDecoration: "none" }} to="/category-list">
+                    <li className="Links_nav_mobile">Category-List </li>
                   </Link>
                   
                     <li onClick={logout}>Logout</li>
@@ -79,19 +79,19 @@ export default function AdminNavbar() {
         <div className="menu_Links">
           <ul className="Pc_links">
             <Link className="Nav_Link_PC" to="/about">
-              <li>About</li>
+              <li>All Users</li>
             </Link>
             <Link className="Nav_Link_PC" to="/Courses">
-              <li>Courses</li>
+              <li>All Courses</li>
             </Link>
             <Link className="Nav_Link_PC" to="/Team">
-              <li>Team</li>
+              <li>All Post</li>
             </Link>
-            <Link className="Nav_Link_PC" to="/Digital_Library">
-              <li>Digital Library </li>
+            <Link className="Nav_Link_PC" to="/addNewCategory">
+              <li>Add Category </li>
             </Link>
-            <Link className="Nav_Link_PC" to="/Contact">
-              <li>Contact</li>
+            <Link className="Nav_Link_PC" to="/category-list">
+              <li>Category-List</li>
             </Link>
           
               <li onClick={logout}>Logout</li>

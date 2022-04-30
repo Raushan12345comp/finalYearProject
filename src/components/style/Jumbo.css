@@ -60,8 +60,10 @@
   }
   .social_jumbo{
       display: flex;
-      flex-direction: column;
       padding-left: 20px;
+  }
+  .social-icons{
+      margin: 0 5px;
   }
   .social_jumbo span{
       margin-bottom: 15px;
