@@ -43,8 +43,8 @@ export default function AdminNavbar() {
                   <Link style={{ textDecoration: "none" }} to="/about">
                     <li className="Links_nav_mobile">All Users</li>
                   </Link>
-                  <Link style={{ textDecoration: "none" }} to="/Courses">
-                    <li className="Links_nav_mobile">All Courses</li>
+                  <Link style={{ textDecoration: "none" }} to="/create-project">
+                    <li className="Links_nav_mobile">Create-Project</li>
                   </Link>
                   <Link style={{ textDecoration: "none" }} to="/Team">
                     <li className="Links_nav_mobile">All Post</li>
@@ -81,8 +81,8 @@ export default function AdminNavbar() {
             <Link className="Nav_Link_PC" to="/about">
               <li>All Users</li>
             </Link>
-            <Link className="Nav_Link_PC" to="/Courses">
-              <li>All Courses</li>
+            <Link className="Nav_Link_PC" to="/create-project">
+              <li>Create-Project</li>
             </Link>
             <Link className="Nav_Link_PC" to="/Team">
               <li>All Post</li>

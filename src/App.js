@@ -12,6 +12,10 @@ import AddNewCategory from "./components/Categories/AddNewCategory";
 import CategoryList from "./components/Categories/CategoryList";
 import UpdateCategory from "./components/Categories/UpdateCateg"
 
+import AdminRoute from './components/navbar/ProtectedRoutes/AdminRoute'
+import PrivateProtectRoute from './components/navbar/ProtectedRoutes/PrivateProtectRoute'
+import CreateProject from "./components/Posts/CreateProject";
+
 function App() {
   return (
     <div>
@@ -24,9 +28,17 @@ function App() {
           <Route exact path="/Signup" component={Signup} />
           <Route exact path="/ForgotPassword" component={ForgotPassword} />
           <Route exact path="/Contact" component={Contact} />
-          <Route exact path="/addNewCategory" component={AddNewCategory} />
-          <Route exact path="/update-Category/:id" component={UpdateCategory} />
-          <Route exact path="/category-list" component={CategoryList} />
+          {/* <Route exact path="/addNewCategory" component={AddNewCategory} /> */}
+          {/* <Route exact path="/update-Category/:id" component={UpdateCategory} /> */}
+          {/* <Route exact path="/category-list" component={CategoryList} /> */}
+          <AdminRoute
+          exact
+          path="/update-category/:id"
+          component={UpdateCategory}
+        />
+        <AdminRoute exact path="/addNewCategory" component={AddNewCategory} />
+        <AdminRoute exact path="/category-list" component={CategoryList} />
+        <PrivateProtectRoute exact path="/create-project" component={CreateProject} />
           <Route component={Page404} />
         </Switch>
 

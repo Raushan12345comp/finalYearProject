@@ -12,7 +12,7 @@ const formSchema = Yup.object({
   title: Yup.string().required("Field is required"),
 });
 
-const UpdateCategory = ({match:{params:{id}}}) => {
+const UpdateCategory = ({computedMatch:{params:{id}}}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
