@@ -43,9 +43,12 @@ export default function PrivateNavbar() {
                   <Link style={{ textDecoration: "none" }} to="/about">
                     <li className="Links_nav_mobile">Create</li>
                   </Link>
-                  <Link style={{ textDecoration: "none" }} to="/Courses">
-                    <li className="Links_nav_mobile">Posts</li>
-                  </Link>
+                  <Link className="Nav_Link_PC" to="/upload-project">
+                  <li>Upload-Project</li>
+                </Link>
+                <Link className="Nav_Link_PC" to="/upload-paper">
+                  <li>Upload-Paper</li>
+                </Link>
                   <Link style={{ textDecoration: "none" }} to="/Team">
                     <li className="Links_nav_mobile">Authors</li>
                   </Link>
@@ -90,9 +93,12 @@ export default function PrivateNavbar() {
             <Link className="Nav_Link_PC" to="/about">
               <li>Create</li>
             </Link>
-            <Link className="Nav_Link_PC" to="/Courses">
-              <li>Posts</li>
-            </Link>
+            <Link className="Nav_Link_PC" to="/upload-project">
+            <li>Upload-Project</li>
+          </Link>
+          <Link className="Nav_Link_PC" to="/upload-paper">
+            <li>Upload-Paper</li>
+          </Link>
             <Link className="Nav_Link_PC" to="/Team">
               <li>Profile</li>
             </Link>

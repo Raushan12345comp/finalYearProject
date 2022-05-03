@@ -1,4 +1,4 @@
-import ProjectIcon from '../assets/images/hacker.gif'
+import ProjectIcon from '../assets/images/document.gif'
 
 export default function CreatePost() {
   return (
@@ -6,7 +6,7 @@ export default function CreatePost() {
       <div className="  w-full my-10">
         <div className=" text-center my-4 text-3xl font-semibold flex justify-center items-center">
           <h1> 
-           UPLOAD PROJECT</h1>
+           UPLOAD PAPER</h1>
            <img src={ProjectIcon} className=' w-[60px] h-[60px] object-cover pl-2' alt="image" />
 
         </div>
@@ -16,7 +16,7 @@ export default function CreatePost() {
             <div className=" mx-auto text-center w-[60%] sm:w-[90%] ">
               <div className=" my-6 text-left">
                 <label htmlFor="" className="mb-2 text-primeBlue">
-                  Project Title..
+                Paper Title..
                 </label>
                 <input
                   className="uk-input rounded-full"

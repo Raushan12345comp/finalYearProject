@@ -14,7 +14,9 @@ import UpdateCategory from "./components/Categories/UpdateCateg"
 
 import AdminRoute from './components/navbar/ProtectedRoutes/AdminRoute'
 import PrivateProtectRoute from './components/navbar/ProtectedRoutes/PrivateProtectRoute'
-import CreateProject from "./components/Posts/CreateProject";
+import UploadProject from "./components/Posts/CreateProject";
+import UploadPaper from "./components/Posts/CreatePublication";
+
 
 function App() {
   return (
@@ -38,7 +40,8 @@ function App() {
         />
         <AdminRoute exact path="/addNewCategory" component={AddNewCategory} />
         <AdminRoute exact path="/category-list" component={CategoryList} />
-        <PrivateProtectRoute exact path="/create-project" component={CreateProject} />
+        <PrivateProtectRoute exact path="/upload-project" component={UploadProject} />
+        <PrivateProtectRoute exact path="/upload-paper" component={UploadPaper} />
           <Route component={Page404} />
         </Switch>
 
