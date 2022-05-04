@@ -23,7 +23,6 @@ const UpdateCategory = ({computedMatch:{params:{id}}}) => {
 //get data from store
 const state = useSelector(state => state?.category);
 const { loading, appErr, serverErr, category } = state;
-console.log(state);
 
 const formik = useFormik({
     enableReinitialize:true,

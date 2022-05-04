@@ -15,9 +15,9 @@ export default function CreatePost() {
           <form>
             <div className=" mx-auto text-center w-[60%] sm:w-[90%] ">
               <div className=" my-6 text-left">
-                <label htmlFor="" className="mb-2 text-primeBlue">
+                <p className="mb-2 text-primeBlue">
                 Paper Title..
-                </label>
+                </p>
                 <input
                   className="uk-input rounded-full"
                   type="text"
@@ -26,20 +26,20 @@ export default function CreatePost() {
               </div>
 
               <div className=" my-6 text-left">
-                <label htmlFor="" className="mb-2 text-primeBlue">
+                <p className="mb-2 text-primeBlue">
                   Abstract
-                </label>
+                </p>
                 <textarea
-                  class="uk-textarea"
+                  class="uk-textarea rounded-lg"
                   rows="5"
                   placeholder="Abstract"
                 ></textarea>
               </div>
 
               <div className=" my-6 text-left">
-                <label htmlFor="" className="mb-2 text-primeBlue">
+                <p className="mb-2 text-primeBlue">
                   keywords
-                </label>
+                </p>
                 <input
                   className="uk-input rounded-full"
                   type="text"
@@ -48,9 +48,9 @@ export default function CreatePost() {
               </div>
 
               <div className=" my-6 text-left">
-                <label htmlFor="" className="mb-2 text-primeBlue">
+                <p className="mb-2 text-primeBlue">
                   Language
-                </label>
+                </p>
                 <input
                   className="uk-input rounded-full"
                   type="text"
@@ -59,9 +59,9 @@ export default function CreatePost() {
               </div>
 
               <div className=" my-6 text-left">
-                <label htmlFor="" className="mb-2 text-primeBlue">
+                <p className="mb-2 text-primeBlue">
                   Refrences links
-                </label>
+                </p>
                 <input
                   className="uk-input rounded-full"
                   type="text"
@@ -70,9 +70,9 @@ export default function CreatePost() {
               </div>
 
               <div className=" my-6 text-left">
-                <label htmlFor="" className="mb-2 text-primeBlue">
+                <p className="mb-2 text-primeBlue">
                   Project link
-                </label>
+                </p>
                 <input
                   className="uk-input rounded-full"
                   type="text"
