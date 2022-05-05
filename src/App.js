@@ -16,7 +16,7 @@ import AdminRoute from './components/navbar/ProtectedRoutes/AdminRoute'
 import PrivateProtectRoute from './components/navbar/ProtectedRoutes/PrivateProtectRoute'
 import UploadProject from "./components/Posts/CreateProject";
 import UploadPaper from "./components/Posts/CreatePublication";
-
+import AllProjects from './components/Posts/AllProjects'
 
 function App() {
   return (
@@ -42,6 +42,7 @@ function App() {
         <AdminRoute exact path="/category-list" component={CategoryList} />
         <PrivateProtectRoute exact path="/upload-project" component={UploadProject} />
         <PrivateProtectRoute exact path="/upload-paper" component={UploadPaper} />
+        <PrivateProtectRoute exact path="/projects" component={AllProjects} />
           <Route component={Page404} />
         </Switch>
 

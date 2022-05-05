@@ -49,8 +49,8 @@ export default function AdminNavbar() {
                   <Link style={{ textDecoration: "none" }} to="/upload-paper">
                   <li className="Links_nav_mobile">Upload-Paper</li>
                 </Link>
-                  <Link style={{ textDecoration: "none" }} to="/Team">
-                    <li className="Links_nav_mobile">All Post</li>
+                  <Link style={{ textDecoration: "none" }} to="/projects">
+                    <li className="Links_nav_mobile">Projects</li>
                   </Link>
                   <Link
                     style={{ textDecoration: "none" }}
@@ -91,8 +91,8 @@ export default function AdminNavbar() {
               <li>Upload-Paper</li>
             </Link>
             
-            <Link className="Nav_Link_PC" to="/Team">
-              <li>All Post</li>
+            <Link className="Nav_Link_PC" to="/projects">
+              <li>Projects</li>
             </Link>
             <Link className="Nav_Link_PC" to="/addNewCategory">
               <li>Add Category </li>

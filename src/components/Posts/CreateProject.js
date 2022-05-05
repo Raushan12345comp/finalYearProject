@@ -37,9 +37,9 @@ export default function CreatePost() {
   });
 
   //select state with useSelector hook
-  const storeData = useSelector(store => store?.user );
+  const storeData = useSelector(store => store?.ProjectPost);
   const {loading , appErr, serverErr , registered} = storeData;
-
+  console.log(storeData);
 
   return (
     <>
@@ -153,9 +153,19 @@ export default function CreatePost() {
             </div>
 
             <div className=" flex justify-center items-center">
-              <button type="submit" className="  bg-blue-300 text-white py-3 hover:bg-primeBlue px-3 my-5 rounded-full">
-                Submit
-              </button>
+            {
+              loading ?
+              <button
+              disabled
+              className=" text-center bg-orange-500 text-white py-3 px-4 mt-5 mx-auto rounded-full"
+            >
+              Loading 
+            </button> :
+            <button type="submit" className="  bg-blue-300 text-white py-3 hover:bg-primeBlue px-3 my-5 rounded-full">
+            Submit
+          </button>
+            }
+              
             </div>
           </form>
           <div className=" mx-auto text-center pt-6">
