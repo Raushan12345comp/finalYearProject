@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import { createPostAction } from "../../redux/slices/posts/ProjectPosts";
-
+import ProjectCategoryDropdown from '../Categories/ProjectDropdown'
 
 const formSchema = Yup.object({
   title: Yup.string().required("Project Title is required"),
@@ -12,6 +12,7 @@ const formSchema = Yup.object({
   Language:Yup.string(),
   Refrences_links:Yup.string(),
   Project_link:Yup.string(),
+  category: Yup.object().required("Category is required"),
 });
 
 
@@ -27,11 +28,20 @@ export default function CreatePost() {
       Language: "",
       Refrences_links: "",
       Project_link: "",
+      category: "",
     },
     onSubmit: value => {
-      console.log(value);
+      const data = {
+        category: value?.category?.label,
+        title: value?.title,
+        abstract: value?.abstract,
+        Language:value?.Language,
+        Project_link:value?.Project_link,
+        keyword:value?.keyword,
+        Refrences_links:value?.Refrences_links,
+      };
       //dispatch users
-      dispatch(createPostAction(value));
+      dispatch(createPostAction(data));
     },
     validationSchema: formSchema,
   });
@@ -39,7 +49,7 @@ export default function CreatePost() {
   //select state with useSelector hook
   const storeData = useSelector(store => store?.ProjectPost);
   const {loading , appErr, serverErr , registered} = storeData;
-  console.log(storeData);
+ 
 
   return (
     <>
@@ -71,6 +81,16 @@ export default function CreatePost() {
               <p className=" text-red-600 text-xs text-left">
                 {formik.touched.title && formik.errors.title}
               </p>
+            </div>
+
+            <div>
+            <ProjectCategoryDropdown
+                value={formik.values.category?.label}
+                onChange={formik.setFieldValue}
+                onBlur={formik.setFieldTouched}
+                error={formik.errors.category}
+                touched={formik.touched.category}
+              />
             </div>
 
               <div className=" my-6 text-left">
