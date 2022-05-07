@@ -14,7 +14,7 @@ const formSchema = Yup.object({
   Refrences_links: Yup.string(),
   Project_link: Yup.string(),
   category: Yup.object().required("Category is required"),
-  image: Yup.string(),
+  
 });
 
 export default function CreatePost() {
@@ -29,7 +29,7 @@ export default function CreatePost() {
       Refrences_links: "",
       Project_link: "",
       category: "",
-      image: "",
+      
     },
     onSubmit: value => {
       const data = {
@@ -40,7 +40,7 @@ export default function CreatePost() {
         Project_link: value?.Project_link,
         keyword: value?.keyword,
         Refrences_links: value?.Refrences_links,
-        image: value?.image,
+        
       };
       console.log(value);
       //dispatch users
@@ -160,35 +160,7 @@ export default function CreatePost() {
                 />
               </div>
               
-              <div className=" border-dashed border-2 border-indigo-600 rounded-full">
-              <h1>Image Upload...</h1>
-              <Dropzone
-              onBlur={formik.handleBlur("image")}
-              accept="image/jpeg, image/png"
-              onDrop={acceptedFiles => {
-                      formik.setFieldValue("image", acceptedFiles[0]);
-                    }}
-              >
-              {({ getRootProps, getInputProps }) => (
-                      <div className="container">
-                        <div
-                          {...getRootProps({
-                            className: "dropzone",
-                            onDrop: event => event.stopPropagation(),
-                          })}
-                        >
-                          <input {...getInputProps()} />
-                          <p className="text-gray-300 text-lg cursor-pointer hover:text-gray-500">
-                        <div className=" text-center mx-auto">
-                        <span uk-icon="icon: cloud-upload; ratio: 1" className=" text-orange-700 font-semibold"></span>
-                        </div>
-                          </p>
-                        </div>
-                      </div>
-                    )}
-              
-              </Dropzone>
-              </div>
+             
             </div>
 
             <div className=" flex justify-center items-center">
@@ -223,3 +195,34 @@ export default function CreatePost() {
     </>
   );
 }
+
+
+// <div className=" border-dashed border-2 border-indigo-600 rounded-full">
+// <h1>Image Upload...</h1>
+// <Dropzone
+// onBlur={formik.handleBlur("image")}
+// accept="image/jpeg, image/png"
+// onDrop={acceptedFiles => {
+//         formik.setFieldValue("image", acceptedFiles[0]);
+//       }}
+// >
+// {({ getRootProps, getInputProps }) => (
+//         <div className="container">
+//           <div
+//             {...getRootProps({
+//               className: "dropzone",
+//               onDrop: event => event.stopPropagation(),
+//             })}
+//           >
+//             <input {...getInputProps()} />
+//             <p className="text-gray-300 text-lg cursor-pointer hover:text-gray-500">
+//           <div className=" text-center mx-auto">
+//           <span uk-icon="icon: cloud-upload; ratio: 1" className=" text-orange-700 font-semibold"></span>
+//           </div>
+//             </p>
+//           </div>
+//         </div>
+//       )}
+
+// </Dropzone>
+// </div>

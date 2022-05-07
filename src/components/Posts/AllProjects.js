@@ -37,7 +37,9 @@ export default function PostsList() {
       <div>
         <div className=" my-10 w-[90%] mx-auto text-center tracking-normal flex justify-between sm:w-full sm:flex-col">
           <h1 className=" text-3xl font-semibold">Latest Project Posts...</h1>
-          <p onClick={() => dispatch(fetchProjectPostsAction())} className=" text-blue-900 font-semibold cursor-pointer sm:mt-3">
+          <p  onClick={() =>
+            dispatch(fetchProjectPostsAction())
+          } className=" text-blue-900 font-semibold cursor-pointer sm:mt-3">
             View all Posts
           </p>
         </div>
@@ -148,7 +150,7 @@ export default function PostsList() {
                   </div>
 
                   <div className=" flex">
-                    <div className=" pr-4">
+                    <div className=" pr-4 flex">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-6 w-6"
@@ -163,8 +165,9 @@ export default function PostsList() {
                           d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"
                         />
                       </svg>
+                      {post?.likes?.lenght ? post?.likes?.lenght : 0}
                     </div>
-                    <div className=" px-4">
+                    <div className=" px-4 flex">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-6 w-6"
@@ -179,9 +182,12 @@ export default function PostsList() {
                           d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018a2 2 0 01.485.06l3.76.94m-7 10v5a2 2 0 002 2h.096c.5 0 .905-.405.905-.904 0-.715.211-1.413.608-2.008L17 13V4m-7 10h2m5-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2.5"
                         />
                       </svg>
+                      {post?.disLikes?.lenght
+                        ? post?.disLikes?.lenght
+                        : 0}
                     </div>
 
-                    <div className=" px-4">
+                    <div className=" px-4 flex">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="h-6 w-6"
@@ -201,6 +207,7 @@ export default function PostsList() {
                           d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
                         />
                       </svg>
+                      {post?.viewCount}
                     </div>
                   </div>
                 </div>

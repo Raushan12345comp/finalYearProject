@@ -32,7 +32,7 @@ export const createPostAction = createAsyncThunk(
 
 export const fetchProjectPostsAction = createAsyncThunk(
   "post/list",
-  async (category, { rejectWithValue, getState, dispatch }) => {
+  async (category,{rejectWithValue, getState, dispatch }) => {
       try {
           const { data } = await axios.get(`${baseUrl}/api/projects?category=${category}`);
           return data;
@@ -45,6 +45,33 @@ export const fetchProjectPostsAction = createAsyncThunk(
       
   }
 )
+
+//Add Likes to post
+
+export const toggleAddLikesToPost = createAsyncThunk(
+  "post/like",
+  async (postId, { rejectWithValue, getState, dispatch }) => {
+    //get user token
+    const user = getState()?.users;
+    const { userAuth } = user;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userAuth?.token}`,
+      },
+    };
+    try {
+      const { data } = await axios.put(
+        `${baseUrl}/api/projects/likes`,
+        postId,
+        config
+      );
+      return data;
+    } catch (error) {
+      if (!error?.response) throw error;
+      return rejectWithValue(error?.response?.data);
+    }
+  }
+);
 
 //Slices
 const projectPostSlices = createSlice({
