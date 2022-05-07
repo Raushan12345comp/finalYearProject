@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice , createAction} from "@reduxjs/toolkit";
 import axios from "axios";
 import { baseUrl } from "../../../utils/baseUrl";
 
@@ -32,9 +32,9 @@ export const createPostAction = createAsyncThunk(
 
 export const fetchProjectPostsAction = createAsyncThunk(
   "post/list",
-  async (projectPost, { rejectWithValue, getState, dispatch }) => {
+  async (category, { rejectWithValue, getState, dispatch }) => {
       try {
-          const { data } = await axios.get(`${baseUrl}/api/projects`);
+          const { data } = await axios.get(`${baseUrl}/api/projects?category=${category}`);
           return data;
         } catch (error) {
           if (!error?.response) {
