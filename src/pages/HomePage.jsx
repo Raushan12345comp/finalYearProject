@@ -8,7 +8,7 @@ export default function HomePage() {
     <Suspense
       fallback={
         <div>
-          <div uk-spinner></div>
+          
         </div>
       }
     >

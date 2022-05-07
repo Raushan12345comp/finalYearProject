@@ -12,7 +12,7 @@ const formSchema = Yup.object({
   title: Yup.string().required("Field is required"),
 });
 
-const UpdateCategory = ({match:{params:{id}}}) => {
+const UpdateCategory = ({computedMatch:{params:{id}}}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,7 +23,6 @@ const UpdateCategory = ({match:{params:{id}}}) => {
 //get data from store
 const state = useSelector(state => state?.category);
 const { loading, appErr, serverErr, category } = state;
-console.log(state);
 
 const formik = useFormik({
     enableReinitialize:true,
