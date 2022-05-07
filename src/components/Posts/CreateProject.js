@@ -14,7 +14,7 @@ const formSchema = Yup.object({
   Refrences_links: Yup.string(),
   Project_link: Yup.string(),
   category: Yup.object().required("Category is required"),
-  image: Yup.string().required("Image is required"),
+  image: Yup.string(),
 });
 
 export default function CreatePost() {

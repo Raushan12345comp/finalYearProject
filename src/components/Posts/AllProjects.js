@@ -37,7 +37,7 @@ export default function PostsList() {
       <div>
         <div className=" my-10 w-[90%] mx-auto text-center tracking-normal flex justify-between sm:w-full sm:flex-col">
           <h1 className=" text-3xl font-semibold">Latest Project Posts...</h1>
-          <p className=" text-blue-900 font-semibold cursor-pointer sm:mt-3">
+          <p onClick={() => dispatch(fetchProjectPostsAction())} className=" text-blue-900 font-semibold cursor-pointer sm:mt-3">
             View all Posts
           </p>
         </div>
@@ -63,7 +63,7 @@ export default function PostsList() {
               ) : categoryList?.lenght <= 0 ? (
                 <h1>No Category Found</h1>
               ) : (
-                categoryList?.map((category) => (
+                categoryList?.map(category => (
                   <li>
                     <p
                       onClick={() =>
