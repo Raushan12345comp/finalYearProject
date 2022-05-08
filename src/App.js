@@ -8,15 +8,20 @@ import Signup from "./components/Register/SignUp";
 import ForgotPassword from "./components/Register/ForgotPassword";
 import Page404 from "./components/404_page/Page404.jsx";
 import Contact from "./components/Contact/Contact.jsx";
-import AddNewCategory from "./components/Categories/AddNewCategory";
-import CategoryList from "./components/Categories/CategoryList";
-import UpdateCategory from "./components/Categories/UpdateCateg"
+import AddNewCategory from "./components/ProjectCategories/AddNewCategory";
+import CategoryList from "./components/ProjectCategories/CategoryList";
+import UpdateCategory from "./components/ProjectCategories/UpdateCateg"
 
 import AdminRoute from './components/navbar/ProtectedRoutes/AdminRoute'
 import PrivateProtectRoute from './components/navbar/ProtectedRoutes/PrivateProtectRoute'
 import UploadProject from "./components/Posts/CreateProject";
 import UploadPaper from "./components/Posts/CreatePublication";
 import AllProjects from './components/Posts/AllProjects'
+import AllPaper from './components/Posts/AllPaper'
+import AddNewPaperCategory from "./components/PaperCategory/AddNewCategory";
+import PaperCategoryList from "./components/PaperCategory/CategoryList";
+import PaperUpdateCategory from "./components/PaperCategory/UpdateCateg"
+
 
 function App() {
   return (
@@ -30,19 +35,25 @@ function App() {
           <Route exact path="/Signup" component={Signup} />
           <Route exact path="/ForgotPassword" component={ForgotPassword} />
           <Route exact path="/Contact" component={Contact} />
-          {/* <Route exact path="/addNewCategory" component={AddNewCategory} /> */}
-          {/* <Route exact path="/update-Category/:id" component={UpdateCategory} /> */}
-          {/* <Route exact path="/category-list" component={CategoryList} /> */}
+          
           <AdminRoute
           exact
           path="/update-category/:id"
           component={UpdateCategory}
         />
+        <AdminRoute
+        exact
+        path="/update-paper-category/:id"
+        component={PaperUpdateCategory}
+      />
         <AdminRoute exact path="/addNewCategory" component={AddNewCategory} />
+        <AdminRoute exact path="/addpaper_category" component={AddNewPaperCategory} />
         <AdminRoute exact path="/category-list" component={CategoryList} />
+        <AdminRoute exact path="/papercategory-list" component={PaperCategoryList} />
         <PrivateProtectRoute exact path="/upload-project" component={UploadProject} />
         <PrivateProtectRoute exact path="/upload-paper" component={UploadPaper} />
         <PrivateProtectRoute exact path="/projects" component={AllProjects} />
+        <PrivateProtectRoute exact path="/papers" component={AllPaper} />
           <Route component={Page404} />
         </Switch>
 

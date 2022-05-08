@@ -36,6 +36,7 @@ export const fetchProjectPostsAction = createAsyncThunk(
       try {
           const { data } = await axios.get(`${baseUrl}/api/projects?category=${category}`);
           return data;
+          
         } catch (error) {
           if (!error?.response) {
             throw error;

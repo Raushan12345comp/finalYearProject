@@ -3,8 +3,7 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import { createPostAction } from "../../redux/slices/posts/ProjectPosts";
-import ProjectCategoryDropdown from "../Categories/ProjectDropdown";
-import Dropzone from "react-dropzone";
+import ProjectCategoryDropdown from "../ProjectCategories/ProjectDropdown";
 
 const formSchema = Yup.object({
   title: Yup.string().required("Project Title is required"),

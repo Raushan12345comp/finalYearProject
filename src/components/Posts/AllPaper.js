@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ThumbUpIcon, ThumbDownIcon, EyeIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
-import { fetchProjectPostsAction } from "../../redux/slices/posts/ProjectPosts";
-import {fetchCategoriesAction} from '../../redux/slices/catrgory/categorySlice'
+import { fetchPaperPostsAction } from "../../redux/slices/posts/PunlicationPost";
+import {fetchCategoriesAction} from '../../redux/slices/catrgory/PaperCategory'
 import moment from "moment";
 import htmlimg from "../assets/images/html.png";
 import Loading from "../loading/loadingSpinner";
@@ -12,7 +12,7 @@ export default function PostsList() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchProjectPostsAction(''));
+    dispatch(fetchPaperPostsAction(''));
   }, [dispatch]);
 
   useEffect(() => {
@@ -20,11 +20,11 @@ export default function PostsList() {
   }, [dispatch]);
 
   //select posts from store
-  const posts = useSelector((store) => store?.ProjectPost);
+  const posts = useSelector((store) => store?.PublicationPost);
   const { loading, appErr, serverErr, postList } = posts;
 
   //select categories from store
-  const category = useSelector((state) => state?.category);
+  const category = useSelector((state) => state?.Papercategory);
   const {
     categoryList,
     loading: catLoading,
@@ -36,9 +36,9 @@ export default function PostsList() {
     <>
       <div>
         <div className=" my-10 w-[90%] mx-auto text-center tracking-normal flex justify-between sm:w-full sm:flex-col">
-          <h1 className=" text-3xl font-semibold">Latest Project Posts...</h1>
+          <h1 className=" text-3xl font-semibold">Latest Paper Posts...</h1>
           <p  onClick={() =>
-            dispatch(fetchProjectPostsAction(''))
+            dispatch(fetchPaperPostsAction(''))
           } className=" text-blue-900 font-semibold cursor-pointer sm:mt-3">
             View all Posts
           </p>
@@ -69,7 +69,7 @@ export default function PostsList() {
                   <li>
                     <p
                       onClick={() =>
-                        dispatch(fetchProjectPostsAction(category?.title))
+                        dispatch(fetchPaperPostsAction(category?.title))
                       }
                       className=" cursor-pointer py-2 px-3 mb-4 text-white font-semibold  "
                     >
