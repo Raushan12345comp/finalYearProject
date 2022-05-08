@@ -2,35 +2,38 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ThumbUpIcon, ThumbDownIcon, EyeIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
-import { fetchProjectPostsAction } from "../../redux/slices/posts/ProjectPosts";
+import { fetchProjectPostsAction, toggleAddLikesToPost } from "../../redux/slices/posts/ProjectPosts";
 import {fetchCategoriesAction} from '../../redux/slices/catrgory/categorySlice'
 import moment from "moment";
 import htmlimg from "../assets/images/html.png";
 import Loading from "../loading/loadingSpinner";
 
 export default function PostsList() {
+
+    //select posts from store
+    const posts = useSelector((store) => store?.ProjectPost);
+    const { loading, appErr, serverErr, postList , likes } = posts;
+  
+    //select categories from store
+    const category = useSelector((state) => state?.category);
+    const {
+      categoryList,
+      loading: catLoading,
+      appErr: catAppErr,
+      serverErr: catServerErr,
+    } = category;
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchProjectPostsAction(''));
-  }, [dispatch]);
+  }, [dispatch , likes]);
 
   useEffect(() => {
     dispatch(fetchCategoriesAction());
   }, [dispatch]);
 
-  //select posts from store
-  const posts = useSelector((store) => store?.ProjectPost);
-  const { loading, appErr, serverErr, postList } = posts;
 
-  //select categories from store
-  const category = useSelector((state) => state?.category);
-  const {
-    categoryList,
-    loading: catLoading,
-    appErr: catAppErr,
-    serverErr: catServerErr,
-  } = category;
 
   return (
     <>
@@ -93,7 +96,7 @@ export default function PostsList() {
               <h1>No Post Found</h1>
             ) : (
               postList?.map((post) => (
-                <div className=" mb-5 h-auto shadow-md py-3 px-2 rounded-md shadow-blue-500/50">
+                <div key={post.id} className=" mb-5 h-auto shadow-md py-3 px-2 rounded-md shadow-blue-500/50">
                   <div className=" flex sm:flex-col">
                     <div className=" mr-4 sm:w-full sm:mr-0">
                       <img src={htmlimg} alt="image" />
@@ -142,71 +145,31 @@ export default function PostsList() {
                       </div>
 
                       <div className=" my-3">
-                        <Link className=" hover:no-underline text-primeBlue font-semibold hover:text-primeVoilet">
-                          Read More...
-                        </Link>
+                      <Link
+                      to={`/project/${post?._id}`}
+                      className="hover:no-underline text-primeBlue font-semibold hover:text-primeVoilet"
+                    >
+                      Read More..
+                    </Link>
+                        
                       </div>
                     </div>
                   </div>
 
                   <div className=" flex">
                     <div className=" pr-4 flex">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"
-                        />
-                      </svg>
-                      {post?.likes?.lenght ? post?.likes?.lenght : 0}
+                    <ThumbUpIcon
+                    onClick={() =>
+                      dispatch(toggleAddLikesToPost(post?._id))
+                    }
+                    className="h-7 w-7 text-indigo-600 cursor-pointer"
+                  />
+                  {post?.likes?.length}
                     </div>
-                    <div className=" px-4 flex">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018a2 2 0 01.485.06l3.76.94m-7 10v5a2 2 0 002 2h.096c.5 0 .905-.405.905-.904 0-.715.211-1.413.608-2.008L17 13V4m-7 10h2m5-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2.5"
-                        />
-                      </svg>
-                      {post?.disLikes?.lenght
-                        ? post?.disLikes?.lenght
-                        : 0}
-                    </div>
+                    
 
                     <div className=" px-4 flex">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        stroke-width="2"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                        />
-                      </svg>
+                    <EyeIcon className="h-7 w-7  text-gray-400" />
                       {post?.viewCount}
                     </div>
                   </div>

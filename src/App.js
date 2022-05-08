@@ -22,6 +22,7 @@ import AddNewPaperCategory from "./components/PaperCategory/AddNewCategory";
 import PaperCategoryList from "./components/PaperCategory/CategoryList";
 import PaperUpdateCategory from "./components/PaperCategory/UpdateCateg"
 
+import ProjectDetails from "./components/Posts/ProjectDetails";
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
         <PrivateProtectRoute exact path="/upload-paper" component={UploadPaper} />
         <PrivateProtectRoute exact path="/projects" component={AllProjects} />
         <PrivateProtectRoute exact path="/papers" component={AllPaper} />
+        <Route exact path="/project/:id" component={ProjectDetails} />
           <Route component={Page404} />
         </Switch>
 
