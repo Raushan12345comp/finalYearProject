@@ -52,6 +52,9 @@ export default function AdminNavbar() {
                   <Link style={{ textDecoration: "none" }} to="/projects">
                     <li className="Links_nav_mobile">Projects</li>
                   </Link>
+                  <Link className="Nav_Link_PC" to="/papers">
+                  <li className="Links_nav_mobile">All Paper</li>
+                </Link>
                   <Link
                     style={{ textDecoration: "none" }}
                     to="/addNewCategory"
@@ -61,6 +64,13 @@ export default function AdminNavbar() {
                   <Link style={{ textDecoration: "none" }} to="/category-list">
                     <li className="Links_nav_mobile">Category-List </li>
                   </Link>
+
+                  <Link className="Nav_Link_PC" to="/addpaper_category">
+                  <li className="Links_nav_mobile">Add PaperCategory </li>
+                </Link>
+                <Link className="Nav_Link_PC" to="/papercategory-list">
+                  <li className="Links_nav_mobile">Paper Category-List</li>
+                </Link>
                   
                     <li onClick={logout}>Logout</li>
                   
@@ -92,14 +102,25 @@ export default function AdminNavbar() {
             </Link>
             
             <Link className="Nav_Link_PC" to="/projects">
-              <li>Projects</li>
+              <li>All Projects</li>
             </Link>
+            <Link className="Nav_Link_PC" to="/papers">
+            <li>All Paper</li>
+          </Link>
             <Link className="Nav_Link_PC" to="/addNewCategory">
               <li>Add Category </li>
             </Link>
             <Link className="Nav_Link_PC" to="/category-list">
               <li>Category-List</li>
             </Link>
+
+
+            <Link className="Nav_Link_PC" to="/addpaper_category">
+            <li>Add PaperCategory </li>
+          </Link>
+          <Link className="Nav_Link_PC" to="/papercategory-list">
+            <li>Paper Category-List</li>
+          </Link>
           
               <li onClick={logout}>Logout</li>
            

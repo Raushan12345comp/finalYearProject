@@ -6,7 +6,7 @@ export default function footer() {
   return (
     <>
       <div>
-        <div className="footer_main">
+        <div className="footer_main ">
           <div className="footer_wrapper">
             <div className="f_about sm:py-5">
               <h3 className=" text-lg sm:text-xl" style={{ color: "#fff" }}>

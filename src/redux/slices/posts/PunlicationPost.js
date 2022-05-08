@@ -28,6 +28,25 @@ export const createPostAction = createAsyncThunk(
     }
 )
 
+//Fetch All Project Posts
+
+export const fetchPaperPostsAction = createAsyncThunk(
+  "post/list",
+  async (Papercategory,{rejectWithValue, getState, dispatch }) => {
+      try {
+          const { data } = await axios.get(`${baseUrl}/api/publications?Papercategory=${Papercategory}`);
+          return data;
+          
+        } catch (error) {
+          if (!error?.response) {
+            throw error;
+          }
+          return rejectWithValue(error?.response?.data);
+        }
+      
+  }
+)
+
 //Slices
 const publicationPostSlices = createSlice({
     name: "publicationPost",
@@ -43,6 +62,22 @@ const publicationPostSlices = createSlice({
           state.serverErr = undefined;
         });
         builder.addCase(createPostAction.rejected, (state, action) => {
+          state.loading = false;
+          state.appErr = action?.payload?.message;
+          state.serverErr = action?.error?.message;
+        });
+
+        //Fetch all posts
+        builder.addCase(fetchPaperPostsAction.pending, (state, action) => {
+          state.loading = true;
+        });
+        builder.addCase(fetchPaperPostsAction.fulfilled, (state, action) => {
+          state.postList = action?.payload;
+          state.loading = false;
+          state.appErr = undefined;
+          state.serverErr = undefined;
+        });
+        builder.addCase(fetchPaperPostsAction.rejected, (state, action) => {
           state.loading = false;
           state.appErr = action?.payload?.message;
           state.serverErr = action?.error?.message;
