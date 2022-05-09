@@ -50,6 +50,61 @@ export const fetchProjectPostsAction = createAsyncThunk(
   }
 );
 
+//Update
+export const updatePostAction = createAsyncThunk(
+  "post/updated",
+  async (project, { rejectWithValue, getState, dispatch }) => {
+    //get user token
+    const user = getState()?.user;
+    const { userAuth } = user;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userAuth?.token}`,
+      },
+    };
+    try {
+      //http call
+      const { data } = await axios.put(
+        `${baseUrl}/api/projects/${project?.id}`,
+        project,
+        config
+      );
+      return data;
+    } catch (error) {
+      if (!error?.response) throw error;
+      return rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+
+//Delete
+export const deletePostAction = createAsyncThunk(
+  "post/delete",
+  async (postId, { rejectWithValue, getState, dispatch }) => {
+    //get user token
+    const user = getState()?.user;
+    const { userAuth } = user;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userAuth?.token}`,
+      },
+    };
+    try {
+      //http call
+      const { data } = await axios.delete(
+        `${baseUrl}/api/projects/${postId}`,
+        config
+      );
+      
+      return data;
+    } catch (error) {
+      if (!error?.response) throw error;
+      return rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
 //fetch Post details
 export const fetchPostDetailsAction = createAsyncThunk(
   "post/detail",
@@ -90,6 +145,8 @@ export const toggleAddLikesToPost = createAsyncThunk(
     }
   }
 );
+
+
 
 //Slices
 const projectPostSlices = createSlice({
@@ -138,6 +195,41 @@ const projectPostSlices = createSlice({
       state.serverErr = undefined;
     });
     builder.addCase(toggleAddLikesToPost.rejected, (state, action) => {
+      state.loading = false;
+      state.appErr = action?.payload?.message;
+      state.serverErr = action?.error?.message;
+    });
+
+    //Update post
+    builder.addCase(updatePostAction.pending, (state, action) => {
+      state.loading = true;
+    });
+
+    builder.addCase(updatePostAction.fulfilled, (state, action) => {
+      state.projectUpdated = action?.payload;
+      state.loading = false;
+      state.appErr = undefined;
+      state.serverErr = undefined;
+    });
+    builder.addCase(updatePostAction.rejected, (state, action) => {
+      state.loading = false;
+      state.appErr = action?.payload?.message;
+      state.serverErr = action?.error?.message;
+    });
+
+    //Delete post
+    builder.addCase(deletePostAction.pending, (state, action) => {
+      state.loading = true;
+    });
+  
+    builder.addCase(deletePostAction.fulfilled, (state, action) => {
+      state.projectdeleted = action?.payload;
+      state.isDeleted = false;
+      state.loading = false;
+      state.appErr = undefined;
+      state.serverErr = undefined;
+    });
+    builder.addCase(deletePostAction.rejected, (state, action) => {
       state.loading = false;
       state.appErr = action?.payload?.message;
       state.serverErr = action?.error?.message;

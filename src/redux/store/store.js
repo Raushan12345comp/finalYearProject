@@ -6,6 +6,7 @@ import categoryReducer from "../slices/catrgory/categorySlice";
 import papercategoryReducer from "../slices/catrgory/PaperCategory";
 import ProjectPost from "../slices/posts/ProjectPosts"
 import PublicationPost from "../slices/posts/PunlicationPost"
+import comment from "../slices/Projectcomments/commentSlices";
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     Papercategory: papercategoryReducer,
     ProjectPost,
     PublicationPost,
+    comment,
   },
 });
 

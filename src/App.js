@@ -23,6 +23,7 @@ import PaperCategoryList from "./components/PaperCategory/CategoryList";
 import PaperUpdateCategory from "./components/PaperCategory/UpdateCateg"
 
 import ProjectDetails from "./components/Posts/ProjectDetails";
+import UpdateProject from './components/Posts/UpdateProject'
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
         <PrivateProtectRoute exact path="/projects" component={AllProjects} />
         <PrivateProtectRoute exact path="/papers" component={AllPaper} />
         <Route exact path="/project/:id" component={ProjectDetails} />
+        <PrivateProtectRoute exact path="/update-project/:id" component={UpdateProject} />
           <Route component={Page404} />
         </Switch>
 
