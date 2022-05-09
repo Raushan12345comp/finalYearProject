@@ -114,6 +114,11 @@ export default function PrivateNavbar() {
             <Link className="Nav_Link_PC" to={`/profile/${userAuth._id}`}>
               <li>Profile</li>
             </Link>
+
+            <Link className="Nav_Link_PC" to="/allcourses">
+            <li className="Links_nav_mobile">All Courses</li>
+          </Link>
+
             {/* <Link className="Nav_Link_PC" to="/addNewCategory">
               <li>Add Category</li>
             </Link>

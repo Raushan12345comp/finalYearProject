@@ -76,6 +76,14 @@ export default function AdminNavbar() {
                   <li className="Links_nav_mobile">Course Category List</li>
                 </Link>
 
+                <Link className="Nav_Link_PC" to="/allcourses">
+                <li className="Links_nav_mobile">All Courses</li>
+              </Link>
+    
+              <Link className="Nav_Link_PC" to="/upload_course">
+                <li className="Links_nav_mobile">Upload Courses</li>
+              </Link>
+
                   <li onClick={logout}>Logout</li>
                 </ul>
               </div>
@@ -110,6 +118,8 @@ export default function AdminNavbar() {
             <Link className="Nav_Link_PC" to="/papers">
               <li>All Paper</li>
             </Link>
+
+            
             <div class="dropdown">
               <span className="adminSpan text-white">Category</span>
 
@@ -135,7 +145,18 @@ export default function AdminNavbar() {
                 <li className=" py-2">Course Category List</li>
               </Link>
               </div>
+
+            
+
             </div>
+
+            <Link className="Nav_Link_PC" to="/allcourses">
+            <li>All Courses</li>
+          </Link>
+
+          <Link className="Nav_Link_PC" to="/upload_course">
+            <li>Upload Courses</li>
+          </Link>
 
             <li onClick={logout}>Logout</li>
           </ul>

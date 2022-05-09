@@ -31,6 +31,9 @@ import AddNewCourseCategory from "./components/CourseCategory/AddNewCategory";
 import CourseCategoryList from "./components/CourseCategory/CategoryList";
 import CourseUpdateCategory from "./components/CourseCategory/UpdateCateg"
 
+import UploadCourse from "./components/Posts/CreateCourse";
+import AllCourses from './components/Posts/AllCourse'
+
 
 function App() {
   return (
@@ -41,6 +44,7 @@ function App() {
           <Route exact path="/about" component={AboutPage} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/Login" component={Login} />
+          <Route exact path="/allcourses" component={AllCourses} />
           <Route exact path="/Signup" component={Signup} />
           <Route exact path="/ForgotPassword" component={ForgotPassword} />
           <Route exact path="/Contact" component={Contact} />
@@ -57,6 +61,7 @@ function App() {
         component={PaperUpdateCategory}
       />
         <AdminRoute exact path="/addNewCategory" component={AddNewCategory} />
+        <AdminRoute exact path="/upload_course" component={UploadCourse} />
         <AdminRoute exact path="/addpaper_category" component={AddNewPaperCategory} />
         <AdminRoute exact path="/category-list" component={CategoryList} />
         <AdminRoute exact path="/papercategory-list" component={PaperCategoryList} />
