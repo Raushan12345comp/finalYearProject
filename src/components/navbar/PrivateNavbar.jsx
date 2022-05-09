@@ -2,7 +2,7 @@ import React from "react";
 import "../style/Navbar.css";
 // import Logo from '../img/Logo.png'
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logoutAction } from "../../redux/slices/users/userSlice";
 
 export default function PrivateNavbar() {
@@ -11,6 +11,11 @@ export default function PrivateNavbar() {
   const logout = () => {
     dispatch(logoutAction());
   };
+
+  //User data from store
+  const users = useSelector(state => state.user);
+  const { userAuth, loading, appErr, serverErr } = users;
+  console.log(userAuth);
 
   return (
     <>
@@ -39,23 +44,25 @@ export default function PrivateNavbar() {
 
                 <hr className="uk-divider-icon" />
                 <div className=" flex flex-col justify-between w-full h-[80vh] ">
-                <ul className="uk-list" style={{ textDecoration: "none" }}>
-                  <Link style={{ textDecoration: "none" }} to="/about">
-                    <li className="Links_nav_mobile">Create</li>
-                  </Link>
-                  <Link className="Nav_Link_PC" to="/upload-project">
-                  <li>Upload-Project</li>
-                </Link>
-                <Link className="Nav_Link_PC" to="/upload-paper">
-                  <li>Upload-Paper</li>
-                </Link>
-                  <Link style={{ textDecoration: "none" }} to="/Team">
-                    <li className="Links_nav_mobile">Authors</li>
-                  </Link>
-                  <Link style={{ textDecoration: "none" }} to="/Team">
-                    <li className="Links_nav_mobile">Profile</li>
-                  </Link>
-                  {/* <Link
+                  <ul className="uk-list" style={{ textDecoration: "none" }}>
+                    <Link className="Nav_Link_PC" to="/projects">
+                      <li className="Links_nav_mobile">All Projects</li>
+                    </Link>
+                    <Link className="Nav_Link_PC" to="/papers">
+                      <li className="Links_nav_mobile">All Paper</li>
+                    </Link>
+
+                    <Link className="Nav_Link_PC" to="/upload-project">
+                      <li className="Links_nav_mobile">Upload-Project</li>
+                    </Link>
+                    <Link className="Nav_Link_PC" to="/upload-paper">
+                      <li className="Links_nav_mobile">Upload-Paper</li>
+                    </Link>
+
+                    <Link className="Nav_Link_PC" to={`/profile/${userAuth._id}`}>
+                      <li className="Links_nav_mobile">Profile</li>
+                    </Link>
+                    {/* <Link
                     style={{ textDecoration: "none" }}
                     to="/addNewCategory"
                   >
@@ -64,17 +71,19 @@ export default function PrivateNavbar() {
                   <Link style={{ textDecoration: "none" }} to="/addNewCategory">
                     <li className="Links_nav_mobile">Category List</li>
                   </Link> */}
-                                    
-                </ul>
-              </div>
+                  </ul>
+                </div>
 
-              <div>
-                       <div onClick={logout} className=' flex justify-between w-full bottom-1  border-white'>
-                       <p className=' text-lg font-semibold'>Logout</p>
-                       <span uk-icon="icon: sign-out; ratio: 1.5"></span>
-                       </div>
-                     
-                  </div></div>
+                <div>
+                  <div
+                    onClick={logout}
+                    className=" flex justify-between w-full bottom-1  border-white"
+                  >
+                    <p className=" text-lg font-semibold">Logout</p>
+                    <span uk-icon="icon: sign-out; ratio: 1.5"></span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -90,16 +99,19 @@ export default function PrivateNavbar() {
 
         <div className="menu_Links">
           <ul className="Pc_links">
-            <Link className="Nav_Link_PC" to="/about">
-              <li>Create</li>
+            <Link className="Nav_Link_PC" to="/projects">
+              <li>All Projects</li>
+            </Link>
+            <Link className="Nav_Link_PC" to="/papers">
+              <li>All Paper</li>
             </Link>
             <Link className="Nav_Link_PC" to="/upload-project">
-            <li>Upload-Project</li>
-          </Link>
-          <Link className="Nav_Link_PC" to="/upload-paper">
-            <li>Upload-Paper</li>
-          </Link>
-            <Link className="Nav_Link_PC" to="/Team">
+              <li>Upload-Project</li>
+            </Link>
+            <Link className="Nav_Link_PC" to="/upload-paper">
+              <li>Upload-Paper</li>
+            </Link>
+            <Link className="Nav_Link_PC" to={`/profile/${userAuth._id}`}>
               <li>Profile</li>
             </Link>
             {/* <Link className="Nav_Link_PC" to="/addNewCategory">
@@ -108,9 +120,8 @@ export default function PrivateNavbar() {
             <Link className="Nav_Link_PC" to="/Contact">
               <li>Category List</li>
             </Link> */}
-          
-              <li onClick={logout}>Logout</li>
-           
+
+            <li onClick={logout}>Logout</li>
           </ul>
         </div>
       </div>

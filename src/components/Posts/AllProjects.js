@@ -133,7 +133,7 @@ export default function PostsList() {
                         </div>
                         <div className="ml-3">
                           <p className="text-sm font-medium text-gray-900">
-                            <Link className="text-black hover:cursor ">
+                            <Link  className="text-black hover:cursor ">
                               {post?.user?.firstName} {post?.user?.lastName}
                             </Link>
                           </p>

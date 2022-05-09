@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { PencilAltIcon } from "@heroicons/react/outline";
-import { fetchCategoriesAction } from "../../redux/slices/catrgory/PaperCategory";
+import { fetchCategoriesAction } from "../../redux/slices/catrgory/courseCategory";
 import DateFormatter from "../../utils/DateFormatter";
 import LoadingSpinner from "../loading/loadingSpinner";
 
@@ -11,7 +11,7 @@ const CategoryList = () => {
   useEffect(() => {
     dispatch(fetchCategoriesAction());
   }, [dispatch]);
-  const category = useSelector(state => state?.Papercategory);
+  const category = useSelector(state => state?.CourseCategory);
 
   const { categoryList, loading, appErr, serverErr } = category;
 
@@ -92,7 +92,7 @@ const CategoryList = () => {
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           {<DateFormatter date={category?.createdAt} />}
                         </td>
-                        <Link to={`/update-paper-category/${category?._id}`}>
+                        <Link to={`/update-course-category/${category?._id}`}>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             <PencilAltIcon className="h-5 text-indigo-500" />
                           </td>

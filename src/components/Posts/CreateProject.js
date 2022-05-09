@@ -10,8 +10,8 @@ const formSchema = Yup.object({
   abstract: Yup.string().required("Project Abstract is required"),
   keyword: Yup.string(),
   Language: Yup.string(),
-  Refrences_links: Yup.string(),
-  Project_link: Yup.string(),
+  refrences: Yup.string(),
+  projectlink: Yup.string(),
   category: Yup.object().required("Category is required"),
   
 });
@@ -25,8 +25,8 @@ export default function CreatePost() {
       abstract: "",
       keyword: "",
       Language: "",
-      Refrences_links: "",
-      Project_link: "",
+      refrences: "",
+      projectlink: "",
       category: "",
       
     },
@@ -36,9 +36,9 @@ export default function CreatePost() {
         title: value?.title,
         abstract: value?.abstract,
         Language: value?.Language,
-        Project_link: value?.Project_link,
+        projectlink: value?.projectlink,
         keyword: value?.keyword,
-        Refrences_links: value?.Refrences_links,
+        refrences: value?.refrences,
         
       };
       console.log(value);
@@ -140,9 +140,9 @@ export default function CreatePost() {
                 <input
                   className="uk-input rounded-full"
                   type="text"
-                  value={formik.values.Refrences_links}
-                  onChange={formik.handleChange("Refrences_links")}
-                  onBlur={formik.handleBlur("Refrences_links")}
+                  value={formik.values.refrences}
+                  onChange={formik.handleChange("refrences")}
+                  onBlur={formik.handleBlur("refrences")}
                   placeholder="Refrences.."
                 />
               </div>
@@ -152,9 +152,9 @@ export default function CreatePost() {
                 <input
                   className="uk-input rounded-full"
                   type="text"
-                  value={formik.values.Project_link}
-                  onChange={formik.handleChange("Project_link")}
-                  onBlur={formik.handleBlur("Project_link")}
+                  value={formik.values.projectlink}
+                  onChange={formik.handleChange("projectlink")}
+                  onBlur={formik.handleBlur("projectlink")}
                   placeholder="Projectlink.."
                 />
               </div>

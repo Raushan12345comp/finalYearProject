@@ -13,13 +13,8 @@ export default function footer() {
                 About
               </h3>
               <p>
-                Hello there! I'm Kumar Subhojit. I'm a Web Developer and
-                Software Developer Hard-Working individual with proficiency in
-                web development and App development, as well as strong skills
-                and ability in writing clean and efficient code. I'm a quick
-                learner and always want to learn more and more, to enhance my
-                skills. A strong individual and contributor as well as team
-                player.
+                Aducator is an Online learning and course uploading platform where users can upoload their work and can share with others.
+                
               </p>
             </div>
 

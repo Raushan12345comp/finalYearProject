@@ -47,18 +47,15 @@ export default function AdminNavbar() {
                     <li className="Links_nav_mobile">Upload-Project</li>
                   </Link>
                   <Link style={{ textDecoration: "none" }} to="/upload-paper">
-                  <li className="Links_nav_mobile">Upload-Paper</li>
-                </Link>
+                    <li className="Links_nav_mobile">Upload-Paper</li>
+                  </Link>
                   <Link style={{ textDecoration: "none" }} to="/projects">
                     <li className="Links_nav_mobile">Projects</li>
                   </Link>
                   <Link className="Nav_Link_PC" to="/papers">
-                  <li className="Links_nav_mobile">All Paper</li>
-                </Link>
-                  <Link
-                    style={{ textDecoration: "none" }}
-                    to="/addNewCategory"
-                  >
+                    <li className="Links_nav_mobile">All Paper</li>
+                  </Link>
+                  <Link style={{ textDecoration: "none" }} to="/addNewCategory">
                     <li className="Links_nav_mobile">Add Category</li>
                   </Link>
                   <Link style={{ textDecoration: "none" }} to="/category-list">
@@ -66,14 +63,20 @@ export default function AdminNavbar() {
                   </Link>
 
                   <Link className="Nav_Link_PC" to="/addpaper_category">
-                  <li className="Links_nav_mobile">Add PaperCategory </li>
+                    <li className="Links_nav_mobile">Add PaperCategory </li>
+                  </Link>
+                  <Link className="Nav_Link_PC" to="/papercategory-list">
+                    <li className="Links_nav_mobile">Paper Category-List</li>
+                  </Link>
+
+                  <Link className="Nav_Link_PC" to="/addCourse_category">
+                  <li className="Links_nav_mobile">Add Course Category </li>
                 </Link>
-                <Link className="Nav_Link_PC" to="/papercategory-list">
-                  <li className="Links_nav_mobile">Paper Category-List</li>
+                <Link className="Nav_Link_PC" to="/Course_category-list">
+                  <li className="Links_nav_mobile">Course Category List</li>
                 </Link>
-                  
-                    <li onClick={logout}>Logout</li>
-                  
+
+                  <li onClick={logout}>Logout</li>
                 </ul>
               </div>
             </div>
@@ -100,30 +103,41 @@ export default function AdminNavbar() {
             <Link className="Nav_Link_PC" to="/upload-paper">
               <li>Upload-Paper</li>
             </Link>
-            
+
             <Link className="Nav_Link_PC" to="/projects">
               <li>All Projects</li>
             </Link>
             <Link className="Nav_Link_PC" to="/papers">
-            <li>All Paper</li>
-          </Link>
-            <Link className="Nav_Link_PC" to="/addNewCategory">
-              <li>Add Category </li>
+              <li>All Paper</li>
             </Link>
-            <Link className="Nav_Link_PC" to="/category-list">
-              <li>Category-List</li>
-            </Link>
+            <div class="dropdown">
+              <span className="adminSpan text-white">Category</span>
 
+              <div class="dropdown-content">
+                <Link className="Nav_Link_PC" to="/addNewCategory">
+                  <li className=" py-2">Add Project Category </li>
+                </Link>
+                <Link className="Nav_Link_PC" to="/category-list">
+                  <li className=" py-2">Project Category List</li>
+                </Link>
 
-            <Link className="Nav_Link_PC" to="/addpaper_category">
-            <li>Add PaperCategory </li>
-          </Link>
-          <Link className="Nav_Link_PC" to="/papercategory-list">
-            <li>Paper Category-List</li>
-          </Link>
-          
-              <li onClick={logout}>Logout</li>
-           
+                <Link className="Nav_Link_PC" to="/addpaper_category">
+                  <li className=" py-2">Add Paper Category </li>
+                </Link>
+                <Link className="Nav_Link_PC" to="/papercategory-list">
+                  <li className=" py-2">Paper Category List</li>
+                </Link>
+
+                <Link className="Nav_Link_PC" to="/addCourse_category">
+                <li className=" py-2">Add Course Category </li>
+              </Link>
+              <Link className="Nav_Link_PC" to="/Course_category-list">
+                <li className=" py-2">Course Category List</li>
+              </Link>
+              </div>
+            </div>
+
+            <li onClick={logout}>Logout</li>
           </ul>
         </div>
       </div>

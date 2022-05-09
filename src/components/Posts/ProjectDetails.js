@@ -21,6 +21,7 @@ const PostDetails = ({
   const post = useSelector((state) => state?.ProjectPost);
   const { postDetails, loading, appErr, serverErr } = post;
   console.log(postDetails?.projectComment);
+  console.log(postDetails);
 
   //comment
   const comment = useSelector((state) => state.comment);
@@ -116,37 +117,12 @@ const PostDetails = ({
                     : postDetails?.projectlink}
                 </h2>
               </div>
-              {/* Post description */}
-              <div class=" flex justify-center text-center">
-                <p class="my-3 text-center  text-xl text-gray-700">
-                  Description:{" "}
-                  {!postDetails?.description
-                    ? "Not-Found"
-                    : postDetails?.description}
-                  {/* Show delete and update btn if created user */}
-                  {isCreatedBy ? (
-                    <p class="flex justify-center my-3">
-                      <Link
-                        to={`/update-project/${postDetails?._id}`}
-                        class="p-3"
-                      >
-                        <PencilAltIcon class="h-8 mt-3 text-purple-600" />
-                      </Link>
-                      <button
-                        class="ml-3"
-                        onClick={() =>
-                          dispatch(deletePostAction(postDetails?._id))
-                        }
-                      >
-                        <TrashIcon class="h-8 mt-3 text-red-600" />
-                      </button>
-                    </p>
-                  ) : null}
-                </p>
-              </div>
+              
             </div>
           </div>
-          <ProjectComments projectId={id} />
+         <div className=' my-5 mx-auto'>
+         <ProjectComments  projectId={id} />
+         </div>
           <div className="flex justify-center  items-center">
             {/* <CommentsList comments={post?.comments} postId={post?._id} /> */}
             <CommentsList projectComment={postDetails?.projectComment} />

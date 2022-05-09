@@ -24,6 +24,13 @@ import PaperUpdateCategory from "./components/PaperCategory/UpdateCateg"
 
 import ProjectDetails from "./components/Posts/ProjectDetails";
 import UpdateProject from './components/Posts/UpdateProject'
+import UserProfile from './components/Profile/userProfile'
+import UploadProfilePhoto from "./components/Profile/UploadProfilePhoto";
+
+import AddNewCourseCategory from "./components/CourseCategory/AddNewCategory";
+import CourseCategoryList from "./components/CourseCategory/CategoryList";
+import CourseUpdateCategory from "./components/CourseCategory/UpdateCateg"
+
 
 function App() {
   return (
@@ -43,6 +50,7 @@ function App() {
           path="/update-category/:id"
           component={UpdateCategory}
         />
+       
         <AdminRoute
         exact
         path="/update-paper-category/:id"
@@ -58,6 +66,21 @@ function App() {
         <PrivateProtectRoute exact path="/papers" component={AllPaper} />
         <Route exact path="/project/:id" component={ProjectDetails} />
         <PrivateProtectRoute exact path="/update-project/:id" component={UpdateProject} />
+        <PrivateProtectRoute exact path="/profile/:id" component={UserProfile} />
+        <PrivateProtectRoute
+        exact
+        path="/upload-photo/:id"
+        component={UploadProfilePhoto}
+      />
+
+      <AdminRoute exact path="/addCourse_category" component={AddNewCourseCategory} />
+        <AdminRoute exact path="/Course_category-list" component={CourseCategoryList} />
+        <AdminRoute
+        exact
+        path="/update-course-category/:id"
+        component={CourseUpdateCategory}
+      />
+
           <Route component={Page404} />
         </Switch>
 
