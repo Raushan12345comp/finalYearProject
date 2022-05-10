@@ -13,7 +13,7 @@ export default function PrivateNavbar() {
   };
 
   //User data from store
-  const users = useSelector(state => state.user);
+  const users = useSelector((state) => state.user);
   const { userAuth, loading, appErr, serverErr } = users;
   console.log(userAuth);
 
@@ -52,6 +52,10 @@ export default function PrivateNavbar() {
                       <li className="Links_nav_mobile">All Paper</li>
                     </Link>
 
+                    <Link className="Nav_Link_PC" to="/allcourses">
+                      <li className="Links_nav_mobile">All Courses</li>
+                    </Link>
+
                     <Link className="Nav_Link_PC" to="/upload-project">
                       <li className="Links_nav_mobile">Upload-Project</li>
                     </Link>
@@ -59,8 +63,11 @@ export default function PrivateNavbar() {
                       <li className="Links_nav_mobile">Upload-Paper</li>
                     </Link>
 
-                    <Link className="Nav_Link_PC" to={`/profile/${userAuth._id}`}>
-                      <li className="Links_nav_mobile">Profile</li>
+                    <Link
+                      className="Nav_Link_PC"
+                      to={`/profile/${userAuth._id}`}
+                    >
+                      <li className="Links_nav_mobile">User Profile</li>
                     </Link>
                     {/* <Link
                     style={{ textDecoration: "none" }}
@@ -105,6 +112,11 @@ export default function PrivateNavbar() {
             <Link className="Nav_Link_PC" to="/papers">
               <li>All Paper</li>
             </Link>
+
+            <Link className="Nav_Link_PC" to="/allcourses">
+              <li>All Courses</li>
+            </Link>
+
             <Link className="Nav_Link_PC" to="/upload-project">
               <li>Upload-Project</li>
             </Link>
@@ -112,12 +124,12 @@ export default function PrivateNavbar() {
               <li>Upload-Paper</li>
             </Link>
             <Link className="Nav_Link_PC" to={`/profile/${userAuth._id}`}>
-              <li>Profile</li>
+              <li>User-Profile</li>
             </Link>
 
             <Link className="Nav_Link_PC" to="/allcourses">
-            <li className="Links_nav_mobile">All Courses</li>
-          </Link>
+              <li>All Courses</li>
+            </Link>
 
             {/* <Link className="Nav_Link_PC" to="/addNewCategory">
               <li>Add Category</li>

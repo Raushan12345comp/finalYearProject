@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ThumbUpIcon, ThumbDownIcon, EyeIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
-import { fetchProjectPostsAction, toggleAddLikesToPost } from "../../redux/slices/posts/CoursePost";
+import { fetchCoursePostsAction, toggleAddLikesToPost } from "../../redux/slices/posts/CoursePost";
 import {fetchCategoriesAction} from '../../redux/slices/catrgory/courseCategory'
 import moment from "moment";
 import htmlimg from "../assets/images/html.png";
@@ -12,7 +12,7 @@ export default function PostsList() {
 
     //select posts from store
     const posts = useSelector((store) => store?.Courses);
-    const { loading, appErr, serverErr, postList , likes } = posts;
+    const { loading, appErr, serverErr, courseList , likes } = posts;
   
     //select categories from store
     const category = useSelector((state) => state?.CourseCategory);
@@ -26,7 +26,7 @@ export default function PostsList() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchProjectPostsAction(''));
+    dispatch(fetchCoursePostsAction(''));
   }, [dispatch , likes]);
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export default function PostsList() {
         <div className=" my-10 w-[90%] mx-auto text-center tracking-normal flex justify-between sm:w-full sm:flex-col">
           <h1 className=" text-3xl font-semibold">Latest Courses...</h1>
           <p  onClick={() =>
-            dispatch(fetchProjectPostsAction(''))
+            dispatch(fetchCoursePostsAction(''))
           } className=" text-blue-900 font-semibold cursor-pointer sm:mt-3">
             View all Courses
           </p>
@@ -72,7 +72,7 @@ export default function PostsList() {
                   <li>
                     <p
                       onClick={() =>
-                        dispatch(fetchProjectPostsAction(category?.title))
+                        dispatch(fetchCoursePostsAction(category?.title))
                       }
                       className=" cursor-pointer py-2 px-3 mb-4 text-white font-semibold  "
                     >
@@ -85,15 +85,16 @@ export default function PostsList() {
             </div>
           </div>
 
+       
           <div className="w-[80%] h-auto ">
             {loading ? (
               <Loading />
             ) : appErr || serverErr ? (
               <h1>Err</h1>
-            ) : postList?.lenght <= 0 ? (
+            ) : courseList?.lenght <= 0 ? (
               <h1>No Post Found</h1>
             ) : (
-              postList?.map((post) => (
+              courseList?.map((post) => (
                 <div key={post.id} className=" mb-5 h-auto shadow-md py-3 px-2 rounded-md shadow-blue-500/50">
                   <div className=" flex sm:flex-col">
                     <div className=" mr-4 sm:w-full sm:mr-0">
@@ -171,6 +172,7 @@ export default function PostsList() {
               ))
             )}
           </div>
+        
         </div>
       </div>
     </>

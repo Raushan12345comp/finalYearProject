@@ -33,12 +33,12 @@ export const createPostAction = createAsyncThunk(
 
 //Fetch All Project Posts
 
-export const fetchProjectPostsAction = createAsyncThunk(
+export const fetchCoursePostsAction = createAsyncThunk(
   "post/list",
-  async (category, { rejectWithValue, getState, dispatch }) => {
+  async (course, { rejectWithValue, getState, dispatch }) => {
     try {
       const { data } = await axios.get(
-        `${baseUrl}/api/course?category=${category}`
+        `${baseUrl}/api/course?category=${course}`
       );
       return data;
     } catch (error) {
@@ -170,16 +170,16 @@ const projectPostSlices = createSlice({
     });
 
     //Fetch all posts
-    builder.addCase(fetchProjectPostsAction.pending, (state, action) => {
+    builder.addCase(fetchCoursePostsAction.pending, (state, action) => {
       state.loading = true;
     });
-    builder.addCase(fetchProjectPostsAction.fulfilled, (state, action) => {
-      state.postList = action?.payload;
+    builder.addCase(fetchCoursePostsAction.fulfilled, (state, action) => {
+      state.courseList = action?.payload;
       state.loading = false;
       state.appErr = undefined;
       state.serverErr = undefined;
     });
-    builder.addCase(fetchProjectPostsAction.rejected, (state, action) => {
+    builder.addCase(fetchCoursePostsAction.rejected, (state, action) => {
       state.loading = false;
       state.appErr = action?.payload?.message;
       state.serverErr = action?.error?.message;
