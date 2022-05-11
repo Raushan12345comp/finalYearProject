@@ -25,14 +25,13 @@ export default function Profile({
   //User data from store
   const users = useSelector(state => state.user);
   const { profile, loading, appErr, serverErr } = users;
-  console.log(profile);
   return (
     <>
-      <div className="h-screen flex overflow-hidden bg-white">
+      <div className="h-auto py-7 flex  bg-white">
         {/* Static sidebar for desktop */}
 
-        <div className="flex flex-col min-w-0 flex-1 overflow-hidden">
-          <div className="flex-1 relative z-0 flex overflow-hidden">
+        <div className="flex flex-col min-w-0 flex-1 ">
+          <div className="flex-1 relative z-0 flex ">
             <main className="flex-1 relative z-0 overflow-y-auto focus:outline-none xl:order-last">
               <article>
                 {/* Profile header */}
@@ -44,17 +43,17 @@ export default function Profile({
                       alt={profile?.firstName}
                     />
                   </div>
-                  <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="max-w-5xl mx-auto  ">
                     <div className="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
-                      <div className="flex -mt-20">
+                      <div className="flex ">
                         <img
-                          className="h-24 w-24 rounded-full  ring-4 ring-white sm:h-32 sm:w-32"
+                          className="h-24 w-24 rounded-full sm:hidden  ring-4 ring-white sm:h-32 sm:w-32"
                           src={profile?.profilePhoto}
                           alt={profile?.firstName}
                         />
                       </div>
-                      <div className="mt-6 sm:flex-1 sm:min-w-0 sm:flex sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
-                        <div className=" flex flex-col 2xl:block mt-10 min-w-0 flex-1">
+                      <div className="mt-6">
+                        <div className="  2xl:block mt-10 min-w-0 flex-1">
                           <h1 className="text-2xl font-bold text-gray-900 ">
                             {profile?.firstName} {profile?.lastName}
                             <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">
@@ -71,6 +70,9 @@ export default function Profile({
                               </span>
                             )}
                           </h1>
+                          <div className=' my-2'>
+                          <p className='text-lg'>Bio: {profile?.bio}</p>
+                          </div>
                           <p className=" my-2 text-lg flex ">
                             <p className=' pr-3'>Date Joined:</p>
                              {moment(profile?.createdAt).format("MMM Do YY")}
@@ -101,14 +103,14 @@ export default function Profile({
                           </Link>
                         </div>
 
-                        <div className="mt-6 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
+                        <div className="mt-6 flex flex-col justify-center space-y-3 sm:flex-col sm:justify-center">
                           {/* // Hide follow button from the same */}
                           <div>
                             <button
                               // onClick={() =>
                               //   dispatch(unFollowUserAction(profile?._id))
                               // }
-                              className="inline-flex justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
+                              className="inline-flex mr-4 justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
                             >
                               <EmojiSadIcon
                                 className="-ml-1 mr-2 h-5 w-5 text-gray-400"
@@ -136,8 +138,8 @@ export default function Profile({
 
                           <>
                             <Link
-                              to="/update-profile"
-                              className="inline-flex justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
+                              to="/profile-update"
+                              className="  hover:no-underline hover:bg-purple-300 flex justify-center items-center border-2 border-gray-500 py-1 rounded-full "
                             >
                               <UserIcon
                                 className="-ml-1 mr-2 h-5 w-5 text-gray-400"
@@ -149,13 +151,13 @@ export default function Profile({
                           {/* Send Mail */}
                           <Link
                             // to={`/send-mail?email=${profile?.email}`}
-                            className="inline-flex justify-center bg-indigo-900 px-4 py-2 border border-yellow-700 shadow-sm text-sm font-medium rounded-md text-gray-700  hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
+                            className=" hover:no-underline bg-primeVoilet hover:bg-purple-300 flex justify-center items-center py-1 rounded-full"
                           >
                             <MailIcon
                               className="-ml-1 mr-2 h-5 w-5 text-gray-200"
                               aria-hidden="true"
                             />
-                            <span className="text-base mr-2  text-bold text-yellow-500">
+                            <span className="text-base mr-2  text-bold text-white ">
                               Send Message
                             </span>
                           </Link>
@@ -185,11 +187,7 @@ export default function Profile({
                     <ul className="">
                       <Link>
                         <div className="flex mb-2 items-center space-x-4 lg:space-x-6">
-                          <img
-                            className="w-16 h-16 rounded-full lg:w-20 lg:h-20"
-                            // src={user.profilePhoto}
-                            // alt={user?._id}
-                          />
+                          
                           <div className="font-medium text-lg leading-6 space-y-1">
                             <h3>
                               {/* {user?.firstName} {user?.lastName} */}Name
@@ -203,13 +201,48 @@ export default function Profile({
                     </ul>
                   </div>
                   {/* All my Post */}
-               
+                  <div className="w-full md:w-2/3 px-4 mb-4 md:mb-0">
+                        <h1 className="text-center text-xl border-gray-500 mb-2 border-b-2">
+                          My Post - {profile?.projects?.length}
+                        </h1>
+                        {/* Loop here */}
+                        {profile?.projects?.length <= 0 ? (
+                          <h2 className="text-center text-xl">No Post Found</h2>
+                        ) : (
+                          profile?.projects.map(post => (
+                            <div className="flex flex-wrap  -mx-3 mt-3  lg:mb-6">
+                              
+                              <div className="w-full lg:w-3/4 px-3">
+                                <Link
+                                  // to={`/post/${post?._id}`}
+                                  className="hover:underline"
+                                >
+                                  <h3 className="mb-1 text-2xl text-green-600 font-bold font-heading">
+                                    {post?.title}
+                                  </h3>
+                                </Link>
+                                <p className="text-gray-600 truncate">
+                                  {post?.description}
+                                </p>
+
+                                <Link
+                                  className="text-indigo-500 hover:underline"
+                                  to={`/posts/${post?._id}`}
+                                >
+                                  Read more
+                                </Link>
+                              </div>
+                            </div>
+                          ))
+                        )}
+                      </div>
                 </div>
               </article>
             </main>
           </div>
         </div>
       </div>
+      
     </>
   );
 }

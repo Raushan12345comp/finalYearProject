@@ -28,6 +28,20 @@ export const registerUserAction = createAsyncThunk(
   }
 );
 
+//fetch User details
+export const fetchUserDetailsAction = createAsyncThunk(
+  "user/detail",
+  async (id, { rejectWithValue, getState, dispatch }) => {
+    try {
+      const { data } = await axios.get(`${baseUrl}/api/users/${id}`);
+      return data;
+    } catch (error) {
+      if (!error?.response) throw error;
+      return rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
 //Login
 export const loginUserAction = createAsyncThunk(
   "user/login",
@@ -101,6 +115,7 @@ export const logoutAction = createAsyncThunk(
   }
 );
 
+
 //Upload Profile Photo
 export const uploadProfilePhototAction = createAsyncThunk(
   "user/profile-photo",
@@ -128,6 +143,41 @@ export const uploadProfilePhototAction = createAsyncThunk(
       return data;
     } catch (error) {
       if (!error?.response) throw error;
+      return rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+//Update action
+export const updateUserAction = createAsyncThunk(
+  "users/update",
+  async (userData, { rejectWithValue, getState, dispatch }) => {
+    //get user token
+    const user = getState()?.user;
+    const { userAuth } = user;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userAuth?.token}`,
+      },
+    };
+    //http call
+    try {
+      const { data } = await axios.put(
+        `${baseUrl}/api/users`,
+        {
+          lastName: userData?.lastName,
+          firstName: userData?.firstName,
+          bio: userData?.bio,
+          email: userData?.email,
+          Mobile: userData?.Mobile,
+        },
+        config
+      );
+      return data;
+    } catch (error) {
+      if (!error.response) {
+        throw error;
+      }
       return rejectWithValue(error?.response?.data);
     }
   }
@@ -197,6 +247,24 @@ const usersSlices = createSlice({
       state.serverErr = action?.error?.message;
       state.loading = false;
     });
+    //user details
+    builder.addCase(fetchUserDetailsAction.pending, (state, action) => {
+      state.loading = true;
+      state.appErr = undefined;
+      state.serverErr = undefined;
+    });
+    builder.addCase(fetchUserDetailsAction.fulfilled, (state, action) => {
+      state.loading = false;
+      state.userDetails = action?.payload;
+      state.appErr = undefined;
+      state.serverErr = undefined;
+    });
+    builder.addCase(fetchUserDetailsAction.rejected, (state, action) => {
+      console.log(action.payload);
+      state.loading = false;
+      state.appErr = action?.payload?.message;
+      state.serverErr = action?.error?.message;
+    });
     //login
     builder.addCase(loginUserAction.pending, (state, action) => {
       state.loading = true;
@@ -228,6 +296,25 @@ const usersSlices = createSlice({
       state.appErr = action?.payload?.message;
       state.serverErr = action?.error?.message;
       state.loading = false;
+    });
+
+    //update
+    builder.addCase(updateUserAction.pending, (state, action) => {
+      state.loading = true;
+      state.appErr = undefined;
+      state.serverErr = undefined;
+    });
+    builder.addCase(updateUserAction.fulfilled, (state, action) => {
+      state.loading = false;
+      state.userUpdated = action?.payload;
+      state.appErr = undefined;
+      state.serverErr = undefined;
+    });
+    builder.addCase(updateUserAction.rejected, (state, action) => {
+      console.log(action.payload);
+      state.loading = false;
+      state.appErr = action?.payload?.message;
+      state.serverErr = action?.error?.message;
     });
   },
 });

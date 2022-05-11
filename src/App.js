@@ -34,6 +34,8 @@ import CourseUpdateCategory from "./components/CourseCategory/UpdateCateg"
 import UploadCourse from "./components/Posts/CreateCourse";
 import AllCourses from './components/Posts/AllCourse'
 
+import UpdateProfile from './components/Profile/UpdateProfile';
+
 
 function App() {
   return (
@@ -84,8 +86,9 @@ function App() {
         path="/update-course-category/:id"
         component={CourseUpdateCategory}
       />
-
+      <PrivateProtectRoute exact path="/profile-update" component={UpdateProfile} />
           <Route component={Page404} />
+         
         </Switch>
 
       <Footer />
