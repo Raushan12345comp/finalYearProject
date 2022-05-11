@@ -1,4 +1,4 @@
-import ProjectIcon from "../assets/images/hacker.gif";
+import ProjectIcon from "../assets/images/notebook.gif";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";

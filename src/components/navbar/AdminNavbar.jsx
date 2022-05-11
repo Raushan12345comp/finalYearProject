@@ -2,7 +2,7 @@ import React from "react";
 import "../style/Navbar.css";
 // import Logo from '../img/Logo.png'
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch , useSelector} from "react-redux";
 import { logoutAction } from "../../redux/slices/users/userSlice";
 
 export default function AdminNavbar() {
@@ -11,6 +11,11 @@ export default function AdminNavbar() {
   const logout = () => {
     dispatch(logoutAction());
   };
+
+   //User data from store
+   const users = useSelector((state) => state.user);
+  const { userAuth, loading, appErr, serverErr } = users;
+  console.log(userAuth);
 
   return (
     <>
@@ -83,6 +88,10 @@ export default function AdminNavbar() {
               <Link className="Nav_Link_PC" to="/upload_course">
                 <li className="Links_nav_mobile">Upload Courses</li>
               </Link>
+
+              <Link className="Nav_Link_PC" to={`/profile/${userAuth._id}`}>
+              <li>User-Profile</li>
+            </Link>
 
                   <li onClick={logout}>Logout</li>
                 </ul>
@@ -157,6 +166,10 @@ export default function AdminNavbar() {
           <Link className="Nav_Link_PC" to="/upload_course">
             <li>Upload Courses</li>
           </Link>
+
+          <Link className="Nav_Link_PC" to={`/profile/${userAuth._id}`}>
+              <li>User-Profile</li>
+            </Link>
 
             <li onClick={logout}>Logout</li>
           </ul>

@@ -47,7 +47,6 @@ function App() {
           <Route exact path="/allcourses" component={AllCourses} />
           <Route exact path="/Signup" component={Signup} />
           <Route exact path="/ForgotPassword" component={ForgotPassword} />
-          <Route exact path="/Contact" component={Contact} />
           
           <AdminRoute
           exact

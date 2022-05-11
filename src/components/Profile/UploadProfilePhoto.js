@@ -4,29 +4,31 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { uploadProfilePhototAction } from "../../redux/slices/users/userSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useToast } from "@chakra-ui/react";
 
 const formSchema = Yup.object({
   image: Yup.string().required("Image is required"),
 });
 
 export default function UploadProfilePhoto() {
+  const toast = useToast();
+
   //formik
   const dispatch = useDispatch();
-
 
   const formik = useFormik({
     initialValues: {
       image: "",
     },
-    onSubmit: values => {
+    onSubmit: (values) => {
       console.log(values);
       dispatch(uploadProfilePhototAction(values));
     },
     validationSchema: formSchema,
   });
-    //store data
-    const users = useSelector(state => state?.user);
-    const { profilePhoto, loading, appErr, serverErr, userAuth } = users;
+  //store data
+  const users = useSelector((state) => state?.user);
+  const { profilePhoto, loading, appErr, serverErr, userAuth } = users;
   return (
     <div className="flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -38,13 +40,16 @@ export default function UploadProfilePhoto() {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-blue-200 rounded-lg py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form className="space-y-6 w-[50%] mx-auto text-center sm:w-[80%]" onSubmit={formik.handleSubmit}>
+          <form
+            className="space-y-6 w-[50%] mx-auto text-center sm:w-[80%]"
+            onSubmit={formik.handleSubmit}
+          >
             {/* Image container here thus Dropzone */}
             <section className=" border-dashed border-2 border-indigo-600 rounded-lg">
               <Dropzone
                 onBlur={formik.handleBlur("image")}
                 accept="image/jpeg, image/png"
-                onDrop={acceptedFiles => {
+                onDrop={(acceptedFiles) => {
                   formik.setFieldValue("image", acceptedFiles[0]);
                 }}
               >
@@ -53,7 +58,7 @@ export default function UploadProfilePhoto() {
                     <div
                       {...getRootProps({
                         className: "dropzone",
-                        onDrop: event => event.stopPropagation(),
+                        onDrop: (event) => event.stopPropagation(),
                       })}
                     >
                       <input {...getInputProps()} />
@@ -76,13 +81,24 @@ export default function UploadProfilePhoto() {
             <div>
               <button
                 type="submit"
-                className="inline-flex justify-center w-full px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
+                className="inline-flex justify-center w-full px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 "
               >
                 <UploadIcon
                   className="-ml-1 mr-2 h-5  text-gray-400"
                   aria-hidden="true"
                 />
-                <span>Upload Photo</span>
+                <span
+                  onClick={() =>
+                    toast({
+                      title: `Profile Photo Uploaded`,
+                      position: "bottom",
+                      isClosable: true,
+                      status: 'success',
+                    })
+                  }
+                >
+                  Upload Photo
+                </span>
               </button>
             </div>
           </form>

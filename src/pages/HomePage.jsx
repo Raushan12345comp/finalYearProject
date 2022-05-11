@@ -1,19 +1,15 @@
 import React, { Suspense, lazy } from "react";
 
-const Jumbo = lazy(() => import("../components/Home_Compo/Jumbo"));
-const About = lazy(() => import("../components/Home_Compo/About"));
+import Jumbo from "../components/Home_Compo/Jumbo";
+import About from "../components/Home_Compo/About";
+import Category from "../components/Home_Compo/category";
 
 export default function HomePage() {
   return (
-    <Suspense
-      fallback={
-        <div>
-          
-        </div>
-      }
-    >
+    <>
       <Jumbo />
+      <Category />
       <About />
-    </Suspense>
+    </>
   );
 }

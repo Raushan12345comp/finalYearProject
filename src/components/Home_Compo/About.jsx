@@ -53,7 +53,7 @@ export default function About() {
                 <img src={Books} className="a_dt_icons" alt="Error" />
                 <div>
                   <p style={{ fontSize: "22px", fontWeight: "bold" }}>
-                    Free Books
+                    Free Uplading Facility
                   </p>
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.

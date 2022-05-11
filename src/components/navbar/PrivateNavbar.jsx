@@ -127,10 +127,6 @@ export default function PrivateNavbar() {
               <li>User-Profile</li>
             </Link>
 
-            <Link className="Nav_Link_PC" to="/allcourses">
-              <li>All Courses</li>
-            </Link>
-
             {/* <Link className="Nav_Link_PC" to="/addNewCategory">
               <li>Add Category</li>
             </Link>
