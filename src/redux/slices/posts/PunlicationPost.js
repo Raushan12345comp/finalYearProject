@@ -42,6 +42,35 @@ export const fetchPostDetailsAction = createAsyncThunk(
   }
 );
 
+
+//Add Likes to post
+
+export const toggleAddLikesToPost = createAsyncThunk(
+  "post/like",
+  async (postId, { rejectWithValue, getState, dispatch }) => {
+    //get user token
+    const user = getState()?.user;
+    const { userAuth } = user;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userAuth?.token}`,
+      },
+    };
+    try {
+      const { data } = await axios.put(
+        `${baseUrl}/api/publications/likes`,
+        { postId },
+        config
+      );
+      return data;
+    } catch (error) {
+      if (!error?.response) throw error;
+      return rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+
 //Fetch All Project Posts
 
 export const fetchPaperPostsAction = createAsyncThunk(
