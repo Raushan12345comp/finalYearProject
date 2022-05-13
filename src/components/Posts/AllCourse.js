@@ -141,7 +141,7 @@ export default function PostsList() {
 
                       <div className=" my-3">
                       <Link
-                      to={`/project/${post?._id}`}
+                      to={`/course/${post?._id}`}
                       className="hover:no-underline text-primeBlue font-semibold hover:text-primeVoilet"
                     >
                       Read More..

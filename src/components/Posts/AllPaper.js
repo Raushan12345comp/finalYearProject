@@ -142,9 +142,13 @@ export default function PostsList() {
                       </div>
 
                       <div className=" my-3">
-                        <Link className=" hover:no-underline text-primeBlue font-semibold hover:text-primeVoilet">
-                          Read More...
-                        </Link>
+                      <Link
+                      to={`/paper/${post?._id}`}
+                      className="hover:no-underline text-primeBlue font-semibold hover:text-primeVoilet"
+                    >
+                      Read More..
+                    </Link>
+                        
                       </div>
                     </div>
                   </div>

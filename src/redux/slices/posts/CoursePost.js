@@ -31,6 +31,20 @@ export const createPostAction = createAsyncThunk(
   }
 );
 
+//fetch Post details
+export const fetchPostDetailsAction = createAsyncThunk(
+  "post/detail",
+  async (id, { rejectWithValue, getState, dispatch }) => {
+    try {
+      const { data } = await axios.get(`${baseUrl}/api/course/${id}`);
+      return data;
+    } catch (error) {
+      if (!error?.response) throw error;
+      return rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
 //Fetch All Project Posts
 
 export const fetchCoursePostsAction = createAsyncThunk(
@@ -105,19 +119,7 @@ export const deletePostAction = createAsyncThunk(
   }
 );
 
-//fetch Post details
-export const fetchPostDetailsAction = createAsyncThunk(
-  "post/detail",
-  async (id, { rejectWithValue, getState, dispatch }) => {
-    try {
-      const { data } = await axios.get(`${baseUrl}/api/course/${id}`);
-      return data;
-    } catch (error) {
-      if (!error?.response) throw error;
-      return rejectWithValue(error?.response?.data);
-    }
-  }
-);
+
 
 //Add Likes to post
 

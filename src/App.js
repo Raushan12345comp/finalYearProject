@@ -36,6 +36,8 @@ import AllCourses from './components/Posts/AllCourse'
 
 import UpdateProfile from './components/Profile/UpdateProfile';
 
+import PaperDetails from "./components/Posts/PaperDetails";
+import CourseDetails from "./components/Posts/CourseDetails";
 
 function App() {
   return (
@@ -71,6 +73,8 @@ function App() {
         <PrivateProtectRoute exact path="/projects" component={AllProjects} />
         <PrivateProtectRoute exact path="/papers" component={AllPaper} />
         <Route exact path="/project/:id" component={ProjectDetails} />
+        <Route exact path="/paper/:id" component={PaperDetails} />
+        <Route exact path="/course/:id" component={CourseDetails} />
         <PrivateProtectRoute exact path="/update-project/:id" component={UpdateProject} />
         <PrivateProtectRoute exact path="/profile/:id" component={UserProfile} />
         <PrivateProtectRoute
