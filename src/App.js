@@ -38,6 +38,7 @@ import UpdateProfile from './components/Profile/UpdateProfile';
 
 import PaperDetails from "./components/Posts/PaperDetails";
 import CourseDetails from "./components/Posts/CourseDetails";
+import SendMail from './components/Profile/SendEmail'
 
 function App() {
   return (
@@ -91,6 +92,7 @@ function App() {
         component={CourseUpdateCategory}
       />
       <PrivateProtectRoute exact path="/profile-update" component={UpdateProfile} />
+      <PrivateProtectRoute exact path="/send_mail" component={SendMail} />
           <Route component={Page404} />
          
         </Switch>

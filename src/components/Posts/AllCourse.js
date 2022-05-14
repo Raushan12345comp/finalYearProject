@@ -8,6 +8,16 @@ import moment from "moment";
 import htmlimg from "../assets/images/html.png";
 import Loading from "../loading/loadingSpinner";
 
+import {
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItemOption,
+  MenuOptionGroup,
+  ChakraProvider,
+  Button
+} from "@chakra-ui/react";
+
 export default function PostsList() {
 
     //select posts from store
@@ -47,8 +57,9 @@ export default function PostsList() {
           </p>
         </div>
 
-        <div className=" flex justify-between">
-          <div className="">
+        <div className=" flex justify-between sm:flex-col">
+        <div className="">
+          <div className=" sm:hidden">
             
               
                 <h1 className=" text-xl mb-2 font-semibold">Categories</h1>
@@ -72,7 +83,7 @@ export default function PostsList() {
                   <li>
                     <p
                       onClick={() =>
-                        dispatch(fetchCoursePostsAction(category?.title))
+                        dispatch(fetchCategoriesAction(category?.title))
                       }
                       className=" cursor-pointer py-2 px-3 mb-4 text-white font-semibold  "
                     >
@@ -85,8 +96,38 @@ export default function PostsList() {
             </div>
           </div>
 
+          <div className=" lg:hidden">
+          <Menu closeOnSelect={true}>
+          <MenuButton as={Button} colorScheme="blue">
+          Categories
+          </MenuButton>
+          <MenuList minWidth="240px">
+            <MenuOptionGroup title="Course Categories" type="radio">
+              {
+                categoryList?.map(category => (
+                  
+                    <p
+                      onClick={() =>
+                        dispatch(fetchCategoriesAction(category?.title))
+                      }
+                      className=" cursor-pointer py-2 mb-4 text-black font-semibold  "
+                    >
+                    <MenuItemOption value="asc">{category?.title}</MenuItemOption>
+
+                     
+                    </p>
+                  
+                ))
+              }
+             
+            </MenuOptionGroup>
+          </MenuList>
+        </Menu>
+          </div>
+          </div>
+
        
-          <div className="w-[80%] h-auto ">
+          <div className="w-[80%] h-auto sm:mx-auto">
             {loading ? (
               <Loading />
             ) : appErr || serverErr ? (

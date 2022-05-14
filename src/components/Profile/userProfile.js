@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
   HeartIcon,
   EmojiSadIcon,
@@ -17,6 +17,7 @@ export default function Profile({
   },
 }) {
   const dispatch = useDispatch();
+  const history = useHistory();
 
     //User data from store
     const users = useSelector(state => state.user);
@@ -25,6 +26,16 @@ export default function Profile({
   useEffect(() => {
     dispatch(userProfileAction(id));
   }, [id, dispatch , followed, unFollowed]);
+
+   //send mail handle click
+   const sendMailNavigate = () => {
+    history.push({
+      pathname: "/send_mail",
+      state: {
+        email: profile?.email,
+      },
+    });
+  };
 
 
   return (
@@ -174,8 +185,8 @@ export default function Profile({
                       <div className=' my-3'>
 
                       
-                      <Link
-                        // to={`/send-mail?email=${profile?.email}`}
+                      <button
+                      onClick={sendMailNavigate}
                         className=" hover:no-underline bg-blue-500 hover:bg-purple-300 flex justify-center items-center py-1 rounded-full"
                       >
                         <MailIcon
@@ -185,7 +196,7 @@ export default function Profile({
                         <span className="text-base mr-2  text-bold text-white ">
                           Send Message
                         </span>
-                      </Link>
+                      </button>
                       
                       </div>
                     </div>
@@ -228,7 +239,7 @@ export default function Profile({
                   {/* All my Post */}
                   <div className="w-full md:w-2/3 px-4 mb-4 md:mb-0">
                         <h1 className="text-center text-xl border-gray-500 mb-2 border-b-2">
-                          My Post - {profile?.projects?.length}
+                          My Post: {profile?.projects?.length}
                         </h1>
                         {/* Loop here */}
                         {profile?.projects?.length <= 0 ? (
