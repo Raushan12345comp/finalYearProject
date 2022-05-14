@@ -1,4 +1,4 @@
-import ProjectIcon from "../assets/images/hacker.gif";
+import ProjectIcon from "../assets/images/document.gif";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
@@ -50,7 +50,7 @@ export default function CreatePost() {
   });
 
   //select state with useSelector hook
-  const storeData = useSelector((store) => store?.ProjectPost);
+  const storeData = useSelector((store) => store?.PublicationPost);
   const { loading, appErr, serverErr } = storeData;
 
   return (
@@ -126,14 +126,17 @@ export default function CreatePost() {
 
               <div className=" my-6 text-left">
               <p className=" pb-2.5 text-primeBlue">Introduction</p>
-              <input
-                className="uk-input rounded-full"
-                type="text"
-                value={formik.values.introduction}
-                onChange={formik.handleChange("introduction")}
-                onBlur={formik.handleBlur("introduction")}
-                placeholder="Introduction.."
-              />
+
+              <textarea
+              class="uk-textarea rounded-lg"
+              rows="5"
+              value={formik.values.introduction}
+              onChange={formik.handleChange("introduction")}
+              onBlur={formik.handleBlur("introduction")}
+              placeholder="Introduction.."
+            ></textarea>
+
+            
             </div>
             
               

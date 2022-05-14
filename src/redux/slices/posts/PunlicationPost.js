@@ -28,6 +28,76 @@ export const createPostAction = createAsyncThunk(
     }
 )
 
+//fetch Post details
+export const fetchPostDetailsAction = createAsyncThunk(
+  "post/detail",
+  async (id, { rejectWithValue, getState, dispatch }) => {
+    try {
+      const { data } = await axios.get(`${baseUrl}/api/publications/${id}`);
+      return data;
+    } catch (error) {
+      if (!error?.response) throw error;
+      return rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+//Delete
+export const deletePostAction = createAsyncThunk(
+  "post/delete",
+  async (postId, { rejectWithValue, getState, dispatch }) => {
+    //get user token
+    const user = getState()?.user;
+    const { userAuth } = user;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userAuth?.token}`,
+      },
+    };
+    try {
+      //http call
+      const { data } = await axios.delete(
+        `${baseUrl}/api/publications/${postId}`,
+        config
+      );
+      
+      return data;
+    } catch (error) {
+      if (!error?.response) throw error;
+      return rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+
+//Add Likes to post
+
+export const toggleAddLikesToPost = createAsyncThunk(
+  "post/like",
+  async (postId, { rejectWithValue, getState, dispatch }) => {
+    //get user token
+    const user = getState()?.user;
+    const { userAuth } = user;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userAuth?.token}`,
+      },
+    };
+    try {
+      const { data } = await axios.put(
+        `${baseUrl}/api/publications/likes`,
+        { postId },
+        config
+      );
+      return data;
+    } catch (error) {
+      if (!error?.response) throw error;
+      return rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+
 //Fetch All Project Posts
 
 export const fetchPaperPostsAction = createAsyncThunk(
@@ -82,6 +152,40 @@ const publicationPostSlices = createSlice({
           state.appErr = action?.payload?.message;
           state.serverErr = action?.error?.message;
         });
+
+        //fetch post Details
+    builder.addCase(fetchPostDetailsAction.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(fetchPostDetailsAction.fulfilled, (state, action) => {
+      state.postDetails = action?.payload;
+      state.loading = false;
+      state.appErr = undefined;
+      state.serverErr = undefined;
+    });
+    builder.addCase(fetchPostDetailsAction.rejected, (state, action) => {
+      state.loading = false;
+      state.appErr = action?.payload?.message;
+      state.serverErr = action?.error?.message;
+    });
+
+    //Delete post
+    builder.addCase(deletePostAction.pending, (state, action) => {
+      state.loading = true;
+    });
+  
+    builder.addCase(deletePostAction.fulfilled, (state, action) => {
+      state.projectdeleted = action?.payload;
+      state.isDeleted = false;
+      state.loading = false;
+      state.appErr = undefined;
+      state.serverErr = undefined;
+    });
+    builder.addCase(deletePostAction.rejected, (state, action) => {
+      state.loading = false;
+      state.appErr = action?.payload?.message;
+      state.serverErr = action?.error?.message;
+    });
     }
 })
 

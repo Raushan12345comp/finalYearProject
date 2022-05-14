@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { PencilAltIcon } from "@heroicons/react/outline";
-import { fetchCategoriesAction } from "../../redux//slices/catrgory/PaperCategory";
+import { fetchCategoriesAction } from "../../redux/slices/catrgory/PaperCategory";
 import DateFormatter from "../../utils/DateFormatter";
 import LoadingSpinner from "../loading/loadingSpinner";
 

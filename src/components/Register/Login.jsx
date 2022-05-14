@@ -41,7 +41,7 @@ const store =  useSelector(state => state?.user)
 const { userAuth, loading, serverErr, appErr } = store;
 
 if(userAuth){
-  history.push("/");
+  history.push("/projects");
 }
   return (
     <div>

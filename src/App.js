@@ -23,6 +23,22 @@ import PaperCategoryList from "./components/PaperCategory/CategoryList";
 import PaperUpdateCategory from "./components/PaperCategory/UpdateCateg"
 
 import ProjectDetails from "./components/Posts/ProjectDetails";
+import UpdateProject from './components/Posts/UpdateProject'
+import UserProfile from './components/Profile/userProfile'
+import UploadProfilePhoto from "./components/Profile/UploadProfilePhoto";
+
+import AddNewCourseCategory from "./components/CourseCategory/AddNewCategory";
+import CourseCategoryList from "./components/CourseCategory/CategoryList";
+import CourseUpdateCategory from "./components/CourseCategory/UpdateCateg"
+
+import UploadCourse from "./components/Posts/CreateCourse";
+import AllCourses from './components/Posts/AllCourse'
+
+import UpdateProfile from './components/Profile/UpdateProfile';
+
+import PaperDetails from "./components/Posts/PaperDetails";
+import CourseDetails from "./components/Posts/CourseDetails";
+import SendMail from './components/Profile/SendEmail'
 
 function App() {
   return (
@@ -33,21 +49,23 @@ function App() {
           <Route exact path="/about" component={AboutPage} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/Login" component={Login} />
+          <Route exact path="/allcourses" component={AllCourses} />
           <Route exact path="/Signup" component={Signup} />
           <Route exact path="/ForgotPassword" component={ForgotPassword} />
-          <Route exact path="/Contact" component={Contact} />
           
           <AdminRoute
           exact
           path="/update-category/:id"
           component={UpdateCategory}
         />
+       
         <AdminRoute
         exact
         path="/update-paper-category/:id"
         component={PaperUpdateCategory}
       />
         <AdminRoute exact path="/addNewCategory" component={AddNewCategory} />
+        <AdminRoute exact path="/upload_course" component={UploadCourse} />
         <AdminRoute exact path="/addpaper_category" component={AddNewPaperCategory} />
         <AdminRoute exact path="/category-list" component={CategoryList} />
         <AdminRoute exact path="/papercategory-list" component={PaperCategoryList} />
@@ -56,7 +74,27 @@ function App() {
         <PrivateProtectRoute exact path="/projects" component={AllProjects} />
         <PrivateProtectRoute exact path="/papers" component={AllPaper} />
         <Route exact path="/project/:id" component={ProjectDetails} />
+        <Route exact path="/paper/:id" component={PaperDetails} />
+        <Route exact path="/course/:id" component={CourseDetails} />
+        <PrivateProtectRoute exact path="/update-project/:id" component={UpdateProject} />
+        <PrivateProtectRoute exact path="/profile/:id" component={UserProfile} />
+        <PrivateProtectRoute
+        exact
+        path="/upload-photo/:id"
+        component={UploadProfilePhoto}
+      />
+
+      <AdminRoute exact path="/addCourse_category" component={AddNewCourseCategory} />
+        <AdminRoute exact path="/Course_category-list" component={CourseCategoryList} />
+        <AdminRoute
+        exact
+        path="/update-course-category/:id"
+        component={CourseUpdateCategory}
+      />
+      <PrivateProtectRoute exact path="/profile-update" component={UpdateProfile} />
+      <PrivateProtectRoute exact path="/send_mail" component={SendMail} />
           <Route component={Page404} />
+         
         </Switch>
 
       <Footer />

@@ -40,9 +40,9 @@ export default function PublicNavbar() {
                       <Link style={{ textDecoration: "none" }} to="/Courses">
                         <li className="Links_nav_mobile">Courses</li>
                       </Link>
-                      <Link style={{ textDecoration: "none" }} to="/Team">
-                        <li className="Links_nav_mobile">Team</li>
-                      </Link>
+                      <Link className="Nav_Link_PC" to="/allcourses">
+                      <li className="Links_nav_mobile">All Courses</li>
+                    </Link>
                       <Link
                         style={{ textDecoration: "none" }}
                         to="/Digital_Library"
