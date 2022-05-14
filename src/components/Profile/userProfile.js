@@ -7,7 +7,7 @@ import {
   UserIcon,
 } from "@heroicons/react/outline";
 import { MailIcon, EyeIcon } from "@heroicons/react/solid";
-import { userProfileAction } from "../../redux/slices/users/userSlice";
+import { userProfileAction , followUserAction , unfollowUserAction } from "../../redux/slices/users/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 
@@ -17,14 +17,16 @@ export default function Profile({
   },
 }) {
   const dispatch = useDispatch();
+
+    //User data from store
+    const users = useSelector(state => state.user);
+    const { profile, loading, appErr, serverErr ,followed, unFollowed } = users;
   //fetch user profile
   useEffect(() => {
     dispatch(userProfileAction(id));
-  }, [id, dispatch]);
+  }, [id, dispatch , followed, unFollowed]);
 
-  //User data from store
-  const users = useSelector(state => state.user);
-  const { profile, loading, appErr, serverErr } = users;
+
   return (
     <>
       <div className="h-auto py-7 flex  bg-white">
@@ -70,6 +72,13 @@ export default function Profile({
                               </span>
                             )}
                           </h1>
+                          <p className="text-green-600 mt-2 mb-2">
+                          
+                           followers: {profile?.followers.length}
+                           <br />
+                           following: {profile?.following.length} 
+                          
+                        </p>
                           <div className=' my-2'>
                           <p className='text-lg'>Bio: {profile?.bio}</p>
                           </div>
@@ -107,10 +116,10 @@ export default function Profile({
                           {/* // Hide follow button from the same */}
                           <div>
                             <button
-                              // onClick={() =>
-                              //   dispatch(unFollowUserAction(profile?._id))
-                              // }
-                              className="inline-flex mr-4 justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
+                            onClick={() =>
+                              dispatch(unfollowUserAction(id))
+                            }
+                              className="inline-flex mr-4 justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 "
                             >
                               <EmojiSadIcon
                                 className="-ml-1 mr-2 h-5 w-5 text-gray-400"
@@ -120,48 +129,64 @@ export default function Profile({
                             </button>
 
                             <>
-                              <button
-                                // onClick={followHandler}
-                                type="button"
-                                className="inline-flex justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
-                              >
-                                <HeartIcon
-                                  className="-ml-1 mr-2 h-5 w-5 text-gray-400"
-                                  aria-hidden="true"
-                                />
-                                <span>Follow </span>
-                              </button>
+                            <button
+                            onClick={() =>
+                              dispatch(followUserAction(id))
+                            }
+                            type="button"
+                            className="inline-flex justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                          >
+                            <HeartIcon
+                              className="-ml-1 mr-2 h-5 w-5 text-gray-400"
+                              aria-hidden="true"
+                            />
+                            <span>Follow </span>
+                            <span className="pl-2">
+                              {profile?.followers?.length}
+                            </span>
+                          </button>
                             </>
                           </div>
 
                           {/* Update Profile */}
 
-                          <>
-                            <Link
-                              to="/profile-update"
-                              className="  hover:no-underline hover:bg-purple-300 flex justify-center items-center border-2 border-gray-500 py-1 rounded-full "
-                            >
-                              <UserIcon
-                                className="-ml-1 mr-2 h-5 w-5 text-gray-400"
-                                aria-hidden="true"
-                              />
-                              <span>Update Profile</span>
-                            </Link>
-                          </>
-                          {/* Send Mail */}
-                          <Link
-                            // to={`/send-mail?email=${profile?.email}`}
-                            className=" hover:no-underline bg-primeVoilet hover:bg-purple-300 flex justify-center items-center py-1 rounded-full"
-                          >
-                            <MailIcon
-                              className="-ml-1 mr-2 h-5 w-5 text-gray-200"
-                              aria-hidden="true"
-                            />
-                            <span className="text-base mr-2  text-bold text-white ">
-                              Send Message
-                            </span>
-                          </Link>
+                          
                         </div>
+                      </div>
+
+                      
+                    </div>
+                    <div className=' my-7 w-[50%] mx-auto'>
+                  
+                    <div className=' my-3'>
+                    <Link
+                    to="/profile-update"
+                    className="  hover:no-underline hover:bg-purple-300 flex justify-center items-center border-2 border-gray-500 py-1 rounded-full "
+                  >
+                    <UserIcon
+                      className="-ml-1 mr-2 h-5 w-5 text-gray-400"
+                      aria-hidden="true"
+                    />
+                    <span>Update Profile</span>
+                  </Link>
+                    </div>
+                          
+                      <div className=' my-3'>
+
+                      
+                      <Link
+                        // to={`/send-mail?email=${profile?.email}`}
+                        className=" hover:no-underline bg-blue-500 hover:bg-purple-300 flex justify-center items-center py-1 rounded-full"
+                      >
+                        <MailIcon
+                          className="-ml-1 mr-2 h-5 w-5 text-gray-200"
+                          aria-hidden="true"
+                        />
+                        <span className="text-base mr-2  text-bold text-white ">
+                          Send Message
+                        </span>
+                      </Link>
+                      
                       </div>
                     </div>
                     <div className="hidden sm:block 2xl:hidden mt-6 min-w-0 flex-1">

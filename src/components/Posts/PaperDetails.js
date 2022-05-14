@@ -10,6 +10,17 @@ import moment from "moment";
 import CommentsList from "../ProjectComment/CommentsList";
 import ProjectComments from "../ProjectComment/AddComment";
 import { Divider } from "@chakra-ui/react";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Button
+} from '@chakra-ui/react'
+import { useDisclosure } from "@chakra-ui/hooks";
 
 const PostDetails = ({
   match: {
@@ -17,12 +28,13 @@ const PostDetails = ({
   },
 }) => {
   const dispatch = useDispatch();
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   const post = useSelector((state) => state?.PublicationPost);
   const { postDetails, loading, appErr, serverErr } = post;
 
   //comment
-  const comment = useSelector((state) => state.comment);
+  const comment = useSelector((state) => state.Papercomment);
   const { commentCreated } = comment;
 
   useEffect(() => {
@@ -118,6 +130,44 @@ const PostDetails = ({
               </div>
             </div>
           </div>
+
+          {
+            isCreatedBy ?  <div className='text-center' >
+            <button
+            onClick={onOpen}
+            // 
+            class="ml-3"
+          >
+            <TrashIcon class="h-8 mt-3 text-red-600" />
+          </button>
+  
+            </div> :
+            null
+          }
+
+
+          <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Are you Sure you want to Delete this Post</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme='blue' mr={3} onClick={onClose}>
+              Close
+            </Button>
+            <Button variant='ghost' 
+            onClick={() =>
+                 dispatch(deletePostAction(postDetails?._id))
+              }
+            >Delete</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
           <div className=" my-5 mx-auto">
             <ProjectComments projectId={id} />
           </div>

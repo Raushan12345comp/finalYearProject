@@ -10,6 +10,11 @@ import PublicationPost from "../slices/posts/PunlicationPost"
 import comment from "../slices/Projectcomments/commentSlices";
 import Courses from "../slices/posts/CoursePost";
 
+import Papercomment from "../slices/PaperComments/commentSlices";
+import Coursecomment from "../slices/CourseComments/commentSlices";
+
+
+
 
 export const store = configureStore({
   reducer: {
@@ -21,6 +26,8 @@ export const store = configureStore({
     PublicationPost,
     comment,
     Courses,
+    Papercomment,
+    Coursecomment,
   },
 });
 

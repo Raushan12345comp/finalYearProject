@@ -10,12 +10,24 @@ import moment from "moment";
 import loadingSpinner from "../loading/loadingSpinner";
 import CommentsList from "../ProjectComment/CommentsList";
 import ProjectComments from "../ProjectComment/AddComment";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Button
+} from '@chakra-ui/react'
+import { useDisclosure } from "@chakra-ui/hooks";
 
 const PostDetails = ({
   match: {
     params: { id },
   },
 }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
   const dispatch = useDispatch();
 
   const post = useSelector((state) => state?.ProjectPost);
@@ -119,10 +131,49 @@ const PostDetails = ({
               </div>
               
             </div>
+            
           </div>
+          {
+            isCreatedBy ?  <div className='text-center' >
+            <button
+            onClick={onOpen}
+            // 
+            class="ml-3"
+          >
+            <TrashIcon class="h-8 mt-3 text-red-600" />
+          </button>
+  
+            </div> :
+            null
+          }
+         
          <div className=' my-5 mx-auto'>
          <ProjectComments  projectId={id} />
          </div>
+
+         <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Are you Sure you want to Delete this Post</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme='blue' mr={3} onClick={onClose}>
+              Close
+            </Button>
+            <Button variant='ghost' 
+            onClick={() =>
+                 dispatch(deletePostAction(postDetails?._id))
+              }
+            >Delete</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
+       
           <div className="flex justify-center  items-center">
             {/* <CommentsList comments={post?.comments} postId={post?._id} /> */}
             <CommentsList projectComment={postDetails?.projectComment} />

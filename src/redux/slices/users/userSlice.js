@@ -71,6 +71,35 @@ export const loginUserAction = createAsyncThunk(
 );
 
 
+// Follow
+export const followUserAction = createAsyncThunk(
+  "user/follow",
+  async (userToFollowId, { rejectWithValue, getState, dispatch }) => {
+    //get user token
+    const user = getState()?.user;
+    const { userAuth } = user;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userAuth?.token}`,
+      },
+    };
+    //http call
+    try {
+      const { data } = await axios.put(
+        `${baseUrl}/api/users/follow`,
+        { followId: userToFollowId },
+        config
+      );
+      return data;
+    } catch (error) {
+      if (!error?.response) {
+        throw error;
+      }
+      return rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
 // Profile
 export const userProfileAction = createAsyncThunk(
   "user/profile",
@@ -143,6 +172,35 @@ export const uploadProfilePhototAction = createAsyncThunk(
       return data;
     } catch (error) {
       if (!error?.response) throw error;
+      return rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+// unFollow
+export const unfollowUserAction = createAsyncThunk(
+  "user/unfollow",
+  async (unFollowId, { rejectWithValue, getState, dispatch }) => {
+    //get user token
+    const user = getState()?.user;
+    const { userAuth } = user;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userAuth?.token}`,
+      },
+    };
+    //http call
+    try {
+      const { data } = await axios.put(
+        `${baseUrl}/api/users/unfollow`,
+        { unFollowId },
+        config
+      );
+      return data;
+    } catch (error) {
+      if (!error?.response) {
+        throw error;
+      }
       return rejectWithValue(error?.response?.data);
     }
   }
@@ -230,6 +288,44 @@ const usersSlices = createSlice({
       state.serverErr = action?.error?.message;
       state.loading = false;
     });
+
+    //user Follow
+    builder.addCase(followUserAction.pending, (state, action) => {
+      state.loading = true;
+      state.appErr = undefined;
+      state.serverErr = undefined;
+    });
+    builder.addCase(followUserAction.fulfilled, (state, action) => {
+      state.loading = false;
+      state.followed = action?.payload;
+      state.appErr = undefined;
+      state.serverErr = undefined;
+    });
+    builder.addCase(followUserAction.rejected, (state, action) => {
+      state.loading = false;
+      state.appErr = action?.payload?.message;
+      state.serverErr = action?.error?.message;
+    });
+
+    //user unFollow
+    builder.addCase(unfollowUserAction.pending, (state, action) => {
+      state.unfollowLoading = true;
+      state.unFollowedAppErr = undefined;
+      state.unfollowServerErr = undefined;
+    });
+    builder.addCase(unfollowUserAction.fulfilled, (state, action) => {
+      state.unfollowLoading = false;
+      state.unFollowed = action?.payload;
+      state.unFollowedAppErr = undefined;
+      state.unfollowServerErr = undefined;
+    });
+    builder.addCase(unfollowUserAction.rejected, (state, action) => {
+      state.unfollowLoading = false;
+      state.unFollowedAppErr = action?.payload?.message;
+      state.unfollowServerErr = action?.error?.message;
+    });
+
+
     //Upload Profile photo
     builder.addCase(uploadProfilePhototAction.pending, (state, action) => {
       state.loading = true;
