@@ -26,6 +26,7 @@ export default function ForgotPassword() {
     });
     const users = useSelector(state => state?.user);
   const { passwordToken, loading, appErr, serverErr } = users;
+
   return (
     <div>
       <div className="forgot_pass_main">
@@ -55,15 +56,43 @@ export default function ForgotPassword() {
               />
             </div>
 
+            <div className="">
+                    <p className=" text-red-600 text-xs">
+                      {formik.touched.email && formik.errors.email}
+                    </p>
+                  </div>
+
             <div className="signUp_btn">
-              <button
+              {
+                loading ? <button
+                disabled
+                className="uk-button uk-button-primary sin_btn bg-orange-500"
+                
+              >
+                Loading....
+              </button> : 
+                <button
                 className="uk-button uk-button-primary sin_btn"
                 style={{ background: "#FB3D1C " }}
               >
-                Submit
+                Reset Password
               </button>
+              }
             </div>
-          </div></form>
+          </div>
+          
+          <div className=" text-red-700">
+          { appErr || serverErr ? <h2>{serverErr} {appErr}</h2> : null }
+          </div>
+
+          <div>
+          {
+            passwordToken && (
+              <h3 className=" text-green-600 font-semibold">Email Sent to your Email-Address. Verify within 10min.</h3>
+            )
+          }
+          </div>
+          </form>
           </div>
         </div>
       </div>

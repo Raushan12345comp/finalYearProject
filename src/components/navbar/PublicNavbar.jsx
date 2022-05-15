@@ -34,21 +34,14 @@ export default function PublicNavbar() {
                 <div className=" flex flex-col justify-between w-full h-[80vh] ">
                   <div>
                     <ul className="uk-list" style={{ textDecoration: "none" }}>
-                      <Link style={{ textDecoration: "none" }} to="/about">
-                        <li className="Links_nav_mobile">About</li>
-                      </Link>
+                      
                       <Link style={{ textDecoration: "none" }} to="/Courses">
                         <li className="Links_nav_mobile">Courses</li>
                       </Link>
                       <Link className="Nav_Link_PC" to="/allcourses">
                       <li className="Links_nav_mobile">All Courses</li>
                     </Link>
-                      <Link
-                        style={{ textDecoration: "none" }}
-                        to="/Digital_Library"
-                      >
-                        <li className="Links_nav_mobile">Digital Library</li>
-                      </Link>
+                     
                       <Link style={{ textDecoration: "none" }} to="/Contact">
                         <li className="Links_nav_mobile">Contact </li>
                       </Link>
@@ -81,18 +74,12 @@ export default function PublicNavbar() {
 
         <div className="menu_Links">
           <ul className="Pc_links">
-            <Link className="Nav_Link_PC" to="/about">
-              <li>About</li>
-            </Link>
-            <Link className="Nav_Link_PC" to="/Courses">
+          
+            <Link className="Nav_Link_PC" to="/allcourses">
               <li>Courses</li>
             </Link>
-            <Link className="Nav_Link_PC" to="/Team">
-              <li>Team</li>
-            </Link>
-            <Link className="Nav_Link_PC" to="/Digital_Library">
-              <li>Digital Library </li>
-            </Link>
+          
+          
             <Link className="Nav_Link_PC" to="/Contact">
               <li>Contact</li>
             </Link>

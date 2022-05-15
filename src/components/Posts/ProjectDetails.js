@@ -32,8 +32,7 @@ const PostDetails = ({
 
   const post = useSelector((state) => state?.ProjectPost);
   const { postDetails, loading, appErr, serverErr } = post;
-  console.log(postDetails?.projectComment);
-  console.log(postDetails);
+
 
   //comment
   const comment = useSelector((state) => state.comment);

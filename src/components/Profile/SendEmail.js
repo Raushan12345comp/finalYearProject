@@ -3,7 +3,6 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import { sendMailAction } from "../../redux/slices/EmailMsg/emailSlices";
-import ProjectCategoryDropdown from "../CourseCategory/ProjectDropdown";
 
 const formSchema = Yup.object({
   recipientEmail: Yup.string().required("Recipent Email is required"),

@@ -23,42 +23,42 @@ export default function footer() {
                 Links
               </h3>
               <ul class="uk-list">
-                <Link style={{ textDecoration: "none" }} to="/about">
-                  {" "}
+                <Link style={{ textDecoration: "none" }} to="/">
+                  
                   <li className="footer_Links">
-                    {" "}
+                    
                     <span uk-icon="icon:  arrow-right"></span> About
                   </li>
                 </Link>
-                <Link style={{ textDecoration: "none" }} to="/courses">
+                <Link style={{ textDecoration: "none" }} to="/allcourses">
                   <li className="footer_Links">
-                    {" "}
+                    
                     <span uk-icon="icon:  arrow-right"></span> Courses
                   </li>
                 </Link>
-                <Link style={{ textDecoration: "none" }} to="/Team">
+                <Link style={{ textDecoration: "none" }} to="/upload-project">
                   <li className="footer_Links">
-                    {" "}
-                    <span uk-icon="icon:  arrow-right"></span> Team
+                    
+                    <span uk-icon="icon:  arrow-right"></span> Upload Project
                   </li>
                 </Link>
-                <Link style={{ textDecoration: "none" }} to="/">
-                  {" "}
+                <Link style={{ textDecoration: "none" }} to="/upload-paper">
+                  
                   <li className="footer_Links">
-                    {" "}
-                    <span uk-icon="icon:  arrow-right"></span> Digital Library
+                    
+                    <span uk-icon="icon:  arrow-right"></span> Upload Paper
                   </li>
                 </Link>
                 <Link style={{ textDecoration: "none" }} to="/Contact">
                   <li className="footer_Links">
-                    {" "}
+                    
                     <span uk-icon="icon:  arrow-right"></span> Contact
                   </li>
                 </Link>
                 <Link style={{ textDecoration: "none" }} to="/Login">
-                  {" "}
+                  
                   <li className="footer_Links">
-                    {" "}
+                    
                     <span uk-icon="icon:  arrow-right"></span> Login
                   </li>
                 </Link>
@@ -67,31 +67,28 @@ export default function footer() {
 
             <div className="Services_f sm:py-5">
               <h3 className=" text-lg sm:text-xl" style={{ color: "#fff" }}>
-                Courses
+                Features
               </h3>
               <ul class="uk-list">
                 <li>
-                  {" "}
-                  <span uk-icon="icon:  arrow-right"></span> Front-End
-                  Development
+                  
+                  <span uk-icon="icon:  arrow-right"></span> Project & Paper Upload
                 </li>
                 <li>
-                  {" "}
-                  <span uk-icon="icon:  arrow-right"></span> Website Design
+                  
+                  <span uk-icon="icon:  arrow-right"></span> Secure Data
                 </li>
                 <li>
-                  {" "}
-                  <span uk-icon="icon:  arrow-right"></span> Logo Design
+                  
+                  <span uk-icon="icon:  arrow-right"></span> Free Courses
                 </li>
                 <li>
-                  {" "}
-                  <span uk-icon="icon:  arrow-right"></span> Back-End
-                  Development
+                  
+                  <span uk-icon="icon:  arrow-right"></span> Follow and Send E-mails
                 </li>
                 <li>
-                  {" "}
-                  <span uk-icon="icon:  arrow-right"></span> Data Base
-                  Management
+                  
+                  <span uk-icon="icon:  arrow-right"></span> Category Wise Access
                 </li>
               </ul>
             </div>
@@ -105,7 +102,7 @@ export default function footer() {
                   uk-icon="icon: location"
                   style={{ fontSize: "17px", paddingRight: "6px" }}
                 ></span>
-                <p>Wagholi ,Pune,Maharastra,India</p>
+                <p>Pune,Maharastra,India</p>
               </div>
 
               <div className="phone" style={{ margin: "15px 0" }}>

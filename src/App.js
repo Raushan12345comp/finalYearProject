@@ -40,6 +40,8 @@ import PaperDetails from "./components/Posts/PaperDetails";
 import CourseDetails from "./components/Posts/CourseDetails";
 import SendMail from "./components/Profile/SendEmail";
 import UsersList from './components/UsersList/UsersList'
+import AccountVerified from './components/AccountVerification/AccountVerified'
+import ResetPassword from './components/Register/ResetPassword'
 
 function App() {
   return (
@@ -59,6 +61,12 @@ function App() {
           path="/update-category/:id"
           component={UpdateCategory}
         />
+        <PrivateProtectRoute
+        exact
+        path="/verify-account/:token"
+        component={AccountVerified}
+      />
+      <Route exact path="/reset-password/:token" component={ResetPassword} />
 
         <AdminRoute
           exact
