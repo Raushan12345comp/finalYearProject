@@ -158,10 +158,7 @@ export default function PostsList() {
                         </p>
                       </div>
 
-                      <div>
-                        languages:
-                        {post.languages == null ? "node" : post.languages}
-                      </div>
+                     
                       <div className="mt-6 flex items-center">
                         <div className="flex-shrink-0">
                           <Link>

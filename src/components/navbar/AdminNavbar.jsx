@@ -45,7 +45,7 @@ export default function AdminNavbar() {
                 <hr className="uk-divider-icon" />
 
                 <ul className="uk-list" style={{ textDecoration: "none" }}>
-                  <Link style={{ textDecoration: "none" }} to="/about">
+                  <Link style={{ textDecoration: "none" }} to="/allusers">
                     <li className="Links_nav_mobile">All Users</li>
                   </Link>
                   <Link style={{ textDecoration: "none" }} to="/upload-project">
@@ -111,7 +111,7 @@ export default function AdminNavbar() {
 
         <div className="menu_Links">
           <ul className="Pc_links">
-            <Link className="Nav_Link_PC" to="/about">
+            <Link className="Nav_Link_PC" to="/allusers">
               <li>All Users</li>
             </Link>
             <Link className="Nav_Link_PC" to="/upload-project">
