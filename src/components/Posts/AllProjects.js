@@ -203,7 +203,7 @@ export default function PostsList() {
                     onClick={() =>
                       dispatch(toggleAddLikesToPost(post?._id))
                     }
-                    className="h-7 w-7 text-indigo-600 cursor-pointer"
+                    className="h-7 w-7 text-blue-600 cursor-pointer"
                   />
                   {post?.likes?.length}
                     </div>

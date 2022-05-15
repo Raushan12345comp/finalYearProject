@@ -137,6 +137,22 @@ const publicationPostSlices = createSlice({
           state.serverErr = action?.error?.message;
         });
 
+        //Likes
+    builder.addCase(toggleAddLikesToPost.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(toggleAddLikesToPost.fulfilled, (state, action) => {
+      state.likes = action?.payload;
+      state.loading = false;
+      state.appErr = undefined;
+      state.serverErr = undefined;
+    });
+    builder.addCase(toggleAddLikesToPost.rejected, (state, action) => {
+      state.loading = false;
+      state.appErr = action?.payload?.message;
+      state.serverErr = action?.error?.message;
+    });
+
         //Fetch all posts
         builder.addCase(fetchPaperPostsAction.pending, (state, action) => {
           state.loading = true;

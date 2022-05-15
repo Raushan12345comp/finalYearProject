@@ -39,7 +39,7 @@ export const sendMailAction = createAsyncThunk(
   
   const sendMailSlices = createSlice({
     name: "mail",
-    initialState: { mail: "sent" },
+    initialState: {},
     extraReducers: builder => {
       //create
       builder.addCase(sendMailAction.pending, (state, action) => {

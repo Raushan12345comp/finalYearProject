@@ -187,7 +187,7 @@ export default function Profile({
                       
                       <button
                       onClick={sendMailNavigate}
-                        className=" hover:no-underline bg-blue-500 hover:bg-purple-300 flex justify-center items-center py-1 rounded-full"
+                        className=" w-[60%] py-1.5 mx-auto sm:w-[80%] hover:no-underline bg-blue-300 hover:bg-blue-500 flex justify-center items-center rounded-full"
                       >
                         <MailIcon
                           className="-ml-1 mr-2 h-5 w-5 text-gray-200"
