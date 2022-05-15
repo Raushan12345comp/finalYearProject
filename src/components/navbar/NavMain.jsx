@@ -27,7 +27,7 @@ const NavMain = () => {
         <PublicNavbar />
       )}
       {/* Display alert */}
-      {userAuth && !userAuth.isVerified && <Alert />}
+      {profile?.isAccountVerified == false && <Alert />}
       {/* display success msg */}
       {loading && <h2 className="text-center">Loading please wait...</h2>}
       {token && <Success />}

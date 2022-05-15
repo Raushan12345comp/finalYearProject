@@ -35,8 +35,7 @@ export default function Jumbo() {
                 Best Online Education Expertise{" "}
               </h2>
               <p className=" w-[60%] sm:w-[100%]">
-                Far far away, behind the word mountains, far from the countries
-                Vokalia and Consonantia, there live the blind texts.
+                Welcome to Aducator take a tour to under stand the website better.
               </p>
             </div>
 
@@ -45,7 +44,7 @@ export default function Jumbo() {
                 onClick={onOpen}
                 className="uk-button uk-button-primary home_btn"
               >
-                Get Started Now
+                Take a tour
               </button>
              <Link to="allcourses">
              <button className="uk-button uk-button-secondary home_btn">

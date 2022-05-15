@@ -3,34 +3,24 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import { sendMailAction } from "../../redux/slices/EmailMsg/emailSlices";
-import ProjectCategoryDropdown from "../CourseCategory/ProjectDropdown";
 
 const formSchema = Yup.object({
-  recipient: Yup.string().required("Recipient Mail is required"),
-  message: Yup.string().required("Mail message is required"),
-  subject: Yup.string(),
+  recipientEmail: Yup.string().required("Recipent Email is required"),
+  subject: Yup.string().required("Subject is required"),
+  message: Yup.string().required("Message is required"),
 });
 
-export default function CreatePost({
-  location: {
-    state: { email },
-  },
-}) {
-  console.log(email);
+export default function CreatePost({ location: { state } }) {
   const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
-      recipient: email,
-      message: "",
+      recipientEmail: state?.email,
       subject: "",
+      message: "",
     },
     onSubmit: (value) => {
-      const data = {
-        subject: value?.subject,
-        recipient: value?.recipient,
-        message: value?.message,
-      };
+      
       console.log(value);
       //dispatch users
       dispatch(sendMailAction(value));
@@ -61,14 +51,17 @@ export default function CreatePost({
               <div className=" my-6 text-left">
                 <p className=" pb-2.5 text-primeBlue">Recipient Email</p>
                 <input
+                  value={formik.values.recipientEmail}
+                  onChange={formik.handleChange("recipientEmail")}
+                  onBlur={formik.handleBlur("recipientEmail")}
+                  disabled
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
                   className="uk-input rounded-full"
-                  type="text"
-                  disabled={true}
-                  value={formik.values.recipient}
-                  onChange={formik.handleChange("recipient")}
-                  onBlur={formik.handleBlur("recipient")}
-                  placeholder="Recipient E-Mail.."
                 />
+              
               </div>
 
               <div>
@@ -79,14 +72,19 @@ export default function CreatePost({
 
               <div className=" my-6 text-left">
                 <p className=" pb-2.5 text-primeBlue">Mail Subject</p>
+
                 <input
-                  className="uk-input rounded-full"
-                  type="text"
-                  value={formik.values.subject}
-                  onChange={formik.handleChange("subject")}
-                  onBlur={formik.handleBlur("subject")}
-                  placeholder="subject.."
-                />
+                value={formik.values.subject}
+                onChange={formik.handleChange("subject")}
+                onBlur={formik.handleBlur("subject")}
+                id="subject"
+                name="subject"
+                type="text"
+                autoComplete="subject"
+                className="uk-input rounded-full"
+              />
+
+              
               </div>
 
               <div>
@@ -98,13 +96,16 @@ export default function CreatePost({
               <div className=" my-6 text-left">
                 <p className=" pb-2.5 text-primeBlue">message</p>
                 <textarea
-                  class="uk-textarea rounded-lg"
-                  rows="5"
-                  value={formik.values.message}
-                  onChange={formik.handleChange("message")}
-                  onBlur={formik.handleBlur("message")}
-                  placeholder="message"
-                ></textarea>
+                value={formik.values.message}
+                onChange={formik.handleChange("message")}
+                onBlur={formik.handleBlur("message")}
+                rows="5"
+                cols="10"
+                className="uk-textarea rounded-lg"
+                type="text"
+              ></textarea>
+
+             
               </div>
               <div>
                 <p className=" text-red-600 text-xs text-left">

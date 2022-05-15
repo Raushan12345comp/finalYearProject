@@ -158,10 +158,7 @@ export default function PostsList() {
                         </p>
                       </div>
 
-                      <div>
-                        languages:
-                        {post.languages == null ? "node" : post.languages}
-                      </div>
+                     
                       <div className="mt-6 flex items-center">
                         <div className="flex-shrink-0">
                           <Link>
@@ -203,7 +200,7 @@ export default function PostsList() {
                     onClick={() =>
                       dispatch(toggleAddLikesToPost(post?._id))
                     }
-                    className="h-7 w-7 text-indigo-600 cursor-pointer"
+                    className="h-7 w-7 text-blue-600 cursor-pointer"
                   />
                   {post?.likes?.length}
                     </div>

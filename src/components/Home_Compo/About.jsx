@@ -17,7 +17,7 @@ export default function About() {
           <div className="about_right">
             <div className="about_heading">
               <p className=" text-xl text-primeBlue font-bold">
-                Learn Anything
+                Learn & Upload Anything
               </p>
               <h1>Benefits About Online Learning Expertise</h1>
             </div>
@@ -25,39 +25,36 @@ export default function About() {
             <div className="about_details">
               <section className="a_dt">
                 <img src={onlineCourse} className="a_dt_icons" alt="Error" />
-                <div>
+                <div className=" about_desc">
                   <p style={{ fontSize: "22px", fontWeight: "bold" }}>
                     Online Courses
                   </p>
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Suscipit, nam.
+                    Find Courses And comment on that..
                   </p>
                 </div>
               </section>
 
               <section className="a_dt">
                 <img src={Professional} className="a_dt_icons" alt="Error" />
-                <div>
+                <div className=" about_desc">
                   <p style={{ fontSize: "22px", fontWeight: "bold" }}>
                     Learn with Expert
                   </p>
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Suscipit, nam.
+                    Best Teachers of ADYPU upload courses and projects.
                   </p>
                 </div>
               </section>
 
               <section className="a_dt">
                 <img src={Books} className="a_dt_icons" alt="Error" />
-                <div>
+                <div className=" about_desc">
                   <p style={{ fontSize: "22px", fontWeight: "bold" }}>
                     Free Uplading Facility
                   </p>
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Suscipit, nam.
+                    Upload Project and Publication Paper of your Categories. 
                   </p>
                 </div>
               </section>

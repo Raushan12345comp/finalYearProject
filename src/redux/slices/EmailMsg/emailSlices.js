@@ -19,7 +19,7 @@ export const sendMailAction = createAsyncThunk(
         const { data } = await axios.post(
           `${baseUrl}/api/email`,
           {
-            to: email?.recipient,
+            to: email?.recipientEmail,
             subject: email?.subject,
             message: email?.message,
           },
@@ -39,7 +39,7 @@ export const sendMailAction = createAsyncThunk(
   
   const sendMailSlices = createSlice({
     name: "mail",
-    initialState: { mail: "sent" },
+    initialState: {},
     extraReducers: builder => {
       //create
       builder.addCase(sendMailAction.pending, (state, action) => {

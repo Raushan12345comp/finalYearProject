@@ -136,7 +136,7 @@ export default function PostsList() {
               <h1>No Post Found</h1>
             ) : (
               postList?.map((post) => (
-                <div className=" mb-5 h-auto shadow-md py-3 px-2 rounded-md shadow-blue-500/50">
+                <div key={post.id} className=" mb-5 h-auto shadow-md py-3 px-2 rounded-md shadow-blue-500/50">
                   <div className=" flex sm:flex-col">
                     <div className=" mr-4 sm:w-full sm:mr-0">
                       <img src={htmlimg} alt="image" />
@@ -157,10 +157,7 @@ export default function PostsList() {
                         </p>
                       </div>
 
-                      <div>
-                        languages:
-                        {post.languages == null ? "node" : post.languages}
-                      </div>
+                     
                       <div className="mt-6 flex items-center">
                         <div className="flex-shrink-0">
                           <Link>
@@ -197,21 +194,27 @@ export default function PostsList() {
                   </div>
 
                   <div className=" flex">
-                  <div className=" pr-4 flex">
-                  <ThumbUpIcon
-                  onClick={() =>
-                    dispatch(toggleAddLikesToPost(post?._id))
-                  }
-                  className="h-7 w-7 text-indigo-600 cursor-pointer"
-                />
-                {post?.likes?.length}
+                 
+                  <div className=" flex">
+                    <div className=" pr-4 flex">
+                    <ThumbUpIcon
+                    onClick={() =>
+                      dispatch(toggleAddLikesToPost(post?._id))
+                    }
+                    className="h-7 w-7 text-blue-600 cursor-pointer"
+                  />
+                  {post?.likes?.length}
+                    </div>
+                    
+
+                    <div className=" px-4 flex">
+                    <EyeIcon className="h-7 w-7  text-gray-400" />
+                      {post?.viewCount}
+                    </div>
                   </div>
                   
 
-                  <div className=" px-4 flex">
-                  <EyeIcon className="h-7 w-7  text-gray-400" />
-                    {post?.viewCount}
-                  </div>
+              
                 </div>
                 </div>
               ))

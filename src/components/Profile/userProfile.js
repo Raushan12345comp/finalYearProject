@@ -21,7 +21,7 @@ export default function Profile({
 
     //User data from store
     const users = useSelector(state => state.user);
-    const { profile, loading, appErr, serverErr ,followed, unFollowed } = users;
+    const { profile, loading, appErr, serverErr ,followed, unFollowed , userAuth } = users;
   //fetch user profile
   useEffect(() => {
     dispatch(userProfileAction(id));
@@ -36,7 +36,7 @@ export default function Profile({
       },
     });
   };
-
+  const isLoginUser = userAuth?._id === profile?._id;
 
   return (
     <>
@@ -124,40 +124,44 @@ export default function Profile({
                         </div>
 
                         <div className="mt-6 flex flex-col justify-center space-y-3 sm:flex-col sm:justify-center">
-                          {/* // Hide follow button from the same */}
+                          
+                        {
+                          !isLoginUser &&
                           <div>
-                            <button
-                            onClick={() =>
-                              dispatch(unfollowUserAction(id))
-                            }
-                              className="inline-flex mr-4 justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 "
-                            >
-                              <EmojiSadIcon
-                                className="-ml-1 mr-2 h-5 w-5 text-gray-400"
-                                aria-hidden="true"
-                              />
-                              <span>Unfollow</span>
-                            </button>
-
-                            <>
-                            <button
-                            onClick={() =>
-                              dispatch(followUserAction(id))
-                            }
-                            type="button"
-                            className="inline-flex justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                          <button
+                          onClick={() =>
+                            dispatch(unfollowUserAction(id))
+                          }
+                            className="inline-flex mr-4 justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 "
                           >
-                            <HeartIcon
+                            <EmojiSadIcon
                               className="-ml-1 mr-2 h-5 w-5 text-gray-400"
                               aria-hidden="true"
                             />
-                            <span>Follow </span>
-                            <span className="pl-2">
-                              {profile?.followers?.length}
-                            </span>
+                            <span>Unfollow</span>
                           </button>
-                            </>
-                          </div>
+
+                          <>
+                          <button
+                          onClick={() =>
+                            dispatch(followUserAction(id))
+                          }
+                          type="button"
+                          className="inline-flex justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                        >
+                          <HeartIcon
+                            className="-ml-1 mr-2 h-5 w-5 text-gray-400"
+                            aria-hidden="true"
+                          />
+                          <span>Follow </span>
+                          <span className="pl-2">
+                            {profile?.followers?.length}
+                          </span>
+                        </button>
+                          </>
+                        </div>
+                        }
+                         
 
                           {/* Update Profile */}
 
@@ -187,7 +191,7 @@ export default function Profile({
                       
                       <button
                       onClick={sendMailNavigate}
-                        className=" hover:no-underline bg-blue-500 hover:bg-purple-300 flex justify-center items-center py-1 rounded-full"
+                        className=" w-[60%] py-1.5 mx-auto sm:w-[80%] hover:no-underline bg-blue-300 hover:bg-blue-500 flex justify-center items-center rounded-full"
                       >
                         <MailIcon
                           className="-ml-1 mr-2 h-5 w-5 text-gray-200"
