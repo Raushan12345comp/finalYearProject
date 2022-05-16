@@ -1,6 +1,7 @@
-import React from "react";
+import React , {useState , useRef } from "react";
 import { useGoogleMaps } from "react-hook-google-maps";
 import "./Contact.css";
+import emailjs from 'emailjs-com'; 
 
 const Contact = () => {
   const KEY = 'AIzaSyAYrd7duFeX5SdHs_rWQZIZ1ON5OAAAGAU';
@@ -9,6 +10,22 @@ const Contact = () => {
     center: { lat: 18.596024, lng: 73.924698 },
     zoom: 18,
   });
+
+  const formRef = useRef()
+    const [done , setdone] = useState(false)
+
+    const handleSubmit =  (e)=>{ 
+      e.preventDefault()
+
+      emailjs.sendForm('service_e8gsnle', 'template_njy9eo2', formRef.current, 'user_pvecif4FWZExhw0wAtxdp')
+      .then((result) => {
+          console.log(result.text);
+          setdone(true)
+      }, (error) => {
+          console.log(error.text);
+      });
+
+  }
 
   return (
     <>
@@ -28,7 +45,7 @@ const Contact = () => {
               <div className="Contact_locations">
                 <div className="C_loc">
                   <h5>ADDRESS:</h5>
-                  <p>198 West 21th Street, Suite 721 New York NY 10016</p>
+                  <p>Pune,Maharastra,India</p>
                 </div>
 
                 <div className="C_loc">
@@ -41,7 +58,7 @@ const Contact = () => {
                   <p>123 456 789</p>
                 </div>
               </div>
-
+              <form ref={formRef} onSubmit={handleSubmit}>
               <div className="Contact_form">
                 <div className="name_email">
                   <input
@@ -49,6 +66,7 @@ const Contact = () => {
                     required
                     type="text"
                     placeholder="Name"
+                    name="user_name"
                   />
 
                   <input
@@ -56,6 +74,7 @@ const Contact = () => {
                     required
                     type="email"
                     placeholder="Email"
+                    name="user_email"
                   />
                 </div>
 
@@ -65,6 +84,7 @@ const Contact = () => {
                     required
                     type="text"
                     placeholder="Subject"
+                    name="user_Subject"
                   />
                 </div>
 
@@ -73,6 +93,7 @@ const Contact = () => {
                     className="uk-textarea"
                     rows="5"
                     placeholder="Textarea"
+                    name="user_message"
                   ></textarea>
                 </div>
               </div>
@@ -81,6 +102,11 @@ const Contact = () => {
                 <button className="uk-button uk-button-primary">
                   Send Message
                 </button>
+              </div>
+              </form>
+
+              <div>
+              {done && <h4 className="done text-green-600">Thanks Message Sent :)</h4>}
               </div>
 
               <div className="Contact_social_main">

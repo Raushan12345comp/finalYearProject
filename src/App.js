@@ -1,5 +1,5 @@
 import { Route, Switch } from "react-router-dom";
-import AboutPage from "./pages/AboutPage";
+import About from "./components/About/About";
 import HomePage from "./pages/HomePage";
 import NavMain from "./components/navbar/NavMain";
 import Footer from "./components/Footer/footer";
@@ -49,7 +49,7 @@ function App() {
       <NavMain />
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/about" component={AboutPage} />
+        <Route exact path="/about" component={About} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/Login" component={Login} />
         <Route exact path="/allcourses" component={AllCourses} />

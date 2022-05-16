@@ -35,9 +35,10 @@ export default function PublicNavbar() {
                   <div>
                     <ul className="uk-list" style={{ textDecoration: "none" }}>
                       
-                      <Link style={{ textDecoration: "none" }} to="/Courses">
-                        <li className="Links_nav_mobile">Courses</li>
-                      </Link>
+                    <Link style={{ textDecoration: "none" }} to="/about">
+                    <li className="Links_nav_mobile">About </li>
+                  </Link>
+
                       <Link className="Nav_Link_PC" to="/allcourses">
                       <li className="Links_nav_mobile">All Courses</li>
                     </Link>
@@ -74,6 +75,10 @@ export default function PublicNavbar() {
 
         <div className="menu_Links">
           <ul className="Pc_links">
+
+          <Link style={{ textDecoration: "none" }} to="/about">
+          <li>About </li>
+        </Link>
           
             <Link className="Nav_Link_PC" to="/allcourses">
               <li>Courses</li>
