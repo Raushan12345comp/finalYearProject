@@ -38,6 +38,13 @@ export default function Profile({
   };
   const isLoginUser = userAuth?._id === profile?._id;
 
+  const user = useSelector((state) => state.user);
+  const {
+    userAuth: { _id },
+  } = user;
+
+  const isCreatedBy = profile?._id === _id;
+
   return (
     <>
       <div className="h-auto py-7 flex  bg-white">
@@ -74,12 +81,12 @@ export default function Profile({
                             </span>
                             {/* Display if verified or not */}
                             {profile?.isAccountVerified ? (
-                              <span className="inline-flex ml-2 items-center px-3 py-0.5  rounded-lg text-sm font-medium bg-green-600 text-gray-300">
-                                Account Verified
+                              <span className="Cat_shadow inline-flex ml-2 items-center px-3 py-1  rounded-full text-sm font-medium bg-green-800 text-gray-300">
+                                Account Verified <span className=" pl-2" uk-icon="icon: check"></span>
                               </span>
                             ) : (
-                              <span className="inline-flex ml-2 items-center px-3 py-0.5  rounded-lg text-sm font-medium bg-red-600 text-gray-300">
-                                Unverified Account
+                              <span className="Cat_shadow inline-flex ml-2 items-center px-3 py-1  rounded-full text-sm font-medium bg-red-800 text-gray-300">
+                                Unverified Account <span className=" pl-2" uk-icon="icon: close"></span>
                               </span>
                             )}
                           </h1>
@@ -98,29 +105,25 @@ export default function Profile({
                              {moment(profile?.createdAt).format("MMM Do YY")}
                           </p>
                          
-                          {/* Who view my profile */}
-                          <div className="flex items-center  mb-2">
-                            <EyeIcon className="h-5 w-5 " />
-                            <div className="pl-2">
-                              {/* {profile?.viewedBy?.length}{" "} */}
-                              <span className="text-indigo-400 cursor-pointer hover:underline">
-                                users viewed your profile
-                              </span>
-                            </div>
+                          <div className=' flex'>
+                          <p>Email: {profile?.email}</p>
+                          
                           </div>
+                          <p>Mobile: {profile?.Mobile == null ? "Not Availble" : profile?.Mobile}</p>
 
                           {/* is login user */}
                           {/* Upload profile photo */}
-                          <Link
+                          {isCreatedBy ?  <Link
                             to={`/upload-photo/${profile?._id}`}
-                            className="inline-flex justify-center w-48 px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
+                            className="Cat_shadow hover:no-underline hover:bg-[#2E0249] flex justify-center items-center rounded-full py-2 my-2 bg-[#A91079] w-[20%] text-center "
                           >
                             <UploadIcon
-                              className="-ml-1 mr-2 h-5 w-5 text-gray-400"
+                              className="-ml-1 mr-2 h-5 w-5 text-gray-200"
                               aria-hidden="true"
                             />
-                            <span>Upload Photo</span>
-                          </Link>
+                            <span className='text-white'>Upload Photo</span>
+                          </Link> : null}
+                         
                         </div>
 
                         <div className="mt-6 flex flex-col justify-center space-y-3 sm:flex-col sm:justify-center">
@@ -171,27 +174,30 @@ export default function Profile({
 
                       
                     </div>
-                    <div className=' my-7 w-[50%] mx-auto'>
+                    <div className=' my-7 w-[50%] mx-auto sm:w-[80%]'>
                   
-                    <div className=' my-3'>
-                    <Link
-                    to="/profile-update"
-                    className="  hover:no-underline hover:bg-purple-300 flex justify-center items-center border-2 border-gray-500 py-1 rounded-full "
-                  >
-                    <UserIcon
-                      className="-ml-1 mr-2 h-5 w-5 text-gray-400"
-                      aria-hidden="true"
-                    />
-                    <span>Update Profile</span>
-                  </Link>
-                    </div>
+                    {
+                      isCreatedBy ?    <div className=' my-3'>
+                      <Link
+                      to="/profile-update"
+                      className="Cat_shadow  w-[60%] py-1.5 mx-auto sm:w-[80%] hover:no-underline bg-[#570A57] hover:bg-blue-500 flex justify-center items-center rounded-full"
+                    >
+                      <UserIcon
+                        className="-ml-1 mr-2 h-5 w-5 text-gray-200"
+                        aria-hidden="true"
+                      />
+                      <span className="text-base mr-2  text-bold text-white ">Update Profile</span>
+                    </Link>
+                      </div> :null
+                    }
+                 
                           
                       <div className=' my-3'>
 
                       
                       <button
                       onClick={sendMailNavigate}
-                        className=" w-[60%] py-1.5 mx-auto sm:w-[80%] hover:no-underline bg-blue-300 hover:bg-blue-500 flex justify-center items-center rounded-full"
+                        className="Cat_shadow w-[60%] py-1.5 mx-auto sm:w-[80%] hover:no-underline bg-[#570A57] hover:bg-blue-500 flex justify-center items-center rounded-full"
                       >
                         <MailIcon
                           className="-ml-1 mr-2 h-5 w-5 text-gray-200"
@@ -213,36 +219,15 @@ export default function Profile({
                 </div>
                 {/* Tabs */}
                 <div className="mt-6 sm:mt-2 2xl:mt-5">
-                  <div className="border-b border-red-900">
+                  <div className="">
                     <div className="max-w-5xl mx-auto "></div>
                   </div>
                 </div>
-                <div className="flex justify-center place-items-start flex-wrap  md:mb-0">
-                  <div className="w-full md:w-1/3 px-4 mb-4 md:mb-0">
-                    <h1 className="text-center text-xl border-gray-500 mb-2 border-b-2">
-                      Who viewed my profile : 9
-                    </h1>
-
-                    {/* Who view my post */}
-                    <ul className="">
-                      <Link>
-                        <div className="flex mb-2 items-center space-x-4 lg:space-x-6">
-                          
-                          <div className="font-medium text-lg leading-6 space-y-1">
-                            <h3>
-                              {/* {user?.firstName} {user?.lastName} */}Name
-                            </h3>
-                            <p className="text-indigo-600">
-                              {/* {user.accountType} */} Account Type
-                            </p>
-                          </div>
-                        </div>
-                      </Link>
-                    </ul>
-                  </div>
+                <div className="flex justify-center place-items-start ">
+                  
                   {/* All my Post */}
                   <div className="w-full md:w-2/3 px-4 mb-4 md:mb-0">
-                        <h1 className="text-center text-xl border-gray-500 mb-2 border-b-2">
+                        <h1 className="text-center text-xl  mb-2 ">
                           My Post: {profile?.projects?.length}
                         </h1>
                         {/* Loop here */}
@@ -255,9 +240,9 @@ export default function Profile({
                               <div className="w-full lg:w-3/4 px-3">
                                 <Link
                                   // to={`/post/${post?._id}`}
-                                  className="hover:underline"
+                                  className=""
                                 >
-                                  <h3 className="mb-1 text-2xl text-green-600 font-bold font-heading">
+                                  <h3 className="mb-1 text-2xl text-blue-700 font-bold font-heading">
                                     {post?.title}
                                   </h3>
                                 </Link>
@@ -267,7 +252,7 @@ export default function Profile({
 
                                 <Link
                                   className="text-indigo-500 hover:underline"
-                                  to={`/posts/${post?._id}`}
+                                  to={`/project/${post?._id}`}
                                 >
                                   Read more
                                 </Link>

@@ -3,18 +3,25 @@ import { PencilAltIcon, TrashIcon } from "@heroicons/react/solid";
 import Moment from "react-moment";
 import { deleteCommentAction } from "../../redux/slices/Projectcomments/commentSlices";
 import { useDispatch, useSelector } from "react-redux";
+import { useToast } from "@chakra-ui/react";
 
 export default function ProjectCommentList({ projectComment }) {
   const dispatch = useDispatch();
+  const toast = useToast();
   return (
     <div>
       <ul className="divide-y w-[80%] mx-auto divide-gray-700 p-3 mt-5">
-        <div className="text-gray-600 py-2"> Total Comment: {projectComment?.length}</div>
+        <div className="text-gray-600 py-2">
+          {" "}
+          Total Comment: {projectComment?.length}
+        </div>
         <>
           {projectComment?.length <= 0 ? (
-            <h1 className="text-red-500 text-lg text-center">No projectComment</h1>
+            <h1 className="text-red-500 text-lg text-center">
+              No projectComment
+            </h1>
           ) : (
-            projectComment?.map(comment => (
+            projectComment?.map((comment) => (
               <>
                 <li className="py-4  w-full">
                   <div className="flex space-x-3">
@@ -44,12 +51,18 @@ export default function ProjectCommentList({ projectComment }) {
                       {/* Check if is the same user created this comment */}
 
                       <p class="flex">
-                        <Link class="p-3">
-                          <PencilAltIcon class="h-5 mt-3 text-purple-600" />
-                        </Link>
-                        <button class="ml-3" onClick={() =>
-                            dispatch(deleteCommentAction(comment?._id))
-                          }>
+                        <button
+                          class="ml-3"
+                          onClick={() =>
+                            dispatch(deleteCommentAction(comment?._id)) &&
+                            toast({
+                              title: `Comment Deleted`,
+                              position: "bottom",
+                              isClosable: true,
+                              status: "info",
+                            })
+                          }
+                        >
                           <TrashIcon class="h-5 mt-3 text-red-600" />
                         </button>
                       </p>

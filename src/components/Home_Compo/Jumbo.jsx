@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../style/Jumbo.css";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 import Student_logo from "../assets/images/Student_logo.png";
+import folow from '../assets/images/follow_us.png'
 import {
   Modal,
   ModalOverlay,
@@ -35,50 +36,47 @@ export default function Jumbo() {
                 Best Online Education Expertise{" "}
               </h2>
               <p className=" w-[60%] sm:w-[100%]">
-                Welcome to Aducator take a tour to under stand the website better.
+                Welcome to Aducator take a tour to under stand the website
+                better.
               </p>
             </div>
 
             <div className="Jumbo_btn">
               <button
                 onClick={onOpen}
-                className="uk-button uk-button-primary home_btn"
+                className="Cat_shadow uk-button uk-button-primary home_btn"
               >
                 Take a tour
               </button>
-             <Link to="allcourses">
-             <button className="uk-button uk-button-secondary home_btn">
-             View Courses
-           </button>
-             </Link>
+              <Link to="allcourses">
+                <button className="Cat_shadow uk-button uk-button-secondary home_btn">
+                  View Courses
+                </button>
+              </Link>
             </div>
-
             <div className="social_input">
+            <img src={folow} className=' my-4 pl-[20px] object-cover w-[150px] h-[120px] ' alt="follow-img" />
+
               <div className="social_jumbo">
-                <span className="social-icons" uk-icon="icon: instagram"></span>
-                <span className="social-icons" uk-icon="icon: github"></span>
-                <span className="social-icons" uk-icon="icon: twitter"></span>
-                <span className="social-icons" uk-icon="icon: facebook"></span>
+                <span
+                  className="Cat_shadow social-icons"
+                  uk-icon="icon: instagram"
+                ></span>
+                <span
+                  className="Cat_shadow social-icons"
+                  uk-icon="icon: github"
+                ></span>
+                <span
+                  className="Cat_shadow social-icons"
+                  uk-icon="icon: twitter"
+                ></span>
+                <span
+                  className="Cat_shadow social-icons"
+                  uk-icon="icon: facebook"
+                ></span>
               </div>
-
-              {/* <div className="Jumbo_search">
-                <section className="input">
-                  <input
-                    className="uk-search-input"
-                    type="search"
-                    placeholder="Search Course..."
-                    value={Search}
-                    onChange={(e) => setSearch(e.target.value)}
-                  />
-
-                  <span
-                    onClick={Jumbo_search}
-                    uk-icon="icon: search"
-                    className="Jumbo_Search_icon"
-                  ></span>
-                </section>
-              </div> */}
             </div>
+
           </div>
 
           <div className=" sm:hidden">
@@ -103,35 +101,33 @@ export default function Jumbo() {
                   <img src={dark} alt="" uk-cover />
                   <div className="uk-position-center uk-position-small uk-text-center uk-light">
                     <p className="uk-margin-remove text-3xl font-bold">
-                      Welcome to Aducator </p>
-                      <p>we have different options for a Student lets Explore..</p>
+                      Welcome to Aducator{" "}
+                    </p>
+                    <p>
+                      we have different options for a Student lets Explore..
+                    </p>
                   </div>
                 </li>
                 <li>
                   <img src={dark} alt="" uk-cover />
                   <div className="uk-position-top uk-position-medium uk-text-center uk-light">
-                   
-                    <p className="uk-margin-remove text-3xl font-bold">
-                    1ST </p>
+                    <p className="uk-margin-remove text-3xl font-bold">1ST </p>
                     <p>Free Courses..</p>
                     <p>Diffrerent Teachers can upload courses</p>
-                 
                   </div>
                 </li>
                 <li>
                   <img src={soft} alt="" uk-cover />
                   <div className="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center">
-                  <p className="uk-margin-remove text-3xl font-bold">
-                  2ND </p>
-                  <p>Upload Projects</p>
+                    <p className="uk-margin-remove text-3xl font-bold">2ND </p>
+                    <p>Upload Projects</p>
                   </div>
                 </li>
                 <li>
                   <img src={dark} alt="" uk-cover />
                   <div className="uk-overlay uk-overlay-default uk-position-bottom-right uk-position-small">
-                  <p className="uk-margin-remove text-3xl font-bold">
-                  3ND </p>
-                  <p>Upload Paper</p>
+                    <p className="uk-margin-remove text-3xl font-bold">3ND </p>
+                    <p>Upload Paper</p>
                   </div>
                 </li>
               </ul>
@@ -157,8 +153,6 @@ export default function Jumbo() {
             <button mr={3} onClick={onClose}>
               Close
             </button>
-
-          
           </ModalFooter>
         </ModalContent>
       </Modal>

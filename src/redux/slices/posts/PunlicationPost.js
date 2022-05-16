@@ -102,9 +102,9 @@ export const toggleAddLikesToPost = createAsyncThunk(
 
 export const fetchPaperPostsAction = createAsyncThunk(
   "post/list",
-  async (Papercategory,{rejectWithValue, getState, dispatch }) => {
+  async (category,{rejectWithValue, getState, dispatch }) => {
       try {
-          const { data } = await axios.get(`${baseUrl}/api/publications?Papercategory=${Papercategory}`);
+          const { data } = await axios.get(`${baseUrl}/api/publications?category=${category}`);
           return data;
           
         } catch (error) {

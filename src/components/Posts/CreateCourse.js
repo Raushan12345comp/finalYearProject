@@ -8,7 +8,9 @@ import ProjectCategoryDropdown from "../CourseCategory/ProjectDropdown";
 const formSchema = Yup.object({
   title: Yup.string().required("Project Title is required"),
   description: Yup.string().required("Project description is required"),
-  courselink: Yup.string(),
+  courselink: Yup.string().required("Project description is required"),
+  courselink1:Yup.string(),
+  courselink2:Yup.string(),
   category: Yup.object().required("Category is required"),
   
 });
@@ -21,6 +23,8 @@ export default function CreatePost() {
       title: "",
       description: "",
       courselink: "",
+      courselink1: "",
+      courselink2: "",
       category: "",
       
     },
@@ -30,6 +34,8 @@ export default function CreatePost() {
         title: value?.title,
         description: value?.description,
         courselink: value?.courselink,
+        courselink1: value?.courselink1,
+        courselink2: value?.courselink2,
         
       };
       console.log(value);
@@ -103,7 +109,7 @@ export default function CreatePost() {
               </div>
 
               <div className=" my-6 text-left">
-                <p className=" pb-2.5 text-primeBlue">Project link</p>
+                <p className=" pb-2.5 text-primeBlue">Course link</p>
                 <input
                   className="uk-input rounded-full"
                   type="text"
@@ -113,6 +119,33 @@ export default function CreatePost() {
                   placeholder="courselink.."
                 />
               </div>
+              <div className="">
+              <div className=" my-6 text-left">
+                <p className=" pb-2.5 text-primeBlue">Course link-2</p>
+                <input
+                  className="uk-input rounded-full"
+                  type="text"
+                  value={formik.values.courselink1}
+                  onChange={formik.handleChange("courselink1")}
+                  onBlur={formik.handleBlur("courselink1")}
+                  placeholder="courselink1.."
+                />
+              </div>
+
+              <div className=" my-6 text-left">
+                <p className=" pb-2.5 text-primeBlue">Course link-3</p>
+                <input
+                  className="uk-input rounded-full"
+                  type="text"
+                  value={formik.values.courselink2}
+                  onChange={formik.handleChange("courselink2")}
+                  onBlur={formik.handleBlur("courselink2")}
+                  placeholder="courselink2.."
+                />
+              </div>
+              </div>
+
+              
               
              
             </div>
