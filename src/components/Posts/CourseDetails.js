@@ -63,11 +63,14 @@ const PostDetails = ({
                 />
               </div>
               <div className="text-justify w-[60%] mx-auto sm:w-[90%]">
-                <h4 className="mb-1 text-2xl font-bold text-gray-700">
-                  <span className="text-xl lg:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-yellow-200 to-orange-600">
-                    {postDetails?.user?.firstName} {postDetails?.user?.lastName}{" "}
-                  </span>
-                </h4>
+                <Link to={`/profile/${postDetails?.user?._id}`}>
+                  <h4 className="mb-1 text-2xl font-bold text-gray-700">
+                    <span className="text-xl lg:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-yellow-200 to-orange-600">
+                      {postDetails?.user?.firstName}{" "}
+                      {postDetails?.user?.lastName}{" "}
+                    </span>
+                  </h4>
+                </Link>
 
                 <h2 className=" my-3 text-3xl text-black font-bold font-heading">
                   {postDetails?.title}
@@ -93,11 +96,25 @@ const PostDetails = ({
                   </p>
                 </h2>
 
-                <h2 className=" my-3  text-black ">
-                  Link:{" "}
-                  {!postDetails?.courselink
+                <h2 className=" my-3  text-blue-600 ">
+                  <p className=' text-gray-600 font-semibold'>Course Link-1:</p>
+                  <a href={postDetails?.courselink} target="_blank" >{!postDetails?.courselink
                     ? "Not Available"
-                    : postDetails?.courselink}
+                    : postDetails?.courselink}</a>
+                </h2>
+
+                <h2 className=" my-3  text-blue-600 ">
+                  <p className=' text-gray-600 font-semibold'>Course Link-2:</p>
+                  <a href={postDetails?.courselink1} target="_blank" >{!postDetails?.courselink1
+                    ? "Not Available"
+                    : postDetails?.courselink1}</a>
+                </h2>
+
+                <h2 className=" my-3  text-blue-600 ">
+                  <p className=' text-gray-600 font-semibold'>Course Link-3:</p>
+                  <a href={postDetails?.courselink2} target="_blank" >{!postDetails?.courselink2
+                    ? "Not Available"
+                    : postDetails?.courselink2}</a>
                 </h2>
               </div>
             </div>

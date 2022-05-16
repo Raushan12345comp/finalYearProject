@@ -14,7 +14,7 @@ const UsersListItem = user => {
 
   const sendMailNavigator = () => {
     history.push({
-      pathname: "/send-mail",
+      pathname: "/send_mail",
       state: {
         email: user?.user?.email,
         id: user?.user?._id,
@@ -25,9 +25,9 @@ const UsersListItem = user => {
     <>
       <div className="p-8 mb-4 bg-white shadow rounded">
         <div className="flex flex-wrap items-center -mx-4 sm:flex-col">
-          <div className="w-full lg:w-3/12 flex px-4 mb-6 lg:mb-0">
+          <div className="w-full lg:w-3/12 items-center flex px-4 mb-6 lg:mb-0">
             <img
-              className="w-10 h-10 mr-4 object-cover rounded-full"
+              className="profileBorder w-16 h-16 mr-4 object-cover rounded-full"
               src={user?.user?.profilePhoto}
               alt="profile "
             />
@@ -56,39 +56,39 @@ const UsersListItem = user => {
            
             <Link
               to={`/profile/${user?.user?._id}`}
-              className=' flex items-center px-3 border-2  border-blue-600 rounded-lg'
+              className='Cat_shadow hover:no-underline hover:text-white flex items-center px-3 py-1 bg-[#1C6DD0]  rounded-full text-white'
             >
-            <span uk-icon="icon: user" className=' pr-1'></span>
+            <span uk-icon="icon: user" className=' pr-1 text-white'></span>
               Profile
             </Link>
 
             {user?.user?.isBlocked ? (
               <button
               onClick={() => dispatch(unBlockUserAction(user?.user?._id))}
-                className=' flex items-center px-3 mx-3 border-2  border-red-600 rounded-lg'
+                className='Cat_shadow bg-[#F90716] flex items-center px-3 py-1 mx-3 rounded-full text-white'
               >
-              <span uk-icon="icon: plus-circle" className=' pr-1'></span>
+              <span uk-icon="icon: plus-circle" className=' pr-1 text-white'></span>
                 unblock
               </button>
             ) : (
               <button
               onClick={() => dispatch(blockUserAction(user?.user?._id))}
-                className=' flex items-center px-3 mx-3 border-2  border-blue-600 rounded-lg'
+                className='Cat_shadow bg-[#FF8D29] flex items-center px-3 mx-3 py-1  rounded-full text-white'
               >
-              <span uk-icon="icon: ban" className=' pr-1'></span>
+              <span uk-icon="icon: ban" className=' pr-1 text-white'></span>
                 Block
               </button>
             )}
 
             <button
               onClick={sendMailNavigator}
-              className=" flex px-3 border-2 rounded-lg  border-blue-600 items-center"
+              className="Cat_shadow flex bg-[#125B50] px-3 rounded-full py-1 items-center"
             >
               <MailIcon
-                className="-ml-1 mr-2 h-5 w-5 text-indigo-400"
+                className="-ml-1 mr-2 h-5 w-5 text-gray-200"
                 aria-hidden="true"
               />
-              <span className="text-base mr-2  text-bold text-gray-600">
+              <span className="text-base mr-2  text-bold text-white">
                 Message
               </span>
             </button>

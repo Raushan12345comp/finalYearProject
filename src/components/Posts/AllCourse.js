@@ -7,6 +7,7 @@ import {fetchCategoriesAction} from '../../redux/slices/catrgory/courseCategory'
 import moment from "moment";
 import htmlimg from "../assets/images/html.png";
 import Loading from "../loading/loadingSpinner";
+import star from '../assets/images/star.png'
 
 import {
   Menu,
@@ -80,12 +81,12 @@ export default function PostsList() {
                 <h1>No Category Found</h1>
               ) : (
                 categoryList?.map(category => (
-                  <li>
+                  <li className=" ">
                     <p
                       onClick={() =>
-                        dispatch(fetchCategoriesAction(category?.title))
+                        dispatch(fetchCoursePostsAction(category?.title))
                       }
-                      className=" cursor-pointer py-2 px-3 mb-4 text-white font-semibold  "
+                      className=" cursor-pointer py-4 px-5 mb-4 text-white font-semibold  "
                     >
                       {category?.title}
                     </p>
@@ -108,7 +109,7 @@ export default function PostsList() {
                   
                     <p
                       onClick={() =>
-                        dispatch(fetchCategoriesAction(category?.title))
+                        dispatch(fetchCoursePostsAction(category?.title))
                       }
                       className=" cursor-pointer py-2 mb-4 text-black font-semibold  "
                     >
@@ -169,7 +170,7 @@ export default function PostsList() {
                         </div>
                         <div className="ml-3">
                           <p className="text-sm font-medium text-gray-900">
-                            <Link  className="text-black hover:cursor ">
+                          <Link to={`/profile/${post?.user?._id}`} className="text-black hover:cursor ">
                               {post?.user?.firstName} {post?.user?.lastName}
                             </Link>
                           </p>
@@ -193,7 +194,7 @@ export default function PostsList() {
                   </div>
 
                   <div className=" flex">
-                    <div className=" pr-4 flex">
+                    <div className=" pr-4 flex items-center">
                     <ThumbUpIcon
                     onClick={() =>
                       dispatch(toggleAddLikesToPost(post?._id))
@@ -204,10 +205,16 @@ export default function PostsList() {
                     </div>
                     
 
-                    <div className=" px-4 flex">
-                    <EyeIcon className="h-7 w-7  text-gray-400" />
+                    <div className=" px-4 flex items-center">
+                    <EyeIcon className="h-7 pr-1 w-7  text-gray-400" />
                       {post?.viewCount}
                     </div>
+
+                    <div className=' flex items-center'>
+                    {post?.likes?.length >= 20 ? "2" : post?.likes?.length >30 ? "3" : post?.likes?.length >40 ? "4" : post?.likes?.length < 20 ? "1" : "5"}
+                    <img src={star} alt="image" className=' pl-2 w-8 h-6 object-cover' />
+                    </div>
+
                   </div>
                 </div>
               ))
