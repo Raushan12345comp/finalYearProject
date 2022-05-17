@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import UsersListHeader from "./UsersListHeader";
 import UsersListItem from "./UsersListItem";
 import { fetchUsersAction} from "../../redux/slices/users/userSlice";
-
+import Loading from '../loading/loadingSpinner'
 const UsersList = () => {
   const dispatch = useDispatch();
   //fetch all users
@@ -19,7 +19,7 @@ const UsersList = () => {
     <>
       <section class="py-2">
       {loading ? (
-        <h1>Loading</h1>
+        <Loading />
       ) : appErr || serverErr ? (
         <h3>
           {serverErr} {appErr}

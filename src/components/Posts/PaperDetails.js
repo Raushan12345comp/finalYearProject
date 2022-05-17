@@ -88,6 +88,14 @@ const PostDetails = ({
                 <h2 className=" my-3 text-3xl text-black font-bold font-heading">
                   {postDetails?.title}
                 </h2>
+
+                <h2 className=" my-3 text-black flex">
+                <p className=" font-semibold">Authors</p>:{" "}
+                {postDetails?.Authors == ""
+                  ? "Not Available"
+                  : postDetails?.Authors}
+              </h2>
+
                 <p className="text-gray-500">
                   {moment(postDetails?.createdAt).format("MMM Do YY")}
                 </p>
@@ -106,9 +114,9 @@ const PostDetails = ({
 
                 <h2 className=" my-3 text-black flex">
                   <p className=" font-semibold">keywords</p>:{" "}
-                  {postDetails?.keywords == ""
+                  {postDetails?.keyword == ""
                     ? "Not Available"
-                    : postDetails?.keywords}
+                    : postDetails?.keyword}
                 </h2>
 
                 <h2 className=" my-3  text-black ">
@@ -126,10 +134,10 @@ const PostDetails = ({
                 </h2>
 
                 <h2 className=" my-3  text-black ">
-                  <p className=" text-xl font-semibold">Refrences:</p>
-                  {!postDetails?.refrences
+                  <p className=" text-xl font-semibold">Publicationlink:</p>
+                  {!postDetails?.publicationlink
                     ? "Not Available"
-                    : postDetails?.refrences}
+                    : postDetails?.publicationlink}
                 </h2>
               </div>
             </div>

@@ -8,6 +8,7 @@ import moment from "moment";
 import htmlimg from "../assets/images/html.png";
 import Loading from "../loading/loadingSpinner";
 import star from '../assets/images/star.png'
+import book from '../assets/images/book.png'
 
 import {
   Menu,
@@ -140,7 +141,7 @@ export default function PostsList() {
                 <div key={post.id} className=" mb-5 h-auto shadow-md py-3 px-2 rounded-md shadow-blue-500/50">
                   <div className=" flex sm:flex-col">
                     <div className=" mr-4 sm:w-full sm:mr-0">
-                      <img src={htmlimg} alt="image" />
+                    <img src={book} className=' w-[300px] h-[200px] bg-cover ' alt="image" />
                     </div>
 
                     <div>

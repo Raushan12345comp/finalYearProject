@@ -12,6 +12,7 @@ const formSchema = Yup.object({
   Language: Yup.string(),
   conclusion: Yup.string(),
   refrences: Yup.string(),
+  Authors:Yup.string(),
   category: Yup.object().required("Category is required"),
   
 });
@@ -28,6 +29,7 @@ export default function CreatePost() {
       conclusion: "",
       refrences: "",
       category: "",
+      Authors:'',
       publicationlink:"",
       
     },
@@ -40,6 +42,7 @@ export default function CreatePost() {
         refrences: value?.refrences,
         keyword: value?.keyword,
         conclusion: value?.conclusion,
+        Authors:value?.Authors,
         publicationlink:value?.publicationlink,
       };
       console.log(value);
@@ -123,6 +126,18 @@ export default function CreatePost() {
                   placeholder="keywords.."
                 />
               </div>
+
+              <div className=" my-6 text-left">
+              <p className=" pb-2.5 text-primeBlue">Authors</p>
+              <input
+                className="uk-input rounded-full"
+                type="text"
+                value={formik.values.Authors}
+                onChange={formik.handleChange("Authors")}
+                onBlur={formik.handleBlur("Authors")}
+                placeholder="Authors.."
+              />
+            </div>
 
               <div className=" my-6 text-left">
               <p className=" pb-2.5 text-primeBlue">Introduction</p>

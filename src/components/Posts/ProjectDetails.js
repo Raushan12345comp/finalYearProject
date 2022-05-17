@@ -58,6 +58,7 @@ const PostDetails = ({
       ) : appErr || serverErr ? (
         <h1 className="h-screen text-red-600 text-xl">
           {serverErr} {appErr}
+          
         </h1>
       ) : (
         <section className=" w-[70%] mx-auto  sm:w-full">
@@ -125,9 +126,12 @@ const PostDetails = ({
 
                 <h2 className=" my-3  text-black ">
                   Projectlink:{" "}
+                  <a href={postDetails?.projectlink} target="_blank">
                   {!postDetails?.projectlink
                     ? "Not Available"
                     : postDetails?.projectlink}
+                  </a>
+                 
                 </h2>
               </div>
             </div>
