@@ -170,7 +170,13 @@ const PostDetails = ({
             </ModalContent>
           </Modal>
 
-        
+          <div className=" my-5 mx-auto">
+          <ProjectComments projectId={id} />
+        </div>
+        <div className="flex justify-center  items-center">
+          {/* <CommentsList comments={post?.comments} postId={post?._id} /> */}
+          <CommentsList projectComment={postDetails?.projectComment} />
+        </div>
         </section>
       )}
     </>
