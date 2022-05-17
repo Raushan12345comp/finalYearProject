@@ -8,8 +8,8 @@ import ProjectCategoryDropdown from "../ProjectCategories/ProjectDropdown";
 const formSchema = Yup.object({
   title: Yup.string().required("Project Title is required"),
   abstract: Yup.string().required("Project Abstract is required"),
-  keyword: Yup.string(),
-  Language: Yup.string(),
+  keywords: Yup.string(),
+  languages: Yup.string(),
   refrences: Yup.string(),
   projectlink: Yup.string(),
   category: Yup.object().required("Category is required"),
@@ -23,8 +23,8 @@ export default function CreatePost() {
     initialValues: {
       title: "",
       abstract: "",
-      keyword: "",
-      Language: "",
+      keywords: "",
+      languages: "",
       refrences: "",
       projectlink: "",
       category: "",
@@ -35,9 +35,9 @@ export default function CreatePost() {
         category: value?.category?.label,
         title: value?.title,
         abstract: value?.abstract,
-        Language: value?.Language,
+        languages: value?.languages,
         projectlink: value?.projectlink,
-        keyword: value?.keyword,
+        keywords: value?.keywords,
         refrences: value?.refrences,
         
       };
@@ -116,9 +116,9 @@ export default function CreatePost() {
                 <input
                   className="uk-input rounded-full"
                   type="text"
-                  value={formik.values.keyword}
-                  onChange={formik.handleChange("keyword")}
-                  onBlur={formik.handleBlur("keyword")}
+                  value={formik.values.keywords}
+                  onChange={formik.handleChange("keywords")}
+                  onBlur={formik.handleBlur("keywords")}
                   placeholder="keywords.."
                 />
               </div>
@@ -128,10 +128,10 @@ export default function CreatePost() {
                 <input
                   className="uk-input rounded-full"
                   type="text"
-                  value={formik.values.Language}
-                  onChange={formik.handleChange("Language")}
-                  onBlur={formik.handleBlur("Language")}
-                  placeholder="Programming Language Used.."
+                  value={formik.values.languages}
+                  onChange={formik.handleChange("languages")}
+                  onBlur={formik.handleBlur("languages")}
+                  placeholder="Programming languages Used.."
                 />
               </div>
 

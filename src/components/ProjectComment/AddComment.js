@@ -38,6 +38,7 @@ const AddComment = ({ projectId }) => {
           type="text"
           name="text"
           id="text"
+          autoComplete="off"
           className=" px-3 mx-3 border-2"
           placeholder="Add New comment...."
         />

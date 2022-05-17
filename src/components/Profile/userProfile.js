@@ -47,7 +47,7 @@ export default function Profile({
 
   return (
     <>
-      <div className="h-auto py-7 flex  bg-white">
+      <div className="h-auto flex  bg-white">
         {/* Static sidebar for desktop */}
 
         <div className="flex flex-col min-w-0 flex-1 ">
@@ -58,7 +58,7 @@ export default function Profile({
                 <div>
                   <div>
                     <img
-                      className="h-32 w-full object-cover lg:h-48"
+                      className=" h-32 bg-cover w-full object-cover lg:h-48 "
                       src={profile?.profilePhoto}
                       alt={profile?.firstName}
                     />
@@ -67,12 +67,12 @@ export default function Profile({
                     <div className="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
                       <div className="flex ">
                         <img
-                          className="h-24 w-24 rounded-full sm:hidden  ring-4 ring-white sm:h-32 sm:w-32"
+                          className="Cat_shadow border-2 h-24 w-24 rounded-full sm:hidden  ring-4 ring-white sm:h-32 sm:w-32"
                           src={profile?.profilePhoto}
                           alt={profile?.firstName}
                         />
                       </div>
-                      <div className="mt-6">
+                      <div className="mt-9 sm:text-center ">
                         <div className="  2xl:block mt-10 min-w-0 flex-1">
                           <h1 className="text-2xl font-bold text-gray-900 ">
                             {profile?.firstName} {profile?.lastName}
@@ -97,15 +97,15 @@ export default function Profile({
                            following: {profile?.following.length} 
                           
                         </p>
-                          <div className=' my-2'>
+                          <div className=' my-2 '>
                           <p className='text-lg'>Bio: {profile?.bio}</p>
                           </div>
-                          <p className=" my-2 text-lg flex ">
+                          <p className=" my-2 text-lg flex sm:justify-center ">
                             <p className=' pr-3'>Date Joined:</p>
                              {moment(profile?.createdAt).format("MMM Do YY")}
                           </p>
                          
-                          <div className=' flex'>
+                          <div className=' flex sm:justify-center '>
                           <p>Email: {profile?.email}</p>
                           
                           </div>
@@ -115,7 +115,7 @@ export default function Profile({
                           {/* Upload profile photo */}
                           {isCreatedBy ?  <Link
                             to={`/upload-photo/${profile?._id}`}
-                            className="Cat_shadow hover:no-underline hover:bg-[#2E0249] flex justify-center items-center rounded-full py-2 my-2 bg-[#A91079] w-[20%] text-center "
+                            className="Cat_shadow hover:no-underline hover:bg-[#2E0249] flex justify-center items-center rounded-full py-2 my-2 bg-[#A91079] w-[20%] sm:w-[80%] sm:mx-auto text-center "
                           >
                             <UploadIcon
                               className="-ml-1 mr-2 h-5 w-5 text-gray-200"

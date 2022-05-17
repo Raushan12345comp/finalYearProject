@@ -15,7 +15,9 @@ import {
 } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/hooks";
 import dark from "../../components/assets/images/dark.jpg";
-import soft from "../../components/assets/images/soft.jpg";
+import soft from "../../components/assets/images/soft.webp";
+import upload_img from '../../components/assets/images/upload.gif'
+import laptop_img from '../../components/assets/images/laptop.gif'
 
 export default function Jumbo() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -100,7 +102,7 @@ export default function Jumbo() {
               uk-slideshow="animation: push"
             >
               <ul className="uk-slideshow-items">
-                <li className=" rounded-xl">
+                <li className="Cat_shadow rounded-lg">
                   <img src={dark} alt="" uk-cover />
                   <div className="uk-position-center uk-position-small uk-text-center uk-light">
                     <p className="uk-margin-remove text-3xl font-bold">
@@ -111,30 +113,31 @@ export default function Jumbo() {
                     </p>
                   </div>
                 </li>
-                <li>
+                <li className="Cat_shadow rounded-lg">
                   <img src={dark} alt="" uk-cover />
                   <div className="uk-position-top uk-position-medium uk-text-center uk-light">
                     <p className="uk-margin-remove text-3xl font-bold text-white">1ST </p>
-                    <p>Registered/Login to use the features of this website.</p>
+                    <p className=" text-white my-4 font-semibold text-lg">Registered/Login to use the features of this website.</p>
                     <Link style={{ textDecoration: "none" }} to="/Login">
                       <p className="Cat_shadow w-[30%] mx-auto my-7 text-lg font-semibold bg-green-800 hover:bg-green-400  py-2 rounded-full">Login</p>
                     </Link>
                   </div>
                 </li>
-                <li>
+                <li className="Cat_shadow rounded-lg">
                   <img src={soft} alt="" uk-cover />
                   <div className="uk-position-top uk-position-medium uk-text-center uk-light">
                     <p className="uk-margin-remove text-3xl font-bold text-gray-700">2nd </p>
-                    <p className=" text-gray-700 my-4">Registered/Login Can upload Projects and Paper for free</p>
-                   
+                    <p className=" text-gray-700 my-4 font-semibold text-lg ">Registered/Login Can upload Projects and Paper for free</p>
+                   <img src={upload_img} className='Cat_shadow object-cover h-[230px] w-[230px] mx-auto rounded-full' alt="images" />
                   </div>
                 </li>
-                <li>
+                <li className="Cat_shadow rounded-lg">
                   <img src={soft} alt="" uk-cover />
                   <div className="uk-position-top uk-position-medium uk-text-center uk-light">
                     <p className="uk-margin-remove text-3xl font-bold text-gray-700">3rd </p>
-                    <p className=" text-gray-700 my-4">Users can access free courses.</p>
-                   
+                    <p className=" text-gray-700 my-4 font-semibold text-lg">Users can access free courses.</p>
+                    <img src={laptop_img} className='Cat_shadow object-cover h-[230px] w-[230px] mx-auto rounded-full' alt="images" />
+
                   </div>
                 </li>
               </ul>
@@ -157,7 +160,7 @@ export default function Jumbo() {
           </ModalBody>
 
           <ModalFooter>
-            <button mr={3} onClick={onClose}>
+            <button mr={3} onClick={onClose} className=' hover:text-white hover:Cat_shadow hover:bg-rose-700 hover:rounded-full hover:py-2 px-4' >
               Close
             </button>
           </ModalFooter>
