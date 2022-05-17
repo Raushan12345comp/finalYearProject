@@ -45,6 +45,11 @@ export default function PrivateNavbar() {
                 <hr className="uk-divider-icon" />
                 <div className=" flex flex-col justify-between w-full h-[80vh] ">
                   <ul className="uk-list" style={{ textDecoration: "none" }}>
+
+                  <Link style={{ textDecoration: "none" }} to="/about">
+                  <li className="Links_nav_mobile">About </li>
+                </Link>
+
                     <Link className="Nav_Link_PC" to="/projects">
                       <li className="Links_nav_mobile">All Projects</li>
                     </Link>
@@ -69,6 +74,10 @@ export default function PrivateNavbar() {
                     >
                       <li className="Links_nav_mobile">User Profile</li>
                     </Link>
+
+                    <Link style={{ textDecoration: "none" }} to="/Contact">
+                    <li className="Links_nav_mobile">Contact </li>
+                  </Link>
                     {/* <Link
                     style={{ textDecoration: "none" }}
                     to="/addNewCategory"
@@ -106,6 +115,12 @@ export default function PrivateNavbar() {
 
         <div className="menu_Links">
           <ul className="Pc_links">
+
+          <Link style={{ textDecoration: "none" }} to="/about">
+          <li>About </li>
+        </Link>
+          
+
             <Link className="Nav_Link_PC" to="/projects">
               <li>All Projects</li>
             </Link>
@@ -126,6 +141,10 @@ export default function PrivateNavbar() {
             <Link className="Nav_Link_PC" to={`/profile/${userAuth._id}`}>
               <li>User-Profile</li>
             </Link>
+
+            <Link className="Nav_Link_PC" to="/Contact">
+            <li>Contact</li>
+          </Link>
 
             {/* <Link className="Nav_Link_PC" to="/addNewCategory">
               <li>Add Category</li>
