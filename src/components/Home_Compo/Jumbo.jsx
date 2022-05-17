@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../style/Jumbo.css";
 import { Link } from "react-router-dom";
 import Student_logo from "../assets/images/Student_logo.png";
-import folow from '../assets/images/follow_us.png'
+import folow from "../assets/images/follow_us.png";
 import {
   Modal,
   ModalOverlay,
@@ -55,7 +55,11 @@ export default function Jumbo() {
               </Link>
             </div>
             <div className="social_input">
-            <img src={folow} className=' my-4 pl-[20px] object-cover w-[150px] h-[120px] ' alt="follow-img" />
+              <img
+                src={folow}
+                className=" my-4 pl-[20px] object-cover w-[150px] h-[120px] "
+                alt="follow-img"
+              />
 
               <div className="social_jumbo">
                 <span
@@ -76,7 +80,6 @@ export default function Jumbo() {
                 ></span>
               </div>
             </div>
-
           </div>
 
           <div className=" sm:hidden">
@@ -103,31 +106,35 @@ export default function Jumbo() {
                     <p className="uk-margin-remove text-3xl font-bold">
                       Welcome to Aducator{" "}
                     </p>
-                    <p>
-                      we have different options for a Student lets Explore..
+                    <p className=" text-xl">
+                      We have different options for a Student lets Explore..
                     </p>
                   </div>
                 </li>
                 <li>
                   <img src={dark} alt="" uk-cover />
                   <div className="uk-position-top uk-position-medium uk-text-center uk-light">
-                    <p className="uk-margin-remove text-3xl font-bold">1ST </p>
-                    <p>Free Courses..</p>
-                    <p>Diffrerent Teachers can upload courses</p>
+                    <p className="uk-margin-remove text-3xl font-bold text-white">1ST </p>
+                    <p>Registered/Login to use the features of this website.</p>
+                    <Link style={{ textDecoration: "none" }} to="/Login">
+                      <p className="Cat_shadow w-[30%] mx-auto my-7 text-lg font-semibold bg-green-800 hover:bg-green-400  py-2 rounded-full">Login</p>
+                    </Link>
                   </div>
                 </li>
                 <li>
                   <img src={soft} alt="" uk-cover />
-                  <div className="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center">
-                    <p className="uk-margin-remove text-3xl font-bold">2ND </p>
-                    <p>Upload Projects</p>
+                  <div className="uk-position-top uk-position-medium uk-text-center uk-light">
+                    <p className="uk-margin-remove text-3xl font-bold text-gray-700">2nd </p>
+                    <p className=" text-gray-700 my-4">Registered/Login Can upload Projects and Paper for free</p>
+                   
                   </div>
                 </li>
                 <li>
-                  <img src={dark} alt="" uk-cover />
-                  <div className="uk-overlay uk-overlay-default uk-position-bottom-right uk-position-small">
-                    <p className="uk-margin-remove text-3xl font-bold">3ND </p>
-                    <p>Upload Paper</p>
+                  <img src={soft} alt="" uk-cover />
+                  <div className="uk-position-top uk-position-medium uk-text-center uk-light">
+                    <p className="uk-margin-remove text-3xl font-bold text-gray-700">3rd </p>
+                    <p className=" text-gray-700 my-4">Users can access free courses.</p>
+                   
                   </div>
                 </li>
               </ul>
